@@ -3,27 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Rahul Khanal — Information Security Analyst at Worldlink Communications, System Administrator, and Cybersecurity Professional based in Kathmandu, Nepal." />
-  <meta name="keywords" content="Rahul Khanal, information security analyst, cybersecurity, Nepal, Worldlink Communications, system administration, network security, SIEM, ELK stack, Docker" />
+  <meta name="description" content="Rahul Khanal — Ass. Information Security Analyst at WorldLink Communications. Skilled in system administration, SIEM, network security, and DevOps — Kathmandu, Nepal." />
+  <meta name="keywords" content="Rahul Khanal, information security analyst, cybersecurity, Nepal, WorldLink Communications, system administration, network security, SIEM, ELK stack, Docker" />
   <meta name="author" content="Rahul Khanal" />
-  <meta property="og:title" content="Rahul Khanal | Information Security Analyst & Cybersecurity Professional" />
-  <meta property="og:description" content="Information Security Analyst at Worldlink Communications. Skilled in system administration, network security, SIEM tools, and DevOps — based in Kathmandu, Nepal." />
+  <meta property="og:title" content="Rahul Khanal | Information Security Analyst" />
+  <meta property="og:description" content="Information Security Analyst at WorldLink Communications. Network security, SIEM, vulnerability assessment — Kathmandu, Nepal." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://raahul.com.np" />
   <title>Rahul Khanal | Information Security Analyst</title>
 
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
   <link rel="stylesheet" href="style.css" />
+
+  <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔐</text></svg>" />
 </head>
 <body>
 
-<!-- ===== NAVBAR ===== -->
+<!-- ═══════════════════════════════════════════════
+     NAVBAR
+══════════════════════════════════════════════════ -->
 <nav class="navbar" role="navigation" aria-label="Main navigation">
   <a href="#home" class="logo" aria-label="Rahul Khanal home">R<span>K</span></a>
-  <ul class="nav-links" id="navMenu" aria-label="Site sections">
+
+  <ul class="nav-links" id="navMenu" role="list" aria-label="Site sections">
     <li><a href="#home">Home</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#experience">Experience</a></li>
@@ -33,19 +41,24 @@
     <li><a href="#training">Training</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+
   <a href="mailto:khanalrahul79@gmail.com" class="nav-cta">hire me</a>
   <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
-<!-- ===== HERO ===== -->
+<!-- ═══════════════════════════════════════════════
+     HERO
+══════════════════════════════════════════════════ -->
 <section id="home" class="hero">
   <canvas id="particleCanvas" class="particle-canvas"></canvas>
   <div class="hero-grid"></div>
+
   <div class="hero-content">
+
     <div class="hero-badge">
-      <span>Information Security Analyst @ Worldlink Communications</span>
+      <span>Ass. Information Security Analyst @ WorldLink Communications</span>
     </div>
 
     <h1 class="hero-title">
@@ -54,14 +67,14 @@
     </h1>
 
     <p class="hero-terminal">
-      <span class="prompt">┌──(rahul㉿worldlink)-[~]<br>└─$ </span><span id="typed-text"></span><span class="cursor"></span>
+      <span class="prompt">┌──(rahul㉿RAAHUL)-[~]<br>└─$ </span><span id="typed-text"></span><span class="cursor"></span>
     </p>
 
     <p class="hero-desc">
-      Cybersecurity professional with hands-on experience in information security, system
-      administration, and DevOps at Worldlink Communications. Passionate about defending
-      networks, monitoring threats, and expanding into penetration testing and advanced
-      security practices.
+      Cybersecurity professional with hands-on experience in information security,
+      system administration, and network operations at WorldLink Communications.
+      Passionate about defending networks, monitoring threats, and advancing into
+      penetration testing and advanced security practices.
     </p>
 
     <div class="hero-actions">
@@ -73,28 +86,17 @@
       </a>
     </div>
 
-    <div class="hero-stats">
-      <div class="stat-item">
-        <span class="stat-number" data-target="3" data-suffix="+ yrs">0+ yrs</span>
-        <span class="stat-label">At Worldlink</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number" data-target="25" data-suffix="+">0+</span>
-        <span class="stat-label">Team Led</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number" data-target="7" data-suffix="">0</span>
-        <span class="stat-label">Courses Done</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number" data-target="6" data-suffix=" yrs">0 yrs</span>
-        <span class="stat-label">Teaching</span>
-      </div>
+    <!-- Stats rendered by render.js from data.js HERO.stats -->
+    <div class="hero-stats" id="heroStats">
+      <!-- Populated by js/render.js -->
     </div>
+
   </div>
 </section>
 
-<!-- ===== ABOUT ===== -->
+<!-- ═══════════════════════════════════════════════
+     ABOUT
+══════════════════════════════════════════════════ -->
 <section id="about">
   <div class="container">
     <div class="section-header reveal">
@@ -105,27 +107,31 @@
 
     <div class="about-grid">
       <div class="about-avatar-wrap reveal">
-        <div class="avatar-box" aria-label="Rahul Khanal avatar">
+        <!--
+          PHOTO: Replace the emoji below with:
+          <img src="assets/photo.jpg" alt="Rahul Khanal" class="avatar-photo" />
+          and place your photo in the assets/ folder.
+        -->
+        <div class="avatar-box" aria-label="Rahul Khanal">
           🧑‍💻
         </div>
       </div>
 
       <div class="about-text reveal">
         <p>
-          I'm <strong>Rahul Khanal</strong>, an enthusiastic cybersecurity individual currently working as
-          an <strong>Information Security Analyst at Worldlink Communications</strong>, Kathmandu, Nepal.
-          I combine hands-on experience in system administration, network operations, and DevOps with a
-          strong drive to specialise in offensive and defensive security.
+          I'm <strong>Rahul Khanal</strong>, an enthusiastic cybersecurity professional currently
+          working as <strong>Ass. Information Security Analyst at WorldLink Communications</strong>,
+          Kathmandu, Nepal. I bring hands-on experience in system administration, network operations,
+          and security monitoring with a strong drive to specialise in offensive and defensive security.
         </p>
         <p>
-          My career journey spans from customer service and team leadership to IT infrastructure and
-          security monitoring — giving me a unique perspective on both the business and technical sides
-          of security operations.
+          My career journey at WorldLink spans from customer service to L2 monitoring and now
+          information security — giving me a unique end-to-end perspective on both operations and
+          security posture of a large-scale ISP.
         </p>
         <p>
-          I'm currently pursuing my BCA at Nepal College of Information Technology (Pokhara University)
-          while actively expanding my skills in penetration testing, Active Directory security,
-          SIEM operations, and vulnerability assessment.
+          I hold a <strong>BCA degree (Pokhara University)</strong> and have completed specialised
+          training in Cyber Security, AI/ML, and full-stack web development.
         </p>
 
         <div class="terminal-card">
@@ -133,7 +139,7 @@
             <div class="t-dot t-red"></div>
             <div class="t-dot t-yellow"></div>
             <div class="t-dot t-green"></div>
-            <span class="terminal-title">rahul@worldlink: ~</span>
+            <span class="terminal-title">rahul@RAAHUL: ~</span>
           </div>
           <div class="terminal-body">
             <div><span class="t-cmd">$ whoami</span></div>
@@ -147,24 +153,18 @@
           </div>
         </div>
 
-        <div class="about-tags">
-          <span class="tag">Linux</span>
-          <span class="tag">Docker</span>
-          <span class="tag">ELK Stack</span>
-          <span class="tag">SIEM</span>
-          <span class="tag">Active Directory</span>
-          <span class="tag">Python</span>
-          <span class="tag">Laravel</span>
-          <span class="tag">Network Security</span>
-          <span class="tag">Vulnerability Assessment</span>
-          <span class="tag">Team Leadership</span>
+        <!-- Tags rendered by render.js from data.js ABOUT_TAGS -->
+        <div class="about-tags" id="aboutTags">
+          <!-- Populated by js/render.js -->
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== EXPERIENCE ===== -->
+<!-- ═══════════════════════════════════════════════
+     EXPERIENCE
+══════════════════════════════════════════════════ -->
 <section id="experience" class="section-alt-bg">
   <div class="container">
     <div class="section-header reveal">
@@ -173,151 +173,16 @@
       <div class="section-line"></div>
     </div>
 
-    <div class="timeline">
-
-      <!-- Worldlink -->
-      <div class="timeline-item reveal featured">
-        <div class="timeline-marker"></div>
-        <div class="timeline-card featured-card">
-          <div class="timeline-card-head">
-            <div>
-              <h3 class="timeline-role">Information Security Analyst <span class="role-badge current">Current</span></h3>
-              <div class="timeline-company">Worldlink Communications, Jawalakhel</div>
-            </div>
-            <div class="timeline-period">
-              <span class="period-text">March 2022 – Present</span>
-              <span class="period-duration">3+ years</span>
-            </div>
-          </div>
-          <div class="timeline-body">
-            <p>Working as Assistant Information Security Analyst in the security and server teams,
-            gaining experience in information security, system administration, and DevOps practices
-            at Nepal's leading broadband and internet service provider.</p>
-            <div class="timeline-milestones">
-              <div class="milestone">
-                <span class="milestone-dot"></span>
-                <div>
-                  <strong>L1 ITSR / CSR →</strong> Joined as a customer service representative enhancing problem-solving and communication skills.
-                </div>
-              </div>
-              <div class="milestone">
-                <span class="milestone-dot"></span>
-                <div>
-                  <strong>Team Leader →</strong> Promoted to lead and motivate a team of 25–30 members to meet operational targets.
-                </div>
-              </div>
-              <div class="milestone">
-                <span class="milestone-dot"></span>
-                <div>
-                  <strong>Supervisor (Retail L2 & Monitoring) →</strong> Gained expertise in networking fundamentals, OLTs, BRAS, uplink networks, and internal systems.
-                </div>
-              </div>
-              <div class="milestone">
-                <span class="milestone-dot"></span>
-                <div>
-                  <strong>Assistant InfoSec Analyst →</strong> Currently working with security monitoring, SIEM tools, vulnerability assessment, and server administration.
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="timeline-tags">
-            <span class="project-tag">SIEM</span>
-            <span class="project-tag">ELK Stack</span>
-            <span class="project-tag">Active Directory</span>
-            <span class="project-tag">OpenVAS</span>
-            <span class="project-tag">Nessus</span>
-            <span class="project-tag">Linux</span>
-            <span class="project-tag">Docker</span>
-            <span class="project-tag">Network Monitoring</span>
-            <span class="project-tag">Team Leadership</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Tutor -->
-      <div class="timeline-item reveal">
-        <div class="timeline-marker"></div>
-        <div class="timeline-card">
-          <div class="timeline-card-head">
-            <div>
-              <h3 class="timeline-role">Part-Time Math &amp; Science Tutor</h3>
-              <div class="timeline-company">Private Tutoring, Kathmandu</div>
-            </div>
-            <div class="timeline-period">
-              <span class="period-text">6 Years</span>
-            </div>
-          </div>
-          <div class="timeline-body">
-            <p>Tutored students in mathematics and science subjects for six years, developing strong
-            teaching, mentoring, and communication skills while adapting complex concepts for different
-            learning levels.</p>
-          </div>
-          <div class="timeline-tags">
-            <span class="project-tag">Mentoring</span>
-            <span class="project-tag">Communication</span>
-            <span class="project-tag">Mathematics</span>
-            <span class="project-tag">Science</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Hotel WoodApple -->
-      <div class="timeline-item reveal">
-        <div class="timeline-marker"></div>
-        <div class="timeline-card">
-          <div class="timeline-card-head">
-            <div>
-              <h3 class="timeline-role">Front Desk Officer &amp; Waiter</h3>
-              <div class="timeline-company">Hotel WoodApple, Kathmandu</div>
-            </div>
-            <div class="timeline-period">
-              <span class="period-text">Jul 2020 – Aug 2021</span>
-            </div>
-          </div>
-          <div class="timeline-body">
-            <p>Developed valuable hospitality management and client-facing skills while serving
-            international guests from across the world, building strong interpersonal and
-            customer relations capabilities.</p>
-          </div>
-          <div class="timeline-tags">
-            <span class="project-tag">Hospitality</span>
-            <span class="project-tag">Client Relations</span>
-            <span class="project-tag">International Guests</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Hariom Emporium -->
-      <div class="timeline-item reveal">
-        <div class="timeline-marker"></div>
-        <div class="timeline-card">
-          <div class="timeline-card-head">
-            <div>
-              <h3 class="timeline-role">Field Sales Representative</h3>
-              <div class="timeline-company">Hariom Emporium, New Road, Kathmandu</div>
-            </div>
-            <div class="timeline-period">
-              <span class="period-text">May 2019 – Jul 2020</span>
-            </div>
-          </div>
-          <div class="timeline-body">
-            <p>Built strong customer relationships and drove product sales for a wholesale business,
-            developing a deep understanding of the sales market by engaging with clients across
-            various districts of Nepal.</p>
-          </div>
-          <div class="timeline-tags">
-            <span class="project-tag">Sales</span>
-            <span class="project-tag">Customer Relations</span>
-            <span class="project-tag">Business Development</span>
-          </div>
-        </div>
-      </div>
-
+    <!-- Populated by js/render.js from data.js EXPERIENCE -->
+    <div id="experienceContainer">
+      <!-- Accordion company blocks rendered here -->
     </div>
   </div>
 </section>
 
-<!-- ===== SKILLS ===== -->
+<!-- ═══════════════════════════════════════════════
+     SKILLS
+══════════════════════════════════════════════════ -->
 <section id="skills" class="section-bg2">
   <div class="container">
     <div class="section-header reveal">
@@ -326,141 +191,16 @@
       <div class="section-line"></div>
     </div>
 
-    <div class="skills-grid">
-
-      <!-- System Administration -->
-      <div class="skill-card reveal">
-        <div class="skill-card-header">
-          <div class="skill-icon">🖥️</div>
-          <div>
-            <div class="skill-card-title">System Administration</div>
-            <div class="skill-card-sub">Linux | Automation | Monitoring</div>
-          </div>
-        </div>
-        <div class="skill-items">
-          <span class="skill-badge">Linux (Ubuntu/CentOS)</span>
-          <span class="skill-badge">Bash Scripting</span>
-          <span class="skill-badge">Python Scripting</span>
-          <span class="skill-badge">PowerShell</span>
-          <span class="skill-badge">Docker</span>
-          <span class="skill-badge">Nagios</span>
-          <span class="skill-badge">Grafana</span>
-          <span class="skill-badge">Prometheus</span>
-          <span class="skill-badge">Cacti</span>
-          <span class="skill-badge">ELK Stack</span>
-        </div>
-      </div>
-
-      <!-- Information Security -->
-      <div class="skill-card reveal">
-        <div class="skill-card-header">
-          <div class="skill-icon">🛡️</div>
-          <div>
-            <div class="skill-card-title">Information Security</div>
-            <div class="skill-card-sub">Defense | Assessment | SIEM</div>
-          </div>
-        </div>
-        <div class="skill-items">
-          <span class="skill-badge">SIEM Operations</span>
-          <span class="skill-badge">Active Directory</span>
-          <span class="skill-badge">OpenVAS</span>
-          <span class="skill-badge">Nessus</span>
-          <span class="skill-badge">Vulnerability Assessment</span>
-          <span class="skill-badge">Penetration Testing</span>
-          <span class="skill-badge">Log Analysis</span>
-          <span class="skill-badge">Threat Monitoring</span>
-        </div>
-      </div>
-
-      <!-- Networking -->
-      <div class="skill-card reveal">
-        <div class="skill-card-header">
-          <div class="skill-icon">🌐</div>
-          <div>
-            <div class="skill-card-title">Networking</div>
-            <div class="skill-card-sub">Fundamentals | Monitoring</div>
-          </div>
-        </div>
-        <div class="skill-items">
-          <span class="skill-badge">TCP/IP</span>
-          <span class="skill-badge">OLT / BRAS</span>
-          <span class="skill-badge">Uplink Networks</span>
-          <span class="skill-badge">Network Monitoring</span>
-          <span class="skill-badge">Troubleshooting</span>
-          <span class="skill-badge">Splitters</span>
-          <span class="skill-badge">Internal Networking</span>
-          <span class="skill-badge">DNS / DHCP</span>
-        </div>
-      </div>
-
-      <!-- Web Development -->
-      <div class="skill-card reveal">
-        <div class="skill-card-header">
-          <div class="skill-icon">💻</div>
-          <div>
-            <div class="skill-card-title">Web Development</div>
-            <div class="skill-card-sub">Full Stack | Frameworks</div>
-          </div>
-        </div>
-        <div class="skill-items">
-          <span class="skill-badge">Laravel (PHP)</span>
-          <span class="skill-badge">Django (Python)</span>
-          <span class="skill-badge">HTML / CSS</span>
-          <span class="skill-badge">JavaScript</span>
-          <span class="skill-badge">MySQL / SQL</span>
-          <span class="skill-badge">REST APIs</span>
-          <span class="skill-badge">C++</span>
-          <span class="skill-badge">Git</span>
-        </div>
-      </div>
-
-      <!-- Programming -->
-      <div class="skill-card reveal">
-        <div class="skill-card-header">
-          <div class="skill-icon">🐍</div>
-          <div>
-            <div class="skill-card-title">Programming &amp; Automation</div>
-            <div class="skill-card-sub">Scripting | Task Automation</div>
-          </div>
-        </div>
-        <div class="skill-items">
-          <span class="skill-badge">Python</span>
-          <span class="skill-badge">Bash / Shell</span>
-          <span class="skill-badge">PowerShell</span>
-          <span class="skill-badge">PHP</span>
-          <span class="skill-badge">SQL</span>
-          <span class="skill-badge">C++</span>
-          <span class="skill-badge">Automation Scripts</span>
-          <span class="skill-badge">Cron / Task Scheduling</span>
-        </div>
-      </div>
-
-      <!-- Soft Skills -->
-      <div class="skill-card reveal">
-        <div class="skill-card-header">
-          <div class="skill-icon">🤝</div>
-          <div>
-            <div class="skill-card-title">Leadership &amp; Soft Skills</div>
-            <div class="skill-card-sub">Team Management | Communication</div>
-          </div>
-        </div>
-        <div class="skill-items">
-          <span class="skill-badge">Team Leadership (25–30)</span>
-          <span class="skill-badge">Customer Service</span>
-          <span class="skill-badge">Problem Solving</span>
-          <span class="skill-badge">Mentoring</span>
-          <span class="skill-badge">Communication</span>
-          <span class="skill-badge">Adaptability</span>
-          <span class="skill-badge">Composure Under Pressure</span>
-          <span class="skill-badge">R&amp;D Interest</span>
-        </div>
-      </div>
-
+    <!-- Populated by js/render.js from data.js SKILLS -->
+    <div class="skills-grid" id="skillsGrid">
+      <!-- Skill cards rendered here -->
     </div>
   </div>
 </section>
 
-<!-- ===== TOOLS ===== -->
+<!-- ═══════════════════════════════════════════════
+     TOOLS
+══════════════════════════════════════════════════ -->
 <section id="tools">
   <div class="container">
     <div class="section-header reveal">
@@ -469,32 +209,16 @@
       <div class="section-line"></div>
     </div>
 
-    <div class="tools-grid">
-      <div class="tool-chip reveal"><span class="tool-icon">📊</span>ELK Stack</div>
-      <div class="tool-chip reveal"><span class="tool-icon">📈</span>Grafana</div>
-      <div class="tool-chip reveal"><span class="tool-icon">🔥</span>Prometheus</div>
-      <div class="tool-chip reveal"><span class="tool-icon">📡</span>Nagios</div>
-      <div class="tool-chip reveal"><span class="tool-icon">📉</span>Cacti</div>
-      <div class="tool-chip reveal"><span class="tool-icon">🐳</span>Docker</div>
-      <div class="tool-chip reveal"><span class="tool-icon">🐧</span>Kali Linux</div>
-      <div class="tool-chip reveal"><span class="tool-icon">🔍</span>OpenVAS</div>
-      <div class="tool-chip reveal"><span class="tool-icon">🧪</span>Nessus</div>
-      <div class="tool-chip reveal"><span class="tool-icon">🔎</span>Wireshark</div>
-      <div class="tool-chip reveal"><span class="tool-icon">🗺️</span>Nmap</div>
-      <div class="tool-chip reveal"><span class="tool-icon">🕷️</span>Burp Suite</div>
-      <div class="tool-chip reveal"><span class="tool-icon">💥</span>Metasploit</div>
-      <div class="tool-chip reveal"><span class="tool-icon">🪟</span>Active Directory</div>
-      <div class="tool-chip reveal"><span class="tool-icon">🐍</span>Python</div>
-      <div class="tool-chip reveal"><span class="tool-icon">⚡</span>Bash / Shell</div>
-      <div class="tool-chip reveal"><span class="tool-icon">🔷</span>PowerShell</div>
-      <div class="tool-chip reveal"><span class="tool-icon">🌿</span>Laravel</div>
-      <div class="tool-chip reveal"><span class="tool-icon">🌀</span>Django</div>
-      <div class="tool-chip reveal"><span class="tool-icon">🔧</span>Git / GitHub</div>
+    <!-- Populated by js/render.js from data.js TOOLS -->
+    <div class="tools-grid" id="toolsGrid">
+      <!-- Tool chips rendered here -->
     </div>
   </div>
 </section>
 
-<!-- ===== EDUCATION ===== -->
+<!-- ═══════════════════════════════════════════════
+     EDUCATION
+══════════════════════════════════════════════════ -->
 <section id="education" class="section-bg2">
   <div class="container">
     <div class="section-header reveal">
@@ -503,35 +227,16 @@
       <div class="section-line"></div>
     </div>
 
-    <div class="edu-grid">
-
-      <div class="edu-card reveal">
-        <div class="edu-icon">🎓</div>
-        <div class="edu-content">
-          <div class="edu-degree">Bachelor of Computer Applications (BCA)</div>
-          <div class="edu-school">Nepal College of Information Technology (NCIT), Lalitpur</div>
-          <div class="edu-detail">Under Pokhara University</div>
-          <div class="edu-period">Commenced October 2025</div>
-          <span class="cert-badge cert-progress">⟳ In Progress</span>
-        </div>
-      </div>
-
-      <div class="edu-card reveal">
-        <div class="edu-icon">📚</div>
-        <div class="edu-content">
-          <div class="edu-degree">+2 Science (Higher Secondary)</div>
-          <div class="edu-school">Gyanodaya Secondary School, Bafal, Kathmandu</div>
-          <div class="edu-detail">Computer Science as a major subject</div>
-          <div class="edu-period">Graduated January 2020</div>
-          <span class="cert-badge cert-active">✓ Completed</span>
-        </div>
-      </div>
-
+    <!-- Populated by js/render.js from data.js EDUCATION -->
+    <div class="edu-grid" id="eduGrid">
+      <!-- Education cards rendered here -->
     </div>
   </div>
 </section>
 
-<!-- ===== TRAINING ===== -->
+<!-- ═══════════════════════════════════════════════
+     TRAINING
+══════════════════════════════════════════════════ -->
 <section id="training">
   <div class="container">
     <div class="section-header reveal">
@@ -540,84 +245,17 @@
       <div class="section-line"></div>
     </div>
 
-    <div class="cert-grid">
-
-      <div class="cert-card reveal">
-        <div class="cert-icon">🔒</div>
-        <div class="cert-content">
-          <div class="cert-name">Cyber Security</div>
-          <div class="cert-issuer">Islington College — Organized by Kathmandu Metro</div>
-          <div class="cert-date">Duration: 100 hours</div>
-          <span class="cert-badge cert-active">✓ Completed</span>
-        </div>
-      </div>
-
-      <div class="cert-card reveal">
-        <div class="cert-icon">🤖</div>
-        <div class="cert-content">
-          <div class="cert-name">Artificial Intelligence &amp; Machine Learning</div>
-          <div class="cert-issuer">Omdena Academy — Organized by National Innovation Center</div>
-          <div class="cert-date">Duration: 6 Months</div>
-          <span class="cert-badge cert-active">✓ Completed</span>
-        </div>
-      </div>
-
-      <div class="cert-card reveal">
-        <div class="cert-icon">🌿</div>
-        <div class="cert-content">
-          <div class="cert-name">Full Stack Web Development (Laravel)</div>
-          <div class="cert-issuer">Laravel Framework Training</div>
-          <div class="cert-date">Duration: 1 Month</div>
-          <span class="cert-badge cert-active">✓ Completed</span>
-        </div>
-      </div>
-
-      <div class="cert-card reveal">
-        <div class="cert-icon">🐍</div>
-        <div class="cert-content">
-          <div class="cert-name">Django Framework</div>
-          <div class="cert-issuer">Python-Django Full Stack Web Applications</div>
-          <div class="cert-date">Duration: 15 Days</div>
-          <span class="cert-badge cert-active">✓ Completed</span>
-        </div>
-      </div>
-
-      <div class="cert-card reveal">
-        <div class="cert-icon">🖥️</div>
-        <div class="cert-content">
-          <div class="cert-name">Advanced Computer Training</div>
-          <div class="cert-issuer">Touch Typing, Office Packages, Software &amp; Hardware</div>
-          <div class="cert-date">Duration: 3 Months</div>
-          <span class="cert-badge cert-active">✓ Completed</span>
-        </div>
-      </div>
-
-      <div class="cert-card reveal">
-        <div class="cert-icon">⚡</div>
-        <div class="cert-content">
-          <div class="cert-name">Basic Electrical Training</div>
-          <div class="cert-issuer">Electrical Components &amp; House Wiring</div>
-          <div class="cert-date">Duration: 15 Days</div>
-          <span class="cert-badge cert-active">✓ Completed</span>
-        </div>
-      </div>
-
-      <div class="cert-card reveal">
-        <div class="cert-icon">🚀</div>
-        <div class="cert-content">
-          <div class="cert-name">Advanced Technopreneurship Course</div>
-          <div class="cert-issuer">Business Startup Strategies &amp; Core Operations</div>
-          <div class="cert-date">Duration: 40 hours</div>
-          <span class="cert-badge cert-active">✓ Completed</span>
-        </div>
-      </div>
-
+    <!-- Populated by js/render.js from data.js TRAINING -->
+    <div class="cert-grid" id="trainingGrid">
+      <!-- Training cards rendered here -->
     </div>
   </div>
 </section>
 
-<!-- ===== CONTACT ===== -->
-<section id="contact" class="section-bg2">
+<!-- ═══════════════════════════════════════════════
+     CONTACT
+══════════════════════════════════════════════════ -->
+<section id="contact" class="section-alt-bg">
   <div class="container">
     <div class="section-header reveal">
       <span class="section-tag">// get_in_touch</span>
@@ -626,12 +264,13 @@
     </div>
 
     <div class="contact-wrap">
+
+      <!-- ── LEFT: Info ── -->
       <div class="contact-info reveal">
         <h3>Let's Connect</h3>
         <p>
           Whether you're looking for an information security analyst, a system administrator,
           or want to collaborate on cybersecurity projects — I'm always open to a good conversation.
-          Reach out via any channel below.
         </p>
 
         <div class="contact-links">
@@ -663,51 +302,57 @@
         </div>
 
         <div class="contact-pgp-box">
-          <span class="pgp-label">📍 Location: </span>
-          <span>Kalanki, Kathmandu, Nepal</span>
-          <br><br>
-          <span class="response-label">🕐 Response time: </span>
-          <span>Usually within 24 hours</span>
+          <div><span class="pgp-label">📍 Location:</span> Kalanki, Kathmandu, Nepal</div>
+          <div><span class="response-label">🕐 Response time:</span> Usually within 24 hours</div>
         </div>
       </div>
 
+      <!-- ── RIGHT: Form ── -->
       <div class="contact-form reveal">
-        <div id="formStatus" class="form-status"></div>
-        <form id="contactForm" novalidate>
+        <div id="formStatus" class="form-status" role="alert" aria-live="polite"></div>
+        <!--
+          Form uses FormSubmit.co for real email delivery.
+          First submission triggers a one-time activation email
+          to khanalrahul79@gmail.com — click "Activate Form" to enable.
+        -->
+        <form id="contactForm" novalidate autocomplete="on">
           <div class="form-row">
             <div class="form-group">
-              <label for="name">Name</label>
-              <input type="text" id="name" name="name" placeholder="Your name" required />
+              <label for="name">Name <span class="required">*</span></label>
+              <input type="text" id="name" name="name" placeholder="Your full name" required autocomplete="name" />
             </div>
             <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" placeholder="your@email.com" required />
+              <label for="email">Email <span class="required">*</span></label>
+              <input type="email" id="email" name="email" placeholder="your@email.com" required autocomplete="email" />
             </div>
           </div>
           <div class="form-group">
             <label for="subject">Subject</label>
-            <select id="subject" name="subject">
+            <select id="subject" name="subject" autocomplete="off">
               <option value="">Select a topic…</option>
-              <option>Job Opportunity</option>
-              <option>Security Consultation</option>
-              <option>Collaboration</option>
-              <option>General Inquiry</option>
+              <option value="Job Opportunity">Job Opportunity</option>
+              <option value="Security Consultation">Security Consultation</option>
+              <option value="Collaboration">Collaboration</option>
+              <option value="General Inquiry">General Inquiry</option>
             </select>
           </div>
           <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" placeholder="Describe your project or inquiry…" required></textarea>
+            <label for="message">Message <span class="required">*</span></label>
+            <textarea id="message" name="message" placeholder="Describe your project or inquiry…" required rows="5"></textarea>
           </div>
           <button type="submit" class="btn-primary btn-full">
             <span>⚡</span> Send Message
           </button>
         </form>
       </div>
+
     </div>
   </div>
 </section>
 
-<!-- ===== FOOTER ===== -->
+<!-- ═══════════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════════ -->
 <footer>
   <div class="footer-content">
     <div class="footer-links">
@@ -719,20 +364,30 @@
       <a href="https://linkedin.com/in/khanalrahul79" target="_blank" rel="noopener noreferrer">LinkedIn</a>
     </div>
     <p>
-      Designed &amp; Built by <span>Rahul Khanal</span> •
+      Designed &amp; Built by <span>Rahul Khanal</span> &bull;
       &copy; <span id="year"></span> raahul.com.np
     </p>
     <p class="footer-note">
-      Kathmandu, Nepal 🇳🇵 &nbsp;|&nbsp; <span class="footer-hack-tag">&lt;/secure_the_world&gt;</span>
+      Kathmandu, Nepal 🇳🇵 &nbsp;|&nbsp;
+      <span class="footer-hack-tag">&lt;/secure_the_world&gt;</span>
     </p>
   </div>
 </footer>
 
-<!-- Scroll to top -->
+<!-- Scroll to top button -->
 <button id="scrollTop" class="scroll-top" aria-label="Back to top">↑</button>
 
-<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-<script src="main.js" defer></script>
+<!--
+  ═══════════════════════════════════════════════
+  SCRIPTS — load order matters:
+    1. data.js   — defines all content variables
+    2. render.js — reads data.js and fills DOM sections
+    3. app.js    — adds interactions (nav, form, animations)
+  ═══════════════════════════════════════════════
+-->
+<script src="js/data.js"></script>
+<script src="js/render.js"></script>
+<script src="js/app.js"></script>
 
 </body>
 </html>
