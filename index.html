@@ -3,22 +3,40 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Rahul Khanal — Ass. Information Security Analyst at WorldLink Communications. Skilled in system administration, SIEM, network security, and DevOps — Kathmandu, Nepal." />
-  <meta name="keywords" content="Rahul Khanal, information security analyst, cybersecurity, Nepal, WorldLink Communications, system administration, network security, SIEM, ELK stack, Docker" />
+  <meta name="description"
+        content="Rahul Khanal — Information Security Analyst at WorldLink Communications. Skilled in system administration, SIEM, network security, vulnerability assessment — Kathmandu, Nepal." />
+  <meta name="keywords"
+        content="Rahul Khanal, information security analyst, cybersecurity, Nepal, WorldLink Communications, system administration, network security, SIEM, ELK stack, Docker" />
   <meta name="author" content="Rahul Khanal" />
-  <meta property="og:title" content="Rahul Khanal | Information Security Analyst" />
+  <meta property="og:title"       content="Rahul Khanal | Information Security Analyst" />
   <meta property="og:description" content="Information Security Analyst at WorldLink Communications. Network security, SIEM, vulnerability assessment — Kathmandu, Nepal." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://raahul.com.np" />
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://raahul.com.np" />
   <title>Rahul Khanal | Information Security Analyst</title>
 
-  <!-- Fonts -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+        rel="stylesheet" />
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="style.css" />
+  <!--
+    ═══════════════════════════════════════════════
+    STYLESHEETS — modular css/ folder
+      base.css        variables, reset, animations, utilities
+      navbar.css      navigation & hamburger
+      hero.css        hero section
+      experience.css  tab-based experience section
+      sections.css    about, skills, tools, edu, training, contact, footer
+      responsive.css  all media queries
+    ═══════════════════════════════════════════════
+  -->
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/navbar.css" />
+  <link rel="stylesheet" href="css/hero.css" />
+  <link rel="stylesheet" href="css/experience.css" />
+  <link rel="stylesheet" href="css/sections.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
 
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔐</text></svg>" />
@@ -52,13 +70,13 @@
      HERO
 ══════════════════════════════════════════════════ -->
 <section id="home" class="hero">
-  <canvas id="particleCanvas" class="particle-canvas"></canvas>
-  <div class="hero-grid"></div>
+  <canvas id="particleCanvas" class="particle-canvas" aria-hidden="true"></canvas>
+  <div class="hero-grid" aria-hidden="true"></div>
 
   <div class="hero-content">
 
     <div class="hero-badge">
-      <span>Ass. Information Security Analyst @ WorldLink Communications</span>
+      <span>Asst. Information Security Analyst @ WorldLink Communications</span>
     </div>
 
     <h1 class="hero-title">
@@ -67,7 +85,8 @@
     </h1>
 
     <p class="hero-terminal">
-      <span class="prompt">┌──(rahul㉿RAAHUL)-[~]<br>└─$ </span><span id="typed-text"></span><span class="cursor"></span>
+      <span class="prompt">┌──(rahul㉿RAAHUL)-[~]<br>└─$ </span><span
+        id="typed-text"></span><span class="cursor" aria-hidden="true"></span>
     </p>
 
     <p class="hero-desc">
@@ -79,17 +98,15 @@
 
     <div class="hero-actions">
       <a href="#experience" class="btn-primary">
-        <span>⚡</span> View Experience
+        <span aria-hidden="true">⚡</span> View Experience
       </a>
       <a href="#contact" class="btn-outline">
-        <span>✉</span> Get In Touch
+        <span aria-hidden="true">✉</span> Get In Touch
       </a>
     </div>
 
-    <!-- Stats rendered by render.js from data.js HERO.stats -->
-    <div class="hero-stats" id="heroStats">
-      <!-- Populated by js/render.js -->
-    </div>
+    <!-- Populated by js/render.js from data.js HERO.stats -->
+    <div class="hero-stats" id="heroStats" aria-label="Career stats"></div>
 
   </div>
 </section>
@@ -108,37 +125,36 @@
     <div class="about-grid">
       <div class="about-avatar-wrap reveal">
         <!--
-          PHOTO: Replace the emoji below with:
+          PHOTO: Replace the emoji with:
           <img src="assets/photo.jpg" alt="Rahul Khanal" class="avatar-photo" />
-          and place your photo in the assets/ folder.
+          Place your photo (ideally 400×400 px or square) in the assets/ folder.
         -->
-        <div class="avatar-box" aria-label="Rahul Khanal">
-          🧑‍💻
-        </div>
+        <div class="avatar-box" aria-label="Rahul Khanal">🧑‍💻</div>
       </div>
 
       <div class="about-text reveal">
         <p>
-          I'm <strong>Rahul Khanal</strong>, an enthusiastic cybersecurity professional currently
-          working as <strong>Ass. Information Security Analyst at WorldLink Communications</strong>,
-          Kathmandu, Nepal. I bring hands-on experience in system administration, network operations,
-          and security monitoring with a strong drive to specialise in offensive and defensive security.
+          I'm <strong>Rahul Khanal</strong>, an enthusiastic cybersecurity professional
+          currently working as <strong>Asst. Information Security Analyst at WorldLink
+          Communications</strong>, Kathmandu, Nepal. I bring hands-on experience in system
+          administration, network operations, and security monitoring with a strong drive
+          to specialise in offensive and defensive security.
         </p>
         <p>
-          My career journey at WorldLink spans from customer service to L2 monitoring and now
-          information security — giving me a unique end-to-end perspective on both operations and
-          security posture of a large-scale ISP.
+          My career journey at WorldLink spans from customer service to L2 network
+          monitoring and now information security — giving me a unique end-to-end
+          perspective on both operations and security posture of a large-scale ISP.
         </p>
         <p>
-          I hold a <strong>BCA degree (Pokhara University)</strong> and have completed specialised
-          training in Cyber Security, AI/ML, and full-stack web development.
+          I hold a <strong>BCA degree (Pokhara University)</strong> and have completed
+          specialised training in Cyber Security, AI/ML, and full-stack web development.
         </p>
 
-        <div class="terminal-card">
+        <div class="terminal-card" aria-label="Terminal summary">
           <div class="terminal-header">
-            <div class="t-dot t-red"></div>
-            <div class="t-dot t-yellow"></div>
-            <div class="t-dot t-green"></div>
+            <div class="t-dot t-red"  aria-hidden="true"></div>
+            <div class="t-dot t-yellow" aria-hidden="true"></div>
+            <div class="t-dot t-green"  aria-hidden="true"></div>
             <span class="terminal-title">rahul@RAAHUL: ~</span>
           </div>
           <div class="terminal-body">
@@ -153,10 +169,8 @@
           </div>
         </div>
 
-        <!-- Tags rendered by render.js from data.js ABOUT_TAGS -->
-        <div class="about-tags" id="aboutTags">
-          <!-- Populated by js/render.js -->
-        </div>
+        <!-- Populated by js/render.js from data.js ABOUT_TAGS -->
+        <div class="about-tags" id="aboutTags" aria-label="Key skills"></div>
       </div>
     </div>
   </div>
@@ -165,7 +179,7 @@
 <!-- ═══════════════════════════════════════════════
      EXPERIENCE
 ══════════════════════════════════════════════════ -->
-<section id="experience" class="section-alt-bg">
+<section id="experience">
   <div class="container">
     <div class="section-header reveal">
       <span class="section-tag">// work_history</span>
@@ -173,17 +187,19 @@
       <div class="section-line"></div>
     </div>
 
-    <!-- Populated by js/render.js from data.js EXPERIENCE -->
-    <div id="experienceContainer">
-      <!-- Accordion company blocks rendered here -->
-    </div>
+    <!--
+      Populated by js/render.js from data.js EXPERIENCE.
+      Tab-based layout: company tabs on left, role details on right.
+      On mobile: horizontal scrollable tabs at top.
+    -->
+    <div id="experienceContainer" class="reveal"></div>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════
      SKILLS
 ══════════════════════════════════════════════════ -->
-<section id="skills" class="section-bg2">
+<section id="skills">
   <div class="container">
     <div class="section-header reveal">
       <span class="section-tag">// skill_set</span>
@@ -192,9 +208,7 @@
     </div>
 
     <!-- Populated by js/render.js from data.js SKILLS -->
-    <div class="skills-grid" id="skillsGrid">
-      <!-- Skill cards rendered here -->
-    </div>
+    <div class="skills-grid" id="skillsGrid" aria-label="Technical skill categories"></div>
   </div>
 </section>
 
@@ -210,16 +224,14 @@
     </div>
 
     <!-- Populated by js/render.js from data.js TOOLS -->
-    <div class="tools-grid" id="toolsGrid">
-      <!-- Tool chips rendered here -->
-    </div>
+    <div class="tools-grid" id="toolsGrid" aria-label="Tools and technologies"></div>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════
      EDUCATION
 ══════════════════════════════════════════════════ -->
-<section id="education" class="section-bg2">
+<section id="education">
   <div class="container">
     <div class="section-header reveal">
       <span class="section-tag">// education</span>
@@ -228,9 +240,7 @@
     </div>
 
     <!-- Populated by js/render.js from data.js EDUCATION -->
-    <div class="edu-grid" id="eduGrid">
-      <!-- Education cards rendered here -->
-    </div>
+    <div class="edu-grid" id="eduGrid" aria-label="Academic qualifications"></div>
   </div>
 </section>
 
@@ -246,16 +256,14 @@
     </div>
 
     <!-- Populated by js/render.js from data.js TRAINING -->
-    <div class="cert-grid" id="trainingGrid">
-      <!-- Training cards rendered here -->
-    </div>
+    <div class="cert-grid" id="trainingGrid" aria-label="Training and courses completed"></div>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════
      CONTACT
 ══════════════════════════════════════════════════ -->
-<section id="contact" class="section-alt-bg">
+<section id="contact">
   <div class="container">
     <div class="section-header reveal">
       <span class="section-tag">// get_in_touch</span>
@@ -265,39 +273,42 @@
 
     <div class="contact-wrap">
 
-      <!-- ── LEFT: Info ── -->
+      <!-- ── Left: Contact Info ── -->
       <div class="contact-info reveal">
         <h3>Let's Connect</h3>
         <p>
-          Whether you're looking for an information security analyst, a system administrator,
-          or want to collaborate on cybersecurity projects — I'm always open to a good conversation.
+          Whether you're looking for an information security analyst, a system
+          administrator, or want to collaborate on cybersecurity projects —
+          I'm always open to a good conversation.
         </p>
 
         <div class="contact-links">
           <a href="mailto:khanalrahul79@gmail.com" class="contact-link-item">
-            <span class="icon">✉️</span>
+            <span class="icon" aria-hidden="true">✉️</span>
             <span>khanalrahul79@gmail.com</span>
-            <span class="contact-arrow">→</span>
+            <span class="contact-arrow" aria-hidden="true">→</span>
           </a>
           <a href="tel:+9779863786408" class="contact-link-item">
-            <span class="icon">📞</span>
+            <span class="icon" aria-hidden="true">📞</span>
             <span>+977-9863786408</span>
-            <span class="contact-arrow">→</span>
+            <span class="contact-arrow" aria-hidden="true">→</span>
           </a>
-          <a href="https://linkedin.com/in/khanalrahul79" target="_blank" rel="noopener noreferrer" class="contact-link-item">
-            <span class="icon">💼</span>
+          <a href="https://linkedin.com/in/khanalrahul79" target="_blank"
+             rel="noopener noreferrer" class="contact-link-item">
+            <span class="icon" aria-hidden="true">💼</span>
             <span>linkedin.com/in/khanalrahul79</span>
-            <span class="contact-arrow">→</span>
+            <span class="contact-arrow" aria-hidden="true">→</span>
           </a>
-          <a href="https://github.com/khanalrahul7912" target="_blank" rel="noopener noreferrer" class="contact-link-item">
-            <span class="icon">⬡</span>
+          <a href="https://github.com/khanalrahul7912" target="_blank"
+             rel="noopener noreferrer" class="contact-link-item">
+            <span class="icon" aria-hidden="true">⬡</span>
             <span>github.com/khanalrahul7912</span>
-            <span class="contact-arrow">→</span>
+            <span class="contact-arrow" aria-hidden="true">→</span>
           </a>
           <a href="https://raahul.com.np" class="contact-link-item">
-            <span class="icon">🌐</span>
+            <span class="icon" aria-hidden="true">🌐</span>
             <span>raahul.com.np</span>
-            <span class="contact-arrow">→</span>
+            <span class="contact-arrow" aria-hidden="true">→</span>
           </a>
         </div>
 
@@ -307,23 +318,25 @@
         </div>
       </div>
 
-      <!-- ── RIGHT: Form ── -->
+      <!-- ── Right: Contact Form ── -->
       <div class="contact-form reveal">
-        <div id="formStatus" class="form-status" role="alert" aria-live="polite"></div>
         <!--
-          Form uses FormSubmit.co for real email delivery.
-          First submission triggers a one-time activation email
-          to khanalrahul79@gmail.com — click "Activate Form" to enable.
+          Form sends real emails via FormSubmit.co.
+          First submission sends a one-time activation email to
+          khanalrahul79@gmail.com — click "Activate Form" to enable.
         -->
+        <div id="formStatus" class="form-status" role="alert" aria-live="polite"></div>
         <form id="contactForm" novalidate autocomplete="on">
           <div class="form-row">
             <div class="form-group">
-              <label for="name">Name <span class="required">*</span></label>
-              <input type="text" id="name" name="name" placeholder="Your full name" required autocomplete="name" />
+              <label for="name">Name <span class="required" aria-hidden="true">*</span></label>
+              <input type="text" id="name" name="name"
+                     placeholder="Your full name" required autocomplete="name" />
             </div>
             <div class="form-group">
-              <label for="email">Email <span class="required">*</span></label>
-              <input type="email" id="email" name="email" placeholder="your@email.com" required autocomplete="email" />
+              <label for="email">Email <span class="required" aria-hidden="true">*</span></label>
+              <input type="email" id="email" name="email"
+                     placeholder="your@email.com" required autocomplete="email" />
             </div>
           </div>
           <div class="form-group">
@@ -337,11 +350,13 @@
             </select>
           </div>
           <div class="form-group">
-            <label for="message">Message <span class="required">*</span></label>
-            <textarea id="message" name="message" placeholder="Describe your project or inquiry…" required rows="5"></textarea>
+            <label for="message">Message <span class="required" aria-hidden="true">*</span></label>
+            <textarea id="message" name="message"
+                      placeholder="Describe your project or inquiry…"
+                      required rows="5"></textarea>
           </div>
           <button type="submit" class="btn-primary btn-full">
-            <span>⚡</span> Send Message
+            <span aria-hidden="true">⚡</span> Send Message
           </button>
         </form>
       </div>
@@ -355,34 +370,35 @@
 ══════════════════════════════════════════════════ -->
 <footer>
   <div class="footer-content">
-    <div class="footer-links">
+    <nav class="footer-links" aria-label="Footer navigation">
       <a href="#home">Home</a>
       <a href="#about">About</a>
       <a href="#experience">Experience</a>
       <a href="#skills">Skills</a>
       <a href="#contact">Contact</a>
-      <a href="https://linkedin.com/in/khanalrahul79" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-    </div>
+      <a href="https://linkedin.com/in/khanalrahul79"
+         target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    </nav>
     <p>
       Designed &amp; Built by <span>Rahul Khanal</span> &bull;
       &copy; <span id="year"></span> raahul.com.np
     </p>
     <p class="footer-note">
-      Kathmandu, Nepal 🇳🇵 &nbsp;|&nbsp;
+      Kathmandu, Nepal 🇳🇵 &nbsp;&nbsp;
       <span class="footer-hack-tag">&lt;/secure_the_world&gt;</span>
     </p>
   </div>
 </footer>
 
-<!-- Scroll to top button -->
+<!-- Scroll to top -->
 <button id="scrollTop" class="scroll-top" aria-label="Back to top">↑</button>
 
 <!--
   ═══════════════════════════════════════════════
-  SCRIPTS — load order matters:
-    1. data.js   — defines all content variables
-    2. render.js — reads data.js and fills DOM sections
-    3. app.js    — adds interactions (nav, form, animations)
+  SCRIPTS — load order:
+    1. js/data.js   — all site content (edit this to update anything)
+    2. js/render.js — reads data and populates section containers
+    3. js/app.js    — nav, animations, form submission
   ═══════════════════════════════════════════════
 -->
 <script src="js/data.js"></script>
