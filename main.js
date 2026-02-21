@@ -52,10 +52,10 @@ function closeMenu() {
 
 // ===== TYPEWRITER =====
 const phrases = [
-  'Ethical Hacker & Penetration Tester',
-  'Bug Bounty Hunter',
-  'CTF Player & Security Researcher',
-  'Web & Network Security Specialist',
+  'Information Security Analyst',
+  'System Administrator & DevOps Enthusiast',
+  'Aspiring Penetration Tester',
+  'Network & IT Security Professional',
 ];
 let pi = 0, ci = 0, deleting = false;
 const typedEl = document.getElementById('typed-text');

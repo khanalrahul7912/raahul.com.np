@@ -615,7 +615,182 @@ section { padding: 5rem 2rem; }
 .form-status.success { background: rgba(0,255,136,.1); border: 1px solid rgba(0,255,136,.3); color: var(--green); display: block; }
 .form-status.error { background: rgba(239,68,68,.1); border: 1px solid rgba(239,68,68,.3); color: #ef4444; display: block; }
 
-/* ===== CTF ACHIEVEMENTS ===== */
+/* ===== EXPERIENCE TIMELINE ===== */
+.timeline { position: relative; padding-left: 2rem; }
+.timeline::before {
+  content: '';
+  position: absolute; left: 0; top: 0; bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--green), var(--cyan), transparent);
+  border-radius: 2px;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 2rem;
+}
+.timeline-item:last-child { margin-bottom: 0; }
+
+.timeline-marker {
+  position: absolute;
+  left: -2.425rem;
+  top: 1.4rem;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--green);
+  border: 2px solid var(--bg);
+  box-shadow: 0 0 0 3px rgba(0,255,136,.2);
+  flex-shrink: 0;
+}
+.timeline-item.featured .timeline-marker {
+  width: 16px; height: 16px;
+  left: -2.6rem;
+  box-shadow: 0 0 0 4px rgba(0,255,136,.25), 0 0 12px rgba(0,255,136,.4);
+}
+
+.timeline-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+.timeline-card:hover {
+  border-color: rgba(0,255,136,.35);
+  transform: translateX(4px);
+  box-shadow: 0 6px 24px rgba(0,255,136,.07);
+}
+.featured-card {
+  border-color: rgba(0,255,136,.2);
+  background: linear-gradient(135deg, var(--card) 0%, rgba(0,255,136,.03) 100%);
+}
+
+.timeline-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-bottom: 1rem;
+}
+.timeline-role {
+  font-size: 1.05rem;
+  color: var(--text);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+.role-badge {
+  font-family: var(--font-mono);
+  font-size: .65rem;
+  padding: .15rem .55rem;
+  border-radius: 999px;
+  font-weight: 400;
+}
+.role-badge.current {
+  background: rgba(0,255,136,.15);
+  color: var(--green);
+  border: 1px solid rgba(0,255,136,.3);
+}
+.timeline-company {
+  font-size: .85rem;
+  color: var(--cyan);
+  font-family: var(--font-mono);
+  margin-top: .2rem;
+}
+.timeline-period { text-align: right; }
+.period-text {
+  font-family: var(--font-mono);
+  font-size: .78rem;
+  color: var(--muted);
+  display: block;
+}
+.period-duration {
+  font-size: .7rem;
+  color: var(--green);
+  background: rgba(0,255,136,.1);
+  padding: .1rem .4rem;
+  border-radius: 3px;
+  margin-top: .25rem;
+  display: inline-block;
+}
+.timeline-body p {
+  font-size: .9rem;
+  color: var(--muted);
+  line-height: 1.75;
+  margin-bottom: 1rem;
+}
+.timeline-milestones {
+  display: flex;
+  flex-direction: column;
+  gap: .6rem;
+  margin-bottom: 1rem;
+}
+.milestone {
+  display: flex;
+  gap: .75rem;
+  align-items: flex-start;
+  font-size: .85rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.milestone-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  margin-top: .45rem;
+  flex-shrink: 0;
+}
+.milestone strong { color: var(--text); }
+.timeline-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  margin-top: .5rem;
+}
+
+/* ===== EDUCATION ===== */
+.edu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.5rem;
+}
+.edu-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+.edu-card:hover {
+  border-color: rgba(0,255,136,.4);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(0,255,136,.08);
+}
+.edu-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+  width: 52px; height: 52px;
+  background: rgba(0,255,136,.08);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.edu-content { flex: 1; min-width: 0; }
+.edu-degree { font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: .3rem; }
+.edu-school { font-size: .85rem; color: var(--cyan); font-family: var(--font-mono); margin-bottom: .2rem; }
+.edu-detail { font-size: .78rem; color: var(--muted); margin-bottom: .25rem; }
+.edu-period { font-size: .72rem; color: var(--muted); margin-bottom: .5rem; }
+
+/* ===== CTF YEAR ===== */
+.ctf-year { font-size: .72rem; color: var(--muted); }
+.ctf-points.hof { color: var(--green); }
 .ctf-achievements-wrap {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -788,6 +963,10 @@ footer span { color: var(--green); font-family: var(--font-mono); }
   .skills-grid { grid-template-columns: 1fr; }
   .cert-grid { grid-template-columns: 1fr; }
   .ctf-achievements-wrap { grid-template-columns: 1fr; }
+  .edu-grid { grid-template-columns: 1fr; }
+  .timeline { padding-left: 1.5rem; }
+  .timeline-card-head { flex-direction: column; }
+  .timeline-period { text-align: left; }
 }
 
 @media (max-width: 480px) {
