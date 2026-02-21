@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Rahul Khanal — Ethical Hacker, Penetration Tester, Bug Bounty Hunter & Cybersecurity Researcher from Nepal." />
+  <meta name="keywords" content="Rahul Khanal, ethical hacker, penetration testing, bug bounty, cybersecurity, Nepal, CTF, web security" />
+  <meta name="author" content="Rahul Khanal" />
+  <meta property="og:title" content="Rahul Khanal | Ethical Hacker & Cybersecurity Researcher" />
+  <meta property="og:description" content="Ethical Hacker, Penetration Tester, and Bug Bounty Hunter from Nepal." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://raahul.com.np" />
+  <title>Rahul Khanal | Ethical Hacker & Cybersecurity Researcher</title>
+
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Favicon placeholder -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔐</text></svg>" />
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar" role="navigation" aria-label="Main navigation">
+  <a href="#home" class="logo" aria-label="Rahul Khanal home">R<span>K</span></a>
+  <ul class="nav-links" id="navMenu" aria-label="Site sections">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#tools">Tools</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#certifications">Certs</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="mailto:rahulkhanal@protonmail.com" class="nav-cta">hire me</a>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section id="home" class="hero">
+  <canvas id="particleCanvas" class="particle-canvas"></canvas>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span>Available for Bug Bounty & Pentest Engagements</span>
+    </div>
+
+    <h1 class="hero-title">
+      <span class="line role">Hi, I'm</span>
+      <span class="line name glitch" data-text="Rahul Khanal">Rahul Khanal</span>
+    </h1>
+
+    <p class="hero-terminal">
+      <span class="prompt">┌──(rahul㉿kali)-[~]<br>└─$ </span><span id="typed-text"></span><span class="cursor"></span>
+    </p>
+
+    <p class="hero-desc">
+      I break things to make them stronger. Specializing in web application security,
+      network penetration testing, and vulnerability research — helping organizations
+      defend against real-world cyber threats.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#projects" class="btn-primary">
+        <span>⚡</span> View My Work
+      </a>
+      <a href="#contact" class="btn-outline">
+        <span>✉</span> Get In Touch
+      </a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat-item">
+        <span class="stat-number" data-target="50" data-suffix="+">0+</span>
+        <span class="stat-label">Bugs Found</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number" data-target="20" data-suffix="+">0+</span>
+        <span class="stat-label">CTF Challenges</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number" data-target="10" data-suffix="+">0+</span>
+        <span class="stat-label">Hall of Fames</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number" data-target="2" data-suffix="+ yrs">0+ yrs</span>
+        <span class="stat-label">Experience</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section id="about">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">// who_am_i</span>
+      <h2 class="section-title">About <span>Me</span></h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-avatar-wrap reveal">
+        <div class="avatar-box" aria-label="Rahul Khanal avatar">
+          🧑‍💻
+        </div>
+      </div>
+
+      <div class="about-text reveal">
+        <p>
+          I'm <strong>Rahul Khanal</strong>, a passionate ethical hacker and cybersecurity researcher
+          based in Nepal. I specialize in identifying and responsibly disclosing vulnerabilities
+          in web applications, networks, and cloud infrastructure.
+        </p>
+        <p>
+          My journey into security started with curiosity — understanding how systems work under
+          the hood — and evolved into a mission: making the digital world safer. I actively
+          participate in bug bounty programs on platforms like HackerOne, Bugcrowd, and Intigriti.
+        </p>
+        <p>
+          When I'm not hunting bugs, I'm solving CTF challenges, conducting security research,
+          or helping communities learn about cybersecurity awareness.
+        </p>
+
+        <div class="terminal-card">
+          <div class="terminal-header">
+            <div class="t-dot t-red"></div>
+            <div class="t-dot t-yellow"></div>
+            <div class="t-dot t-green"></div>
+            <span class="terminal-title">rahul@kali: ~</span>
+          </div>
+          <div class="terminal-body">
+            <div><span class="t-cmd">$ whoami</span></div>
+            <div class="t-output">Rahul Khanal — Ethical Hacker</div>
+            <div><span class="t-cmd">$ cat interests.txt</span></div>
+            <div class="t-output">Web Security | Network Pentesting | OSINT | Malware Analysis</div>
+            <div><span class="t-cmd">$ cat location.txt</span></div>
+            <div class="t-output">Kathmandu, Nepal 🇳🇵</div>
+            <div><span class="t-cmd">$ echo $STATUS</span></div>
+            <div class="t-output t-success">Open for opportunities ✓</div>
+          </div>
+        </div>
+
+        <div class="about-tags">
+          <span class="tag">Web AppSec</span>
+          <span class="tag">Bug Bounty</span>
+          <span class="tag">CTF Player</span>
+          <span class="tag">Network Security</span>
+          <span class="tag">OSINT</span>
+          <span class="tag">Linux</span>
+          <span class="tag">Python</span>
+          <span class="tag">Threat Modeling</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SKILLS ===== -->
+<section id="skills" class="section-alt-bg">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">// skill_set</span>
+      <h2 class="section-title">Technical <span>Skills</span></h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="skills-grid">
+      <!-- Offensive Security -->
+      <div class="skill-card reveal">
+        <div class="skill-card-header">
+          <div class="skill-icon">⚔️</div>
+          <div>
+            <div class="skill-card-title">Offensive Security</div>
+            <div class="skill-card-sub">Red Team | Exploitation</div>
+          </div>
+        </div>
+        <div class="skill-items">
+          <span class="skill-badge">SQL Injection</span>
+          <span class="skill-badge">XSS / CSRF</span>
+          <span class="skill-badge">SSRF</span>
+          <span class="skill-badge">IDOR</span>
+          <span class="skill-badge">RCE</span>
+          <span class="skill-badge">LFI / RFI</span>
+          <span class="skill-badge">XXE</span>
+          <span class="skill-badge">Open Redirect</span>
+          <span class="skill-badge">Auth Bypass</span>
+          <span class="skill-badge">SSTI</span>
+        </div>
+      </div>
+
+      <!-- Network Security -->
+      <div class="skill-card reveal">
+        <div class="skill-card-header">
+          <div class="skill-icon">🌐</div>
+          <div>
+            <div class="skill-card-title">Network Security</div>
+            <div class="skill-card-sub">Pentest | Analysis</div>
+          </div>
+        </div>
+        <div class="skill-items">
+          <span class="skill-badge">TCP/IP</span>
+          <span class="skill-badge">DNS Enumeration</span>
+          <span class="skill-badge">Port Scanning</span>
+          <span class="skill-badge">Packet Analysis</span>
+          <span class="skill-badge">MITM</span>
+          <span class="skill-badge">VPN / Firewall</span>
+          <span class="skill-badge">Wireless Security</span>
+          <span class="skill-badge">Network Recon</span>
+        </div>
+      </div>
+
+      <!-- Web Security -->
+      <div class="skill-card reveal">
+        <div class="skill-card-header">
+          <div class="skill-icon">🕸️</div>
+          <div>
+            <div class="skill-card-title">Web Application Security</div>
+            <div class="skill-card-sub">OWASP Top 10</div>
+          </div>
+        </div>
+        <div class="skill-items">
+          <span class="skill-badge">Burp Suite</span>
+          <span class="skill-badge">API Testing</span>
+          <span class="skill-badge">OAuth Flaws</span>
+          <span class="skill-badge">JWT Attacks</span>
+          <span class="skill-badge">GraphQL</span>
+          <span class="skill-badge">WebSockets</span>
+          <span class="skill-badge">HTTP/2</span>
+          <span class="skill-badge">WAF Bypass</span>
+        </div>
+      </div>
+
+      <!-- OSINT & Recon -->
+      <div class="skill-card reveal">
+        <div class="skill-card-header">
+          <div class="skill-icon">🔍</div>
+          <div>
+            <div class="skill-card-title">OSINT & Reconnaissance</div>
+            <div class="skill-card-sub">Intel Gathering</div>
+          </div>
+        </div>
+        <div class="skill-items">
+          <span class="skill-badge">Subdomain Enum</span>
+          <span class="skill-badge">Google Dorks</span>
+          <span class="skill-badge">Shodan</span>
+          <span class="skill-badge">WHOIS Analysis</span>
+          <span class="skill-badge">Social Engineering</span>
+          <span class="skill-badge">Maltego</span>
+          <span class="skill-badge">theHarvester</span>
+          <span class="skill-badge">Recon-ng</span>
+        </div>
+      </div>
+
+      <!-- Programming -->
+      <div class="skill-card reveal">
+        <div class="skill-card-header">
+          <div class="skill-icon">💻</div>
+          <div>
+            <div class="skill-card-title">Programming</div>
+            <div class="skill-card-sub">Security Automation</div>
+          </div>
+        </div>
+        <div class="skill-items">
+          <span class="skill-badge">Python</span>
+          <span class="skill-badge">Bash / Shell</span>
+          <span class="skill-badge">JavaScript</span>
+          <span class="skill-badge">PHP</span>
+          <span class="skill-badge">Go</span>
+          <span class="skill-badge">PowerShell</span>
+          <span class="skill-badge">SQL</span>
+          <span class="skill-badge">Regex</span>
+        </div>
+      </div>
+
+      <!-- Forensics & Malware -->
+      <div class="skill-card reveal">
+        <div class="skill-card-header">
+          <div class="skill-icon">🧬</div>
+          <div>
+            <div class="skill-card-title">Forensics & Analysis</div>
+            <div class="skill-card-sub">Malware | DFIR</div>
+          </div>
+        </div>
+        <div class="skill-items">
+          <span class="skill-badge">Malware Analysis</span>
+          <span class="skill-badge">Reverse Engineering</span>
+          <span class="skill-badge">Memory Forensics</span>
+          <span class="skill-badge">Log Analysis</span>
+          <span class="skill-badge">Steganography</span>
+          <span class="skill-badge">Volatility</span>
+          <span class="skill-badge">Ghidra</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TOOLS ===== -->
+<section id="tools">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">// arsenal</span>
+      <h2 class="section-title">Security <span>Toolkit</span></h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="tools-grid">
+      <div class="tool-chip reveal"><span class="tool-icon">🕷️</span>Burp Suite</div>
+      <div class="tool-chip reveal"><span class="tool-icon">🗺️</span>Nmap</div>
+      <div class="tool-chip reveal"><span class="tool-icon">💥</span>Metasploit</div>
+      <div class="tool-chip reveal"><span class="tool-icon">🔎</span>Wireshark</div>
+      <div class="tool-chip reveal"><span class="tool-icon">🐉</span>Kali Linux</div>
+      <div class="tool-chip reveal"><span class="tool-icon">🔐</span>Hashcat</div>
+      <div class="tool-chip reveal"><span class="tool-icon">🦊</span>Nikto</div>
+      <div class="tool-chip reveal"><span class="tool-icon">🧵</span>SQLmap</div>
+      <div class="tool-chip reveal"><span class="tool-icon">🌐</span>Gobuster</div>
+      <div class="tool-chip reveal"><span class="tool-icon">🔭</span>Shodan</div>
+      <div class="tool-chip reveal"><span class="tool-icon">📡</span>Aircrack-ng</div>
+      <div class="tool-chip reveal"><span class="tool-icon">🏹</span>Nuclei</div>
+      <div class="tool-chip reveal"><span class="tool-icon">🦅</span>FFUF</div>
+      <div class="tool-chip reveal"><span class="tool-icon">🧊</span>Amass</div>
+      <div class="tool-chip reveal"><span class="tool-icon">🛡️</span>OWASP ZAP</div>
+      <div class="tool-chip reveal"><span class="tool-icon">⚙️</span>Ghidra</div>
+      <div class="tool-chip reveal"><span class="tool-icon">🐍</span>Python</div>
+      <div class="tool-chip reveal"><span class="tool-icon">🧲</span>Maltego</div>
+      <div class="tool-chip reveal"><span class="tool-icon">🌊</span>Hydra</div>
+      <div class="tool-chip reveal"><span class="tool-icon">🔬</span>Volatility</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROJECTS ===== -->
+<section id="projects" class="section-bg2">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">// work &amp; research</span>
+      <h2 class="section-title">Featured <span>Projects</span></h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="projects-grid">
+
+      <!-- Project 1 -->
+      <div class="project-card reveal">
+        <div class="project-header">
+          <span class="project-type type-bb">Bug Bounty</span>
+          <div class="project-links">
+            <a href="#" class="project-link" aria-label="View writeup">📝</a>
+          </div>
+        </div>
+        <div class="project-body">
+          <h3 class="project-title">Critical IDOR Vulnerability in E-Commerce Platform</h3>
+          <p class="project-desc">
+            Discovered an Insecure Direct Object Reference that allowed unauthenticated access to
+            any user's order history and personal data, affecting thousands of accounts.
+            Reported and patched responsibly.
+          </p>
+        </div>
+        <div class="project-footer">
+          <span class="project-tag">IDOR</span>
+          <span class="project-tag">API Security</span>
+          <span class="project-tag">Auth Bypass</span>
+          <span class="project-tag">P2</span>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="project-card reveal">
+        <div class="project-header">
+          <span class="project-type type-bb">Bug Bounty</span>
+          <div class="project-links">
+            <a href="#" class="project-link" aria-label="View writeup">📝</a>
+          </div>
+        </div>
+        <div class="project-body">
+          <h3 class="project-title">Stored XSS in Popular SaaS Platform</h3>
+          <p class="project-desc">
+            Found a stored Cross-Site Scripting vulnerability that could be leveraged for
+            account takeover via session hijacking. Successfully bypassed multiple WAF filters
+            using advanced encoding techniques.
+          </p>
+        </div>
+        <div class="project-footer">
+          <span class="project-tag">XSS</span>
+          <span class="project-tag">WAF Bypass</span>
+          <span class="project-tag">Session Hijack</span>
+          <span class="project-tag">P1</span>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="project-card reveal">
+        <div class="project-header">
+          <span class="project-type type-tool">Tool</span>
+          <div class="project-links">
+            <a href="https://github.com/khanalrahul7912" class="project-link" aria-label="GitHub" target="_blank" rel="noopener noreferrer">⬡</a>
+          </div>
+        </div>
+        <div class="project-body">
+          <h3 class="project-title">AutoRecon-Plus — Automated Recon Framework</h3>
+          <p class="project-desc">
+            A Python-based automation framework that chains together subdomain enumeration,
+            port scanning, vulnerability detection, and report generation for streamlined
+            penetration testing workflows.
+          </p>
+        </div>
+        <div class="project-footer">
+          <span class="project-tag">Python</span>
+          <span class="project-tag">Automation</span>
+          <span class="project-tag">OSINT</span>
+          <span class="project-tag">Recon</span>
+        </div>
+      </div>
+
+      <!-- Project 4 -->
+      <div class="project-card reveal">
+        <div class="project-header">
+          <span class="project-type type-ctf">CTF</span>
+          <div class="project-links">
+            <a href="https://github.com/khanalrahul7912" class="project-link" aria-label="Writeup">📝</a>
+          </div>
+        </div>
+        <div class="project-body">
+          <h3 class="project-title">CTF Challenge Writeups Collection</h3>
+          <p class="project-desc">
+            Comprehensive writeups for CTF challenges across web exploitation, binary
+            exploitation, cryptography, forensics, and OSINT categories from competitions
+            like HackTheBox, TryHackMe, and PicoCTF.
+          </p>
+        </div>
+        <div class="project-footer">
+          <span class="project-tag">Web Exploitation</span>
+          <span class="project-tag">Crypto</span>
+          <span class="project-tag">Forensics</span>
+          <span class="project-tag">Writeups</span>
+        </div>
+      </div>
+
+      <!-- Project 5 -->
+      <div class="project-card reveal">
+        <div class="project-header">
+          <span class="project-type type-research">Research</span>
+          <div class="project-links">
+            <a href="#" class="project-link" aria-label="Read article">📄</a>
+          </div>
+        </div>
+        <div class="project-body">
+          <h3 class="project-title">Subdomain Takeover — Detection & Exploitation Guide</h3>
+          <p class="project-desc">
+            In-depth research on subdomain takeover vulnerabilities, covering common misconfigurations
+            across cloud providers (AWS, Azure, GCP), detection methodology, and responsible
+            disclosure best practices.
+          </p>
+        </div>
+        <div class="project-footer">
+          <span class="project-tag">Subdomain Takeover</span>
+          <span class="project-tag">Cloud Security</span>
+          <span class="project-tag">DNS</span>
+          <span class="project-tag">Research</span>
+        </div>
+      </div>
+
+      <!-- Project 6 -->
+      <div class="project-card reveal">
+        <div class="project-header">
+          <span class="project-type type-bb">Bug Bounty</span>
+          <div class="project-links">
+            <a href="#" class="project-link" aria-label="View writeup">📝</a>
+          </div>
+        </div>
+        <div class="project-body">
+          <h3 class="project-title">SSRF Leading to Cloud Metadata Exposure</h3>
+          <p class="project-desc">
+            Identified a Server-Side Request Forgery vulnerability that allowed accessing internal
+            AWS metadata endpoints, exposing IAM credentials. Impact assessed as Critical;
+            CVSSv3 score: 9.8.
+          </p>
+        </div>
+        <div class="project-footer">
+          <span class="project-tag">SSRF</span>
+          <span class="project-tag">AWS</span>
+          <span class="project-tag">Cloud Security</span>
+          <span class="project-tag">Critical</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== CERTIFICATIONS ===== -->
+<section id="certifications">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">// credentials</span>
+      <h2 class="section-title">Certifications & <span>Training</span></h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="cert-grid">
+
+      <div class="cert-card reveal">
+        <div class="cert-icon">🎯</div>
+        <div class="cert-content">
+          <div class="cert-name">eJPT — Junior Penetration Tester</div>
+          <div class="cert-issuer">eLearnSecurity / INE</div>
+          <div class="cert-date">Completed 2023</div>
+          <span class="cert-badge cert-active">✓ Certified</span>
+        </div>
+      </div>
+
+      <div class="cert-card reveal">
+        <div class="cert-icon">🧪</div>
+        <div class="cert-content">
+          <div class="cert-name">Google Cybersecurity Certificate</div>
+          <div class="cert-issuer">Google / Coursera</div>
+          <div class="cert-date">Completed 2023</div>
+          <span class="cert-badge cert-active">✓ Certified</span>
+        </div>
+      </div>
+
+      <div class="cert-card reveal">
+        <div class="cert-icon">🔒</div>
+        <div class="cert-content">
+          <div class="cert-name">CEH — Certified Ethical Hacker</div>
+          <div class="cert-issuer">EC-Council</div>
+          <div class="cert-date">In Progress</div>
+          <span class="cert-badge cert-progress">⟳ In Progress</span>
+        </div>
+      </div>
+
+      <div class="cert-card reveal">
+        <div class="cert-icon">🌐</div>
+        <div class="cert-content">
+          <div class="cert-name">Web Application Pentesting</div>
+          <div class="cert-issuer">TCM Security</div>
+          <div class="cert-date">Completed 2024</div>
+          <span class="cert-badge cert-active">✓ Certified</span>
+        </div>
+      </div>
+
+      <div class="cert-card reveal">
+        <div class="cert-icon">🐧</div>
+        <div class="cert-content">
+          <div class="cert-name">Linux Privilege Escalation</div>
+          <div class="cert-issuer">TryHackMe / TCM Security</div>
+          <div class="cert-date">Completed 2023</div>
+          <span class="cert-badge cert-active">✓ Certified</span>
+        </div>
+      </div>
+
+      <div class="cert-card reveal">
+        <div class="cert-icon">🏆</div>
+        <div class="cert-content">
+          <div class="cert-name">OSCP — Offensive Security Certified Professional</div>
+          <div class="cert-issuer">Offensive Security</div>
+          <div class="cert-date">Target: 2025</div>
+          <span class="cert-badge cert-progress">⟳ Preparing</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTF ACHIEVEMENTS ===== -->
+<section id="achievements" class="section-bg2">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">// ctf &amp; hof</span>
+      <h2 class="section-title">CTF & Hall of <span>Fame</span></h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="ctf-achievements-wrap">
+
+      <div>
+        <h3 class="ctf-section-label">CTF Competitions</h3>
+        <div class="ctf-list">
+          <div class="ctf-item reveal">
+            <div class="ctf-rank">#1</div>
+            <div class="ctf-info">
+              <div class="ctf-name">Nepal Cyber Cup 2024</div>
+              <div class="ctf-event">Web Exploitation Category</div>
+            </div>
+            <div class="ctf-meta">
+              <span class="ctf-points">2,400 pts</span>
+              <span class="ctf-year">2024</span>
+            </div>
+          </div>
+          <div class="ctf-item reveal">
+            <div class="ctf-rank">#3</div>
+            <div class="ctf-info">
+              <div class="ctf-name">HackTheBox University CTF</div>
+              <div class="ctf-event">Team RaahulSec</div>
+            </div>
+            <div class="ctf-meta">
+              <span class="ctf-points">1,850 pts</span>
+              <span class="ctf-year">2024</span>
+            </div>
+          </div>
+          <div class="ctf-item reveal">
+            <div class="ctf-rank">Top 5%</div>
+            <div class="ctf-info">
+              <div class="ctf-name">PicoCTF 2023</div>
+              <div class="ctf-event">Global Competition</div>
+            </div>
+            <div class="ctf-meta">
+              <span class="ctf-points">3,100 pts</span>
+              <span class="ctf-year">2023</span>
+            </div>
+          </div>
+          <div class="ctf-item reveal">
+            <div class="ctf-rank">#7</div>
+            <div class="ctf-info">
+              <div class="ctf-name">CyberTalent CTF — Nepal</div>
+              <div class="ctf-event">National Level Competition</div>
+            </div>
+            <div class="ctf-meta">
+              <span class="ctf-points">1,600 pts</span>
+              <span class="ctf-year">2023</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="ctf-section-label">Hall of Fame</h3>
+        <div class="ctf-list">
+          <div class="ctf-item reveal">
+            <div class="ctf-rank">🏆</div>
+            <div class="ctf-info">
+              <div class="ctf-name">Company X Security HoF</div>
+              <div class="ctf-event">Critical XSS → Account Takeover</div>
+            </div>
+            <div class="ctf-meta">
+              <span class="ctf-points hof">P1</span>
+              <span class="ctf-year">2024</span>
+            </div>
+          </div>
+          <div class="ctf-item reveal">
+            <div class="ctf-rank">🥇</div>
+            <div class="ctf-info">
+              <div class="ctf-name">Government Portal Nepal</div>
+              <div class="ctf-event">SQLi vulnerability disclosure</div>
+            </div>
+            <div class="ctf-meta">
+              <span class="ctf-points hof">HoF</span>
+              <span class="ctf-year">2024</span>
+            </div>
+          </div>
+          <div class="ctf-item reveal">
+            <div class="ctf-rank">🥈</div>
+            <div class="ctf-info">
+              <div class="ctf-name">Popular Edu Platform</div>
+              <div class="ctf-event">IDOR — Mass Data Exposure</div>
+            </div>
+            <div class="ctf-meta">
+              <span class="ctf-points hof">P2</span>
+              <span class="ctf-year">2023</span>
+            </div>
+          </div>
+          <div class="ctf-item reveal">
+            <div class="ctf-rank">🏅</div>
+            <div class="ctf-info">
+              <div class="ctf-name">HackerOne — Fintech Scope</div>
+              <div class="ctf-event">SSRF → Internal Access</div>
+            </div>
+            <div class="ctf-meta">
+              <span class="ctf-points hof">P1</span>
+              <span class="ctf-year">2023</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">// get_in_touch</span>
+      <h2 class="section-title">Contact <span>Me</span></h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="contact-wrap">
+      <div class="contact-info reveal">
+        <h3>Let's Work Together</h3>
+        <p>
+          Whether you need a penetration test, bug bounty consultation, security audit,
+          or just want to talk cybersecurity — I'm open to it. Reach out through any channel below.
+        </p>
+
+        <div class="contact-links">
+          <a href="mailto:rahulkhanal@protonmail.com" class="contact-link-item">
+            <span class="icon">✉️</span>
+            <span>rahulkhanal@protonmail.com</span>
+            <span class="contact-arrow">→</span>
+          </a>
+          <a href="https://linkedin.com/in/khanalrahul7912" target="_blank" rel="noopener noreferrer" class="contact-link-item">
+            <span class="icon">💼</span>
+            <span>linkedin.com/in/khanalrahul7912</span>
+            <span class="contact-arrow">→</span>
+          </a>
+          <a href="https://github.com/khanalrahul7912" target="_blank" rel="noopener noreferrer" class="contact-link-item">
+            <span class="icon">⬡</span>
+            <span>github.com/khanalrahul7912</span>
+            <span class="contact-arrow">→</span>
+          </a>
+          <a href="https://twitter.com/khanalrahul7912" target="_blank" rel="noopener noreferrer" class="contact-link-item">
+            <span class="icon">🐦</span>
+            <span>@khanalrahul7912</span>
+            <span class="contact-arrow">→</span>
+          </a>
+          <a href="https://app.hackthebox.com/profile" target="_blank" rel="noopener noreferrer" class="contact-link-item">
+            <span class="icon">📦</span>
+            <span>HackTheBox Profile</span>
+            <span class="contact-arrow">→</span>
+          </a>
+          <a href="https://tryhackme.com/p/rahulkhanal" target="_blank" rel="noopener noreferrer" class="contact-link-item">
+            <span class="icon">🚩</span>
+            <span>TryHackMe Profile</span>
+            <span class="contact-arrow">→</span>
+          </a>
+        </div>
+
+        <div class="contact-pgp-box">
+          <span class="pgp-label">PGP Key: </span>
+          <a href="#" class="pgp-link">Download public key →</a>
+          <br><br>
+          <span class="response-label">🕐 Response time: </span>
+          <span>Usually within 24 hours</span>
+        </div>
+      </div>
+
+      <div class="contact-form reveal">
+        <div id="formStatus" class="form-status"></div>
+        <form id="contactForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="Your name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="your@email.com" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <select id="subject" name="subject">
+              <option value="">Select a topic…</option>
+              <option>Penetration Testing</option>
+              <option>Bug Bounty Consultation</option>
+              <option>Security Audit</option>
+              <option>CTF / Research Collaboration</option>
+              <option>General Inquiry</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Describe your project or inquiry…" required></textarea>
+          </div>
+          <button type="submit" class="btn-primary btn-full">
+            <span>⚡</span> Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-content">
+    <div class="footer-links">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="https://github.com/khanalrahul7912" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </div>
+    <p>
+      Designed &amp; Built by <span>Rahul Khanal</span> •
+      &copy; <span id="year"></span> raahul.com.np
+    </p>
+    <p class="footer-note">
+      This site is intended for ethical use only. <span class="footer-hack-tag">&lt;/hack_the_planet&gt;</span>
+    </p>
+  </div>
+</footer>
+
+<!-- Scroll to top -->
+<button id="scrollTop" class="scroll-top" aria-label="Back to top">↑</button>
+
+<!-- Scripts -->
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script src="main.js" defer></script>
+
+</body>
+</html>
