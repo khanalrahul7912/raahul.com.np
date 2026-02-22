@@ -191,11 +191,12 @@ if (canvas) {
 }
 
 /* ═══════════════════════════════════════════════════
-   CONTACT FORM — real email via FormSubmit.co
-   Note: The first submission will send a one-time
-   verification email to SITE_CONFIG.formEmail (set in
-   js/config.js). Click "Activate Form" in that email
-   to enable future submissions.
+   CONTACT FORM — try self-hosted PHP mailer first,
+   then fall back to FormSubmit.co if PHP is unavailable.
+
+   PHP mailer:   mailer.php (requires PHP-capable hosting)
+   FormSubmit:   formsubmit.co/ajax/{email}
+   Both use the email configured in js/config.js.
 ═══════════════════════════════════════════════════ */
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
@@ -206,8 +207,8 @@ if (contactForm) {
     const originalHtml = btn.innerHTML;
 
     /* ── Validate ── */
-    const name = contactForm.querySelector('[name="name"]').value.trim();
-    const email = contactForm.querySelector('[name="email"]').value.trim();
+    const name    = contactForm.querySelector('[name="name"]').value.trim();
+    const email   = contactForm.querySelector('[name="email"]').value.trim();
     const message = contactForm.querySelector('[name="message"]').value.trim();
 
     if (!name || !email || !message) {
@@ -222,33 +223,46 @@ if (contactForm) {
     statusEl.className = 'form-status';
     statusEl.textContent = '';
 
-    /* ── Submit to FormSubmit.co AJAX ── */
-    try {
-      const formData = new FormData(contactForm);
-      const senderName = name;
-      formData.append('_subject', `New message from ${senderName} via ${(SITE_CONFIG && SITE_CONFIG.website) || window.location.hostname}`);
-      formData.append('_captcha', 'false');
-      formData.append('_template', 'table');
+    const mailerUrl = (SITE_CONFIG && SITE_CONFIG.mailerUrl)  || '';
+    const formEmail = (SITE_CONFIG && SITE_CONFIG.formEmail)  || '';
+    let sent = false;
 
-      const formEmail = (SITE_CONFIG && SITE_CONFIG.formEmail) || '';
-      if (!formEmail) {
-        throw new Error('formEmail not configured in js/config.js');
+    try {
+      /* ── 1. Try self-hosted PHP mailer (direct, no third-party) ── */
+      if (mailerUrl) {
+        try {
+          const phpData = new FormData(contactForm);
+          const phpRes  = await fetch(mailerUrl, { method: 'POST', body: phpData });
+          if (phpRes.ok) {
+            const phpJson = await phpRes.json();
+            if (phpJson.success) sent = true;
+          }
+        } catch {
+          /* PHP mailer not available (static host) — try FormSubmit below */
+        }
       }
 
-      const res = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(formEmail)}`, {
-        method: 'POST',
-        headers: { Accept: 'application/json' },
-        body: formData,
-      });
+      /* ── 2. Fall back to FormSubmit.co ── */
+      if (!sent && formEmail) {
+        const fsData = new FormData(contactForm);
+        fsData.append('_subject',
+          `New message from ${name} via ${(SITE_CONFIG && SITE_CONFIG.website) || window.location.hostname}`);
+        fsData.append('_captcha',  'false');
+        fsData.append('_template', 'table');
 
-      const json = await res.json();
+        const fsRes  = await fetch(
+          `https://formsubmit.co/ajax/${encodeURIComponent(formEmail)}`,
+          { method: 'POST', headers: { Accept: 'application/json' }, body: fsData });
+        const fsJson = await fsRes.json();
+        if (fsJson.success === 'true' || fsJson.success === true) sent = true;
+      }
 
-      if (json.success === 'true' || json.success === true) {
+      if (sent) {
         statusEl.className = 'form-status success';
         statusEl.textContent = '✓ Message sent! I\'ll get back to you within 24 hours.';
         contactForm.reset();
       } else {
-        throw new Error('FormSubmit returned failure');
+        throw new Error('All delivery methods failed');
       }
     } catch {
       statusEl.className = 'form-status error';

@@ -69,6 +69,7 @@
     <li><a href="#tools">Tools</a></li>
     <li><a href="#education">Education</a></li>
     <li><a href="#training">Training</a></li>
+    <li><a href="#certificates">Certificates</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 
@@ -265,6 +266,32 @@
 </section>
 
 <!-- ═══════════════════════════════════════════════
+     CERTIFICATES
+     Gallery populated by renderCertificates() from
+     CERTIFICATES array in js/data.js.
+     Add driveFileId values to enable per-certificate links.
+     Set SITE_CONFIG.certFolderUrl for the "View All" button.
+══════════════════════════════════════════════════ -->
+<section id="certificates">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">// certificates</span>
+      <h2 class="section-title">My <span>Certificates</span></h2>
+      <div class="section-line"></div>
+    </div>
+    <!--
+      ✏️ CERTIFICATES — add Google Drive file IDs in js/data.js
+      Each CERTIFICATES entry has a driveFileId field.
+      Find it in the file's share URL:
+        https://drive.google.com/file/d/FILE_ID_HERE/view
+      While driveFileId is empty, each card links to the folder
+      set in SITE_CONFIG.certFolderUrl (js/config.js).
+    -->
+    <div id="certificatesContainer" class="reveal"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
      CONTACT
      Links populated by renderContactInfo() from SITE_CONFIG.
      Form subjects populated by renderContactForm().
@@ -351,6 +378,7 @@
       <a href="#about">About</a>
       <a href="#experience">Experience</a>
       <a href="#skills">Skills</a>
+      <a href="#certificates">Certificates</a>
       <a href="#contact">Contact</a>
     </nav>
     <!-- Built-by line — populated by renderFooter() -->

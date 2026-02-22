@@ -16,9 +16,10 @@
  *   8. renderTools         — tools & technologies grid
  *   9. renderEducation     — education cards
  *  10. renderTraining      — training/course cards
- *  11. renderContactInfo   — contact links + location/response info
- *  12. renderContactForm   — subject dropdown options
- *  13. renderFooter        — footer links + copyright
+ *  11. renderCertificates  — certificates gallery (Google Drive links)
+ *  12. renderContactInfo   — contact links + location/response info
+ *  13. renderContactForm   — subject dropdown options
+ *  14. renderFooter        — footer links + copyright
  */
 
 /* ══════════════════════════════════════════════════════
@@ -95,6 +96,35 @@ function safeColor(hex, fallback) {
   return /^[0-9a-fA-F]{6}$/.test(stripped)
     ? ('#' + stripped.toLowerCase())
     : (fallback || '#334155');
+}
+
+/**
+ * Compute a human-readable duration from a start date (YYYY-MM) to today.
+ * Uses LinkedIn-style inclusive counting (start month counts as month 1).
+ * Returns strings like '1 yr 2 mos', '11 mos', '2 yrs 6 mos'.
+ * Returns null if startYYYYMM is falsy or malformed.
+ */
+function computeDuration(startYYYYMM) {
+  if (!startYYYYMM) return null;
+  const parts = String(startYYYYMM).split('-');
+  if (parts.length !== 2) return null;
+  const startYear  = parseInt(parts[0], 10);
+  const startMonth = parseInt(parts[1], 10);
+  if (isNaN(startYear) || isNaN(startMonth)) return null;
+
+  const now = new Date();
+  const endYear  = now.getFullYear();
+  const endMonth = now.getMonth() + 1; // 1-12
+
+  /* Inclusive: Jan → Jan = 1 mo, Jan → Feb = 2 mos */
+  const total = (endYear - startYear) * 12 + (endMonth - startMonth) + 1;
+  if (total < 1) return '< 1 mo';
+
+  const years  = Math.floor(total / 12);
+  const months = total % 12;
+  const yStr = years  > 0 ? years  + ' yr'  + (years  !== 1 ? 's' : '') : '';
+  const mStr = months > 0 ? months + ' mo'  + (months !== 1 ? 's' : '') : '';
+  return [yStr, mStr].filter(Boolean).join(' ');
 }
 
 /** Set innerHTML on an element by id; silently skip if element is absent. */
@@ -310,8 +340,19 @@ function renderExperience() {
       ? `<a href="${esc(co.url)}" target="_blank" rel="noopener noreferrer">${esc(co.company)}</a>`
       : esc(co.company);
 
+    /* Compute company total duration dynamically when any role is current */
+    const hasCurrent = co.roles.some(r => r.current);
+    const coDuration = (hasCurrent && co.startDate)
+      ? (computeDuration(co.startDate) || co.duration)
+      : co.duration;
+
     /* ── Role flashcards ── */
     const rolesHtml = co.roles.map((role, ri) => {
+      /* Compute role duration dynamically when current and startDate is set */
+      const roleDuration = (role.current && role.startDate)
+        ? (computeDuration(role.startDate) || role.duration)
+        : role.duration;
+
       const fcId   = `exp-fc-${ci}-${ri}`;
       const bodyId = `${fcId}-body`;
 
@@ -342,7 +383,7 @@ function renderExperience() {
               <div class="exp-fc-meta">
                 <span>${esc(role.period)}</span>
                 <span class="exp-fc-bullet" aria-hidden="true">·</span>
-                <span>${esc(role.duration)}</span>
+                <span>${esc(roleDuration)}</span>
               </div>
             </div>
             <span class="exp-fc-arrow" aria-hidden="true">›</span>
@@ -375,7 +416,7 @@ function renderExperience() {
             <div class="exp-co-sub">
               <span>${esc(co.type)}</span>
               <span class="exp-co-dot" aria-hidden="true">·</span>
-              <span>${esc(co.duration)}</span>
+              <span>${esc(coDuration)}</span>
               ${co.location ? `<span class="exp-co-dot" aria-hidden="true">·</span><span class="exp-co-loc">📍 ${esc(co.location)}</span>` : ''}
             </div>
           </div>
@@ -473,22 +514,104 @@ function renderEducation() {
    10. TRAINING
 ══════════════════════════════════════════════════════ */
 function renderTraining() {
-  fill('trainingGrid', TRAINING.map(tr => `
-    <div class="cert-card reveal">
-      <div class="cert-icon" aria-hidden="true">${esc(tr.icon)}</div>
-      <div class="cert-content">
-        <div class="cert-name">${esc(tr.name)}</div>
-        <div class="cert-issuer">${esc(tr.issuer)}</div>
-        <div class="cert-date">Duration: ${esc(tr.duration)}</div>
-        <span class="cert-badge cert-active">✓ Completed</span>
+  const folderUrl = SITE_CONFIG && SITE_CONFIG.certFolderUrl;
+  fill('trainingGrid', TRAINING.map(tr => {
+    const fileId = tr.certDriveId || '';
+    let viewBtnHtml = '';
+    if (fileId) {
+      viewBtnHtml = `<a href="https://drive.google.com/file/d/${esc(fileId)}/view"
+                        target="_blank" rel="noopener noreferrer"
+                        class="cert-view-btn" aria-label="View ${esc(tr.name)} certificate">
+                        📜 View Certificate
+                      </a>`;
+    } else if (folderUrl) {
+      viewBtnHtml = `<a href="${esc(folderUrl)}"
+                        target="_blank" rel="noopener noreferrer"
+                        class="cert-view-btn cert-view-folder">
+                        📁 View in Drive
+                      </a>`;
+    }
+    return `
+      <div class="cert-card reveal">
+        <div class="cert-icon" aria-hidden="true">${esc(tr.icon)}</div>
+        <div class="cert-content">
+          <div class="cert-name">${esc(tr.name)}</div>
+          <div class="cert-issuer">${esc(tr.issuer)}</div>
+          <div class="cert-date">Duration: ${esc(tr.duration)}</div>
+          <div class="cert-actions">
+            <span class="cert-badge cert-active">✓ Completed</span>
+            ${viewBtnHtml}
+          </div>
+        </div>
       </div>
-    </div>
-  `).join(''));
+    `;
+  }).join(''));
 }
 
 /* ══════════════════════════════════════════════════════
-   11. CONTACT INFO
+   11. CERTIFICATES GALLERY
+   Reads CERTIFICATES array from js/data.js.
+   Links to individual Drive files via driveFileId, or to
+   the folder (SITE_CONFIG.certFolderUrl) as a fallback.
 ══════════════════════════════════════════════════════ */
+function renderCertificates() {
+  const container = document.getElementById('certificatesContainer');
+  if (!container) return;
+  if (typeof CERTIFICATES === 'undefined' || !Array.isArray(CERTIFICATES)) return;
+
+  const folder = SITE_CONFIG && SITE_CONFIG.certFolderUrl;
+
+  /* "View All" folder button */
+  const folderWrap = folder
+    ? `<div class="certs-folder-wrap">
+         <a href="${esc(folder)}" target="_blank" rel="noopener noreferrer"
+            class="certs-folder-btn">
+           <span aria-hidden="true">📁</span> View All Certificates on Google Drive
+         </a>
+       </div>`
+    : '';
+
+  if (CERTIFICATES.length === 0) {
+    container.innerHTML = folderWrap +
+      `<p class="certs-empty">
+         ✏️ Add entries to <code>CERTIFICATES</code> in <code>js/data.js</code>
+         to display certificates here.
+       </p>`;
+    return;
+  }
+
+  const cardsHtml = CERTIFICATES.map(cert => {
+    let viewBtnHtml = '';
+    if (cert.driveFileId) {
+      viewBtnHtml =
+        `<a href="https://drive.google.com/file/d/${esc(cert.driveFileId)}/view"
+            target="_blank" rel="noopener noreferrer"
+            class="cert-view-btn" aria-label="View ${esc(cert.name)} certificate">
+           📜 View Certificate
+         </a>`;
+    } else if (folder) {
+      viewBtnHtml =
+        `<a href="${esc(folder)}" target="_blank" rel="noopener noreferrer"
+            class="cert-view-btn cert-view-folder">
+           📁 View in Drive
+         </a>`;
+    }
+    return `
+      <div class="cert-gallery-card reveal">
+        <div class="cert-gallery-icon" aria-hidden="true">${esc(cert.icon || '🎓')}</div>
+        <div class="cert-gallery-info">
+          <div class="cert-gallery-name">${esc(cert.name)}</div>
+          <div class="cert-gallery-issuer">${esc(cert.issuer)}</div>
+          <div class="cert-gallery-date">${esc(cert.date)}</div>
+          ${viewBtnHtml}
+        </div>
+      </div>`;
+  }).join('');
+
+  container.innerHTML = folderWrap + `<div class="certs-gallery">${cardsHtml}</div>`;
+}
+
+
 function renderContactInfo() {
   const cfg = SITE_CONFIG;
   if (!cfg) return;
@@ -576,6 +699,7 @@ function renderFooter() {
   renderTools();
   renderEducation();
   renderTraining();
+  renderCertificates();
   renderContactInfo();
   renderContactForm();
   renderFooter();

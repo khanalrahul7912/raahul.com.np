@@ -74,6 +74,15 @@ const SITE_CONFIG = {
    */
   cvPageUrl: 'cv.html',
 
+  /**
+   * Google Drive folder URL containing your certificates.
+   * Shown as a "View All Certificates on Google Drive" button in the
+   * Certificates section.  Set to '' to hide the button.
+   * Replace individual driveFileId values in CERTIFICATES (js/data.js)
+   * for per-certificate "View" links.
+   */
+  certFolderUrl: 'https://drive.google.com/drive/folders/1bjxDEM58E4F5f_LnwyMKEfm-9x50mqsR?usp=drive_link',
+
   /* ─────────────────────────────────────────────────────
      NAVBAR
      ─────────────────────────────────────────────────── */
@@ -94,7 +103,16 @@ const SITE_CONFIG = {
      The FIRST submission sends a one-time activation email
      to this address; click "Activate Form" to enable it.
      ─────────────────────────────────────────────────── */
-  formEmail: 'khanalrahul79@gmail.com',
+  formEmail: 'me@raahul.com.np',
+
+  /**
+   * URL of the PHP mail handler for direct delivery (no third-party).
+   * The contact form tries this first, then falls back to FormSubmit.co.
+   * Set to '' to skip PHP and use only FormSubmit.
+   * ⚠️  Does NOT work on GitHub Pages — PHP requires a server with PHP support.
+   *     If you host on GitHub Pages, set this to '' and rely on FormSubmit.
+   */
+  mailerUrl: 'mailer.php',
 
   /**
    * Options shown in the contact form Subject dropdown.

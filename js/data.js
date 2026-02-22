@@ -124,6 +124,7 @@ const EXPERIENCE = [
     logoUrl: 'assets/logos/worldlink.svg',
     type: 'Full-time',
     duration: '2 yrs 6 mos',
+    startDate: '2023-09',   /* ← enables dynamic company-total duration */
     location: 'Lalitpur, Nepal',
     url: 'https://worldlink.com.np',
     roles: [
@@ -131,6 +132,7 @@ const EXPERIENCE = [
         title: 'Ass. Information Security Analyst',
         period: 'Jan 2025 – Present',
         duration: '1 yr 2 mos',
+        startDate: '2025-01',   /* ← enables dynamic role duration */
         location: 'Jawalakhel, Lalitpur · On-site',
         current: true,
         description:
@@ -470,41 +472,122 @@ const TRAINING = [
     name: 'Cyber Security',
     issuer: 'Islington College — Organized by Kathmandu Metro',
     duration: '100 hours',
+    /**
+     * ✏️ Google Drive file ID for this certificate.
+     * Find the ID in the file's share URL:
+     *   https://drive.google.com/file/d/FILE_ID_HERE/view
+     * Leave as '' to show a "View in Drive" folder link instead.
+     */
+    certDriveId: '',
   },
   {
     icon: '🤖',
     name: 'Artificial Intelligence & Machine Learning',
     issuer: 'Omdena Academy — Organized by National Innovation Center',
     duration: '6 Months',
+    certDriveId: '',
   },
   {
     icon: '🌿',
     name: 'Full Stack Web Development (Laravel)',
     issuer: 'Laravel Framework Training',
     duration: '1 Month',
+    certDriveId: '',
   },
   {
     icon: '🐍',
     name: 'Django Framework',
     issuer: 'Python-Django Full Stack Web Applications',
     duration: '15 Days',
+    certDriveId: '',
   },
   {
     icon: '🖥️',
     name: 'Advanced Computer Training',
     issuer: 'Touch Typing, Office Packages, Software & Hardware',
     duration: '3 Months',
+    certDriveId: '',
   },
   {
     icon: '⚡',
     name: 'Basic Electrical Training',
     issuer: 'Electrical Components & House Wiring',
     duration: '15 Days',
+    certDriveId: '',
   },
   {
     icon: '🚀',
     name: 'Advanced Technopreneurship Course',
     issuer: 'Business Startup Strategies & Core Business Operations',
     duration: '40 hours',
+    certDriveId: '',
+  },
+];
+
+/* ─────────────────────────────────────────────────────
+   CERTIFICATES
+   Each entry represents a received certificate / credential.
+   Fields:
+     icon        – emoji icon for the card
+     name        – certificate / course name
+     issuer      – issuing organisation
+     date        – year or date received (plain text)
+     driveFileId – Google Drive file ID for direct preview/download link
+                   Find the ID in the share URL:
+                     https://drive.google.com/file/d/FILE_ID_HERE/view
+                   Leave as '' to show a folder-level "View in Drive" link
+                   (uses SITE_CONFIG.certFolderUrl from js/config.js).
+   To add a new certificate: copy a block and fill in the fields.
+   To remove: delete the block.
+───────────────────────────────────────────────────── */
+const CERTIFICATES = [
+  {
+    icon: '🔒',
+    name: 'Cyber Security',
+    issuer: 'Islington College — Organized by Kathmandu Metro',
+    date: '2023',
+    driveFileId: '', // ✏️ paste Google Drive file ID here
+  },
+  {
+    icon: '🤖',
+    name: 'Artificial Intelligence & Machine Learning',
+    issuer: 'Omdena Academy — Organized by National Innovation Center',
+    date: '2023',
+    driveFileId: '',
+  },
+  {
+    icon: '🌿',
+    name: 'Full Stack Web Development (Laravel)',
+    issuer: 'Laravel Framework Training',
+    date: '2023',
+    driveFileId: '',
+  },
+  {
+    icon: '🐍',
+    name: 'Django Framework',
+    issuer: 'Python-Django Full Stack Web Applications',
+    date: '2023',
+    driveFileId: '',
+  },
+  {
+    icon: '🖥️',
+    name: 'Advanced Computer Training',
+    issuer: 'Touch Typing, Office Packages, Software & Hardware',
+    date: '2022',
+    driveFileId: '',
+  },
+  {
+    icon: '⚡',
+    name: 'Basic Electrical Training',
+    issuer: 'Electrical Components & House Wiring',
+    date: '2022',
+    driveFileId: '',
+  },
+  {
+    icon: '🚀',
+    name: 'Advanced Technopreneurship Course',
+    issuer: 'Business Startup Strategies & Core Business Operations',
+    date: '2022',
+    driveFileId: '',
   },
 ];
