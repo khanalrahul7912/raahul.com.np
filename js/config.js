@@ -59,11 +59,12 @@ const SITE_CONFIG = {
 
   /**
    * Path to your résumé / CV file inside the assets/ folder.
-   * Set to '' to hide the "Download CV" button in the hero.
-   * Replace assets/resume.pdf with your actual CV.
+   * The "Download CV" button is hidden — use cvPageUrl (View CV) instead.
+   * To re-enable the download button, set this to e.g. 'assets/resume.pdf'.
+   * Replace assets/resume.pdf with your actual CV first.
    * See assets/README.md for details.
    */
-  resumeUrl: 'assets/resume.pdf',
+  resumeUrl: '',
 
   /**
    * URL of the printable CV page.

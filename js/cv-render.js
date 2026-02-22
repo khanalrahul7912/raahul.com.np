@@ -111,7 +111,6 @@ function renderCvExperience() {
             `<span class="cv-role-title">${cvEsc(role.title)}${liveHtml}</span>` +
             `<span class="cv-role-period">${cvEsc(role.period)} · ${cvEsc(role.duration)}</span>` +
           `</div>` +
-          `<div class="cv-role-loc">📍 ${cvEsc(role.location)}</div>` +
           `<p class="cv-role-desc">${cvEsc(role.description)}</p>` +
           `<ul class="cv-resp-list" aria-label="Responsibilities">${respHtml}</ul>` +
           `<div class="cv-tag-row" aria-label="Skills">${tagsHtml}</div>` +
@@ -123,7 +122,7 @@ function renderCvExperience() {
       `<div class="cv-exp-co">` +
         `<div class="cv-exp-co-header">` +
           `<span class="cv-exp-co-name">${cvEsc(co.company)}</span>` +
-          `<span class="cv-exp-co-meta">${cvEsc(co.type)} · ${cvEsc(co.duration)}</span>` +
+          `<span class="cv-exp-co-meta">${cvEsc(co.type)} · ${cvEsc(co.duration)}${co.location ? ' · 📍 ' + cvEsc(co.location) : ''}</span>` +
         `</div>` +
         rolesHtml +
       `</div>`

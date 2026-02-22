@@ -124,6 +124,7 @@ const EXPERIENCE = [
     logoUrl: 'assets/logos/worldlink.svg',
     type: 'Full-time',
     duration: '2 yrs 6 mos',
+    location: 'Lalitpur, Nepal',
     url: 'https://worldlink.com.np',
     roles: [
       {
@@ -177,6 +178,7 @@ const EXPERIENCE = [
     logoUrl: 'assets/logos/kalash.svg',
     type: 'Full-time',
     duration: '1 yr 7 mos',
+    location: 'Lalitpur District, Nepal',
     url: '#',
     roles: [
       {
@@ -229,6 +231,7 @@ const EXPERIENCE = [
     logoUrl: 'assets/logos/woodapple.svg',
     type: 'Full-time',
     duration: '1 yr 2 mos',
+    location: 'Kathmandu, Nepal',
     url: '#',
     roles: [
       {
@@ -257,6 +260,7 @@ const EXPERIENCE = [
     logoUrl: 'assets/logos/self.svg',
     type: 'Part-time',
     duration: '3 yrs 1 mo',
+    location: 'Kathmandu, Nepal',
     url: '#',
     roles: [
       {
@@ -285,6 +289,7 @@ const EXPERIENCE = [
     logoUrl: 'assets/logos/hariom.svg',
     type: 'Full-time',
     duration: '1 yr 3 mos',
+    location: 'New Road, Kathmandu, Nepal',
     url: '#',
     roles: [
       {
@@ -312,28 +317,16 @@ const EXPERIENCE = [
 ───────────────────────────────────────────────────── */
 const SKILLS = [
   {
-    icon: '🖥️',
-    title: 'System Administration',
-    sub: 'Linux | Automation | Monitoring',
-    items: ['Linux (Ubuntu/CentOS)', 'Bash Scripting', 'Python Scripting', 'PowerShell', 'Docker', 'Nagios', 'Grafana', 'Prometheus', 'Cacti', 'ELK Stack'],
-  },
-  {
     icon: '🛡️',
     title: 'Information Security',
-    sub: 'Defense | Assessment | SIEM',
-    items: ['SIEM Operations', 'Active Directory', 'OpenVAS', 'Nessus', 'Vulnerability Assessment', 'Penetration Testing', 'Log Analysis', 'Threat Monitoring', 'Incident Response', 'Compliance'],
+    sub: 'Defense | SIEM | Compliance',
+    items: ['SIEM Operations', 'Active Directory', 'Log Analysis', 'Threat Monitoring', 'Incident Response', 'Access Management', 'Data Security', 'Compliance & Audit', 'Security Policy'],
   },
   {
-    icon: '🌐',
-    title: 'Networking',
-    sub: 'ISP-Level | Monitoring',
-    items: ['TCP/IP', 'OLT / BRAS', 'GPON', 'Uplink Networks', 'Network Monitoring', 'Troubleshooting', 'DNS / DHCP', 'Firewall Config'],
-  },
-  {
-    icon: '💻',
-    title: 'Web Development',
-    sub: 'Full Stack | Frameworks',
-    items: ['Laravel (PHP)', 'Django (Python)', 'HTML / CSS', 'JavaScript', 'MySQL / SQL', 'REST APIs', 'Git', 'C++'],
+    icon: '🔐',
+    title: 'Penetration Testing & Vulnerability Assessment',
+    sub: 'Offensive | Assessment | Tooling',
+    items: ['Vulnerability Assessment', 'Penetration Testing', 'OpenVAS', 'Nessus', 'Burp Suite', 'Metasploit', 'Nmap', 'OWASP Top 10', 'Exploitation Techniques', 'Reporting'],
   },
   {
     icon: '🐍',
@@ -342,10 +335,28 @@ const SKILLS = [
     items: ['Python', 'Bash / Shell', 'PowerShell', 'PHP', 'SQL', 'C++', 'Automation Scripts', 'Cron Jobs'],
   },
   {
+    icon: '💻',
+    title: 'Web Development',
+    sub: 'Full Stack | Frameworks',
+    items: ['Laravel (PHP)', 'Django (Python)', 'HTML / CSS', 'JavaScript', 'MySQL / SQL', 'REST APIs', 'Git', 'C++'],
+  },
+  {
     icon: '🤝',
     title: 'Leadership & Soft Skills',
     sub: 'Team Management | Communication',
     items: ['Team Leadership (25–30)', 'Customer Service', 'Problem Solving', 'Mentoring', 'Communication', 'Adaptability', 'Composure Under Pressure', 'R&D Interest'],
+  },
+  {
+    icon: '🖥️',
+    title: 'System Administration',
+    sub: 'Linux | Automation | Monitoring',
+    items: ['Linux (Ubuntu/CentOS)', 'Bash Scripting', 'Python Scripting', 'PowerShell', 'Docker', 'Nagios', 'Grafana', 'Prometheus', 'Cacti', 'ELK Stack'],
+  },
+  {
+    icon: '🌐',
+    title: 'Networking',
+    sub: 'ISP-Level | Monitoring',
+    items: ['TCP/IP', 'OLT / BRAS', 'GPON', 'Uplink Networks', 'Network Monitoring', 'Troubleshooting', 'DNS / DHCP', 'Firewall Config'],
   },
 ];
 
@@ -363,6 +374,7 @@ const TOOLS = [
   // ── SIEM & Monitoring ──────────────────────────────
   { name: 'ELK Stack',    si: 'elasticsearch',  color: '00bfb3', abbr: 'EL' },
   { name: 'Splunk',       si: 'splunk',          color: 'ff6600', abbr: 'SP' },
+  { name: 'Wazuh',        si: '',                color: '005571', abbr: 'WZ', emoji: '🛡️' },
   { name: 'Grafana',      si: 'grafana',         color: 'F46800', abbr: 'GR' },
   { name: 'Prometheus',   si: 'prometheus',      color: 'E6522C', abbr: 'PR' },
   { name: 'Nagios',       si: '',                color: '26a269', abbr: 'NG', emoji: '📡' },
@@ -376,7 +388,10 @@ const TOOLS = [
   { name: 'Nikto',        si: '',                color: 'f59e0b', abbr: 'NK', emoji: '🦊' },
   { name: 'Nmap',         si: '',                color: '4b8bbe', abbr: 'NM', emoji: '🗺️' },
 
-  // ── Network Tools ─────────────────────────────────
+  // ── Network Security ──────────────────────────────
+  { name: 'Palo Alto',    si: 'paloaltonetworks', color: 'FA582C', abbr: 'PA' },
+  { name: 'Cisco Meraki', si: 'cisco',            color: '1BA0D7', abbr: 'CM' },
+  { name: 'Imperva WAF',  si: '',                 color: '0070C0', abbr: 'IW', emoji: '🔒' },
   { name: 'Wireshark',    si: '',                color: '1679a7', abbr: 'WS', emoji: '🔎' },
   { name: 'tcpdump',      si: '',                color: '4e9a06', abbr: 'TC', emoji: '📦' },
   { name: 'Snort',        si: '',                color: 'd73527', abbr: 'SN', emoji: '🐷' },
@@ -423,14 +438,14 @@ const EDUCATION = [
   {
     emoji: '🎓',
     degree: 'Bachelor of Computer Applications (BCA)',
-    school: 'Nepal College of Information Technology (NCIT), Lalitpur',
-    detail: 'Under Pokhara University',
+    school: 'Pokhara University',
+    detail: 'Nepal College of Information Technology (NCIT), Lalitpur',
     period: 'Graduated — Convocated ✓',
     status: 'completed',
     statusLabel: '✓ Completed & Convocated',
-    logoAbbr: 'NCIT',
-    logoColor: '#7c3aed',
-    logoUrl: 'assets/logos/ncit.svg',
+    logoAbbr: 'PU',
+    logoColor: '#8B0000',
+    logoUrl: 'assets/logos/pokhara-university.svg',
   },
   {
     emoji: '📚',

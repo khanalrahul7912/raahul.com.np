@@ -207,7 +207,7 @@ a:hover { text-decoration: underline; }
 ═══════════════════════════════════════════════════════ */
 @media print {
 
-  @page { size: A4; margin: 16mm 18mm 16mm 18mm; }
+  @page { size: A4; margin: 14mm 16mm 14mm 16mm; }
 
   .no-print { display: none !important; }
 
@@ -219,10 +219,19 @@ a:hover { text-decoration: underline; }
     max-width: 100%;
   }
 
-  /* Avoid page breaks inside a single role or section */
-  .cv-sect    { break-inside: avoid; }
+  /* Section titles stay with the first item below them */
+  .cv-sect-title    { break-after: avoid; }
+
+  /* Allow sections to break naturally — do NOT use break-inside:avoid
+     on .cv-sect because it forces the whole section onto one page,
+     pushing headings to the start of a new page instead. */
+
+  /* Avoid page breaks inside a single role, edu item, or training item */
   .cv-exp-co  { break-inside: avoid; }
   .cv-role    { break-inside: avoid; }
+  .cv-edu-item { break-inside: avoid; }
+  .cv-tr-item  { break-inside: avoid; }
+  .cv-skill-row { break-inside: avoid; }
 
   a { color: var(--cv-accent) !important; text-decoration: none !important; }
 

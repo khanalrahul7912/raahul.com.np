@@ -343,8 +343,6 @@ function renderExperience() {
                 <span>${esc(role.period)}</span>
                 <span class="exp-fc-bullet" aria-hidden="true">·</span>
                 <span>${esc(role.duration)}</span>
-                <span class="exp-fc-bullet" aria-hidden="true">·</span>
-                <span class="exp-fc-loc">📍 ${esc(role.location)}</span>
               </div>
             </div>
             <span class="exp-fc-arrow" aria-hidden="true">›</span>
@@ -378,6 +376,7 @@ function renderExperience() {
               <span>${esc(co.type)}</span>
               <span class="exp-co-dot" aria-hidden="true">·</span>
               <span>${esc(co.duration)}</span>
+              ${co.location ? `<span class="exp-co-dot" aria-hidden="true">·</span><span class="exp-co-loc">📍 ${esc(co.location)}</span>` : ''}
             </div>
           </div>
         </div>

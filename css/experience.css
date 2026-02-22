@@ -64,6 +64,7 @@
   color: var(--muted); margin-top: .15rem;
 }
 .exp-co-dot { color: var(--border); }
+.exp-co-loc { color: var(--muted); overflow-wrap: break-word; }
 
 /* ══════════════════════════════════════════════════════
    ROLES STACK
