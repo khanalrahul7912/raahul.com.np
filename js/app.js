@@ -3,6 +3,9 @@
  * =======================================
  * Handles: navbar, hamburger, typewriter, scroll-reveal,
  * particle canvas, counter animation, contact form (real email via FormSubmit.co).
+ *
+ * Personal info (email, name) is read from SITE_CONFIG (js/config.js).
+ * Rotating phrases are read from TYPEWRITER_PHRASES (js/data.js).
  */
 
 const COUNTER_STEPS = 50;
@@ -190,8 +193,9 @@ if (canvas) {
 /* ═══════════════════════════════════════════════════
    CONTACT FORM — real email via FormSubmit.co
    Note: The first submission will send a one-time
-   verification email to khanalrahul79@gmail.com.
-   Click "Activate Form" in that email to enable.
+   verification email to SITE_CONFIG.formEmail (set in
+   js/config.js). Click "Activate Form" in that email
+   to enable future submissions.
 ═══════════════════════════════════════════════════ */
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
@@ -221,11 +225,17 @@ if (contactForm) {
     /* ── Submit to FormSubmit.co AJAX ── */
     try {
       const formData = new FormData(contactForm);
-      formData.append('_subject', `New message from ${name} via raahul.com.np`);
+      const senderName = name;
+      formData.append('_subject', `New message from ${senderName} via ${(SITE_CONFIG && SITE_CONFIG.website) || window.location.hostname}`);
       formData.append('_captcha', 'false');
       formData.append('_template', 'table');
 
-      const res = await fetch('https://formsubmit.co/ajax/khanalrahul79@gmail.com', {
+      const formEmail = (SITE_CONFIG && SITE_CONFIG.formEmail) || '';
+      if (!formEmail) {
+        throw new Error('formEmail not configured in js/config.js');
+      }
+
+      const res = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(formEmail)}`, {
         method: 'POST',
         headers: { Accept: 'application/json' },
         body: formData,
@@ -244,7 +254,9 @@ if (contactForm) {
       statusEl.className = 'form-status error';
       statusEl.innerHTML =
         '✗ Could not send automatically. Please email me directly: ' +
-        '<a href="mailto:khanalrahul79@gmail.com">khanalrahul79@gmail.com</a>';
+        (SITE_CONFIG && SITE_CONFIG.email
+          ? `<a href="mailto:${SITE_CONFIG.email}">${SITE_CONFIG.email}</a>`
+          : 'the address shown in the contact section.');
     } finally {
       btn.innerHTML = originalHtml;
       btn.disabled = false;
@@ -257,7 +269,5 @@ if (contactForm) {
 }
 
 /* ═══════════════════════════════════════════════════
-   FOOTER YEAR
+   FOOTER YEAR — set by js/render.js renderFooter()
 ═══════════════════════════════════════════════════ */
-const yearEl = document.getElementById('year');
-if (yearEl) yearEl.textContent = new Date().getFullYear();

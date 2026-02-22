@@ -1,42 +1,48 @@
 /**
- * js/data.js — SITE CONTENT DATA
- * ================================
- * Edit this file to update any content on the website.
+ * js/data.js — SECTION CONTENT
+ * ==============================
+ * Edit this file to update the content of each section.
+ * Personal info (name, email, links) lives in js/config.js.
  * No need to touch HTML or CSS for text/list updates.
  *
  * Sections:
- *   HERO            → Hero section badge, stats, description
- *   TYPEWRITER      → Rotating phrases in hero terminal
- *   ABOUT_TAGS      → Skill tags shown in About section
- *   EXPERIENCE      → Work experience entries (companies + roles)
- *   SKILLS          → Technical skill cards
- *   TOOLS           → Tools & Technologies grid
- *   EDUCATION       → Academic background cards
- *   TRAINING        → Trainings & courses attended
+ *   HERO         → Hero stats counter and description
+ *   TYPEWRITER   → Rotating phrases in the hero terminal
+ *   ABOUT        → About section paragraphs, terminal lines, skill tags
+ *   EXPERIENCE   → Work experience (companies + roles)
+ *   SKILLS       → Technical skill cards
+ *   TOOLS        → Tools & Technologies grid
+ *   EDUCATION    → Academic background cards
+ *   TRAINING     → Trainings & courses attended
+ *
+ * NOTE: Fields marked "supports basic HTML" may contain
+ *       <strong>, <em>, and <a href="..."> tags.
+ *       All other fields are plain text only.
  */
 
 /* ─────────────────────────────────────────────────────
    HERO
 ───────────────────────────────────────────────────── */
 const HERO = {
-  badge: 'Ass. Information Security Analyst @ WorldLink Communications',
-  name: 'Rahul Khanal',
-  terminalUser: 'rahul@RAAHUL',
+  /** Plain-text description shown below the terminal prompt. */
   description:
     'Cybersecurity professional with hands-on experience in information security, ' +
     'system administration, and network operations at WorldLink Communications. ' +
     'Passionate about defending networks, monitoring threats, and advancing into ' +
     'penetration testing and advanced security practices.',
+
+  /** Stats counters shown in the hero. target = number, suffix = unit string. */
   stats: [
-    { target: 3, suffix: '+ yrs', label: 'Experience' },
-    { target: 25, suffix: '+',    label: 'Team Led' },
-    { target: 7,  suffix: '',     label: 'Courses Done' },
-    { target: 3,  suffix: ' yrs', label: 'Tutoring' },
+    { target: 3,  suffix: '+ yrs', label: 'Experience' },
+    { target: 25, suffix: '+',     label: 'Team Led'   },
+    { target: 7,  suffix: '',      label: 'Courses'    },
+    { target: 3,  suffix: ' yrs',  label: 'Tutoring'   },
   ],
 };
 
 /* ─────────────────────────────────────────────────────
    TYPEWRITER PHRASES
+   Rotating lines typed out in the hero terminal.
 ───────────────────────────────────────────────────── */
 const TYPEWRITER_PHRASES = [
   'Information Security Analyst',
@@ -46,12 +52,50 @@ const TYPEWRITER_PHRASES = [
 ];
 
 /* ─────────────────────────────────────────────────────
-   ABOUT TAGS
+   ABOUT
 ───────────────────────────────────────────────────── */
-const ABOUT_TAGS = [
-  'Linux', 'Docker', 'ELK Stack', 'SIEM', 'Active Directory',
-  'Python', 'Laravel', 'Network Security', 'Vulnerability Assessment', 'Team Leadership',
-];
+const ABOUT = {
+  /**
+   * Paragraphs shown in the About section.
+   * Supports basic HTML: <strong>, <em>, <a href="...">.
+   * Each string is one paragraph.
+   */
+  intro: [
+    'I\'m <strong>Rahul Khanal</strong>, an enthusiastic cybersecurity professional ' +
+    'currently working as <strong>Asst. Information Security Analyst at WorldLink ' +
+    'Communications</strong>, Kathmandu, Nepal. I bring hands-on experience in system ' +
+    'administration, network operations, and security monitoring with a strong drive ' +
+    'to specialise in offensive and defensive security.',
+
+    'My career journey at WorldLink spans from customer service to L2 network ' +
+    'monitoring and now information security — giving me a unique end-to-end ' +
+    'perspective on both operations and the security posture of a large-scale ISP.',
+
+    'I hold a <strong>BCA degree (Pokhara University)</strong> and have completed ' +
+    'specialised training in Cyber Security, AI/ML, and full-stack web development.',
+  ],
+
+  /**
+   * Lines shown inside the terminal card in the About section.
+   * Each line has a cmd (green prompt text) and output (response text).
+   * Add className: 't-success' to make the output text green.
+   */
+  terminalLines: [
+    { cmd: '$ whoami',             output: 'Rahul Khanal — Information Security Analyst' },
+    { cmd: '$ cat interests.txt',  output: 'InfoSec | SysAdmin | DevOps | Pentest | Network Security' },
+    { cmd: '$ cat location.txt',   output: 'Kalanki, Kathmandu, Nepal 🇳🇵' },
+    { cmd: '$ echo $STATUS',       output: 'Open for opportunities ✓', className: 't-success' },
+  ],
+
+  /**
+   * Small pill-shaped tags shown below the terminal card.
+   * Plain text only.
+   */
+  tags: [
+    'Linux', 'Docker', 'ELK Stack', 'SIEM', 'Active Directory',
+    'Python', 'Laravel', 'Network Security', 'Vulnerability Assessment', 'Team Leadership',
+  ],
+};
 
 /* ─────────────────────────────────────────────────────
    EXPERIENCE

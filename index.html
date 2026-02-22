@@ -3,6 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!--
+    ✏️  SEO META TAGS
+    Update these to match your name / title.
+    Also update SITE_CONFIG.seo in js/config.js — render.js will
+    sync them at runtime for JavaScript-enabled browsers.
+  -->
   <meta name="description"
         content="Rahul Khanal — Information Security Analyst at WorldLink Communications. Skilled in system administration, SIEM, network security, vulnerability assessment — Kathmandu, Nepal." />
   <meta name="keywords"
@@ -12,6 +19,9 @@
   <meta property="og:description" content="Information Security Analyst at WorldLink Communications. Network security, SIEM, vulnerability assessment — Kathmandu, Nepal." />
   <meta property="og:type"        content="website" />
   <meta property="og:url"         content="https://raahul.com.np" />
+  <!-- ✏️ og:image: add an absolute URL to a preview image for social sharing -->
+
+  <!-- ✏️ PAGE TITLE — also update SITE_CONFIG.seo.title in js/config.js -->
   <title>Rahul Khanal | Information Security Analyst</title>
 
   <!-- Google Fonts -->
@@ -21,15 +31,13 @@
         rel="stylesheet" />
 
   <!--
-    ═══════════════════════════════════════════════
     STYLESHEETS — modular css/ folder
-      base.css        variables, reset, animations, utilities
-      navbar.css      navigation & hamburger
-      hero.css        hero section
-      experience.css  tab-based experience section
-      sections.css    about, skills, tools, edu, training, contact, footer
-      responsive.css  all media queries
-    ═══════════════════════════════════════════════
+      css/base.css        variables, reset, animations, utilities
+      css/navbar.css      navigation & hamburger
+      css/hero.css        hero section
+      css/experience.css  tab-based experience section
+      css/sections.css    about, skills, tools, edu, training, contact, footer
+      css/responsive.css  all media queries
   -->
   <link rel="stylesheet" href="css/base.css" />
   <link rel="stylesheet" href="css/navbar.css" />
@@ -38,16 +46,20 @@
   <link rel="stylesheet" href="css/sections.css" />
   <link rel="stylesheet" href="css/responsive.css" />
 
-  <!-- Favicon -->
+  <!-- ✏️ FAVICON — swap emoji for a real .ico or .png in assets/ -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔐</text></svg>" />
 </head>
 <body>
 
 <!-- ═══════════════════════════════════════════════
      NAVBAR
+     Logo initials and hire-me link are populated
+     from SITE_CONFIG (js/config.js) by render.js.
 ══════════════════════════════════════════════════ -->
 <nav class="navbar" role="navigation" aria-label="Main navigation">
-  <a href="#home" class="logo" aria-label="Rahul Khanal home">R<span>K</span></a>
+
+  <!-- Initials logo — populated by renderNavbar() -->
+  <a href="#home" class="logo" id="navLogo" aria-label="Home"></a>
 
   <ul class="nav-links" id="navMenu" role="list" aria-label="Site sections">
     <li><a href="#home">Home</a></li>
@@ -60,7 +72,9 @@
     <li><a href="#contact">Contact</a></li>
   </ul>
 
-  <a href="mailto:khanalrahul79@gmail.com" class="nav-cta">hire me</a>
+  <!-- Hire-me CTA — populated by renderNavbar() -->
+  <a href="#contact" class="nav-cta" id="navHireCta">hire me</a>
+
   <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
@@ -68,6 +82,8 @@
 
 <!-- ═══════════════════════════════════════════════
      HERO
+     All text populated from js/config.js + js/data.js
+     by renderHero() and renderHeroStats().
 ══════════════════════════════════════════════════ -->
 <section id="home" class="hero">
   <canvas id="particleCanvas" class="particle-canvas" aria-hidden="true"></canvas>
@@ -75,26 +91,25 @@
 
   <div class="hero-content">
 
+    <!-- Badge — populated by renderHero() from SITE_CONFIG.tagline -->
     <div class="hero-badge">
-      <span>Asst. Information Security Analyst @ WorldLink Communications</span>
+      <span id="heroBadge"></span>
     </div>
 
     <h1 class="hero-title">
       <span class="line role">Hi, I'm</span>
-      <span class="line name glitch" data-text="Rahul Khanal">Rahul Khanal</span>
+      <!-- Name + glitch effect — populated by renderHero() from SITE_CONFIG.name -->
+      <span class="line name glitch" id="heroName"></span>
     </h1>
 
+    <!-- Terminal prompt — populated by renderHero() from SITE_CONFIG.terminalUser -->
     <p class="hero-terminal">
-      <span class="prompt">┌──(rahul㉿RAAHUL)-[~]<br>└─$ </span><span
+      <span class="prompt" id="heroPrompt"></span><span
         id="typed-text"></span><span class="cursor" aria-hidden="true"></span>
     </p>
 
-    <p class="hero-desc">
-      Cybersecurity professional with hands-on experience in information security,
-      system administration, and network operations at WorldLink Communications.
-      Passionate about defending networks, monitoring threats, and advancing into
-      penetration testing and advanced security practices.
-    </p>
+    <!-- Description — populated by renderHero() from HERO.description -->
+    <p class="hero-desc" id="heroDesc"></p>
 
     <div class="hero-actions">
       <a href="#experience" class="btn-primary">
@@ -103,9 +118,18 @@
       <a href="#contact" class="btn-outline">
         <span aria-hidden="true">✉</span> Get In Touch
       </a>
+      <!--
+        ✏️ DOWNLOAD CV BUTTON
+        Set SITE_CONFIG.resumeUrl = 'assets/resume.pdf' in js/config.js to show this.
+        Place your résumé as assets/resume.pdf.
+      -->
+      <a href="#" class="btn-outline" id="heroCvBtn" download
+         style="display:none" aria-label="Download CV">
+        <span aria-hidden="true">📄</span> Download CV
+      </a>
     </div>
 
-    <!-- Populated by js/render.js from data.js HERO.stats -->
+    <!-- Stats counters — populated by renderHeroStats() from HERO.stats -->
     <div class="hero-stats" id="heroStats" aria-label="Career stats"></div>
 
   </div>
@@ -125,51 +149,30 @@
     <div class="about-grid">
       <div class="about-avatar-wrap reveal">
         <!--
-          PHOTO: Replace the emoji with:
-          <img src="assets/photo.jpg" alt="Rahul Khanal" class="avatar-photo" />
-          Place your photo (ideally 400×400 px or square) in the assets/ folder.
+          ✏️ PHOTO — replace the emoji div with an <img> tag:
+          <img src="assets/photo.jpg" alt="Your Name" class="avatar-photo" />
+          Recommended: square image, at least 400×400 px, placed in assets/.
         -->
-        <div class="avatar-box" aria-label="Rahul Khanal">🧑‍💻</div>
+        <div class="avatar-box" aria-label="Profile photo">🧑‍💻</div>
       </div>
 
       <div class="about-text reveal">
-        <p>
-          I'm <strong>Rahul Khanal</strong>, an enthusiastic cybersecurity professional
-          currently working as <strong>Asst. Information Security Analyst at WorldLink
-          Communications</strong>, Kathmandu, Nepal. I bring hands-on experience in system
-          administration, network operations, and security monitoring with a strong drive
-          to specialise in offensive and defensive security.
-        </p>
-        <p>
-          My career journey at WorldLink spans from customer service to L2 network
-          monitoring and now information security — giving me a unique end-to-end
-          perspective on both operations and security posture of a large-scale ISP.
-        </p>
-        <p>
-          I hold a <strong>BCA degree (Pokhara University)</strong> and have completed
-          specialised training in Cyber Security, AI/ML, and full-stack web development.
-        </p>
+        <!-- Intro paragraphs — populated by renderAbout() from ABOUT.intro -->
+        <div id="aboutIntro"></div>
 
+        <!-- Terminal card -->
         <div class="terminal-card" aria-label="Terminal summary">
           <div class="terminal-header">
-            <div class="t-dot t-red"  aria-hidden="true"></div>
+            <div class="t-dot t-red"    aria-hidden="true"></div>
             <div class="t-dot t-yellow" aria-hidden="true"></div>
             <div class="t-dot t-green"  aria-hidden="true"></div>
             <span class="terminal-title">rahul@RAAHUL: ~</span>
           </div>
-          <div class="terminal-body">
-            <div><span class="t-cmd">$ whoami</span></div>
-            <div class="t-output">Rahul Khanal — Information Security Analyst</div>
-            <div><span class="t-cmd">$ cat interests.txt</span></div>
-            <div class="t-output">InfoSec | SysAdmin | DevOps | Pentest | Network Security</div>
-            <div><span class="t-cmd">$ cat location.txt</span></div>
-            <div class="t-output">Kalanki, Kathmandu, Nepal 🇳🇵</div>
-            <div><span class="t-cmd">$ echo $STATUS</span></div>
-            <div class="t-output t-success">Open for opportunities ✓</div>
-          </div>
+          <!-- Terminal body — populated by renderAbout() from ABOUT.terminalLines -->
+          <div class="terminal-body" id="aboutTerminalBody"></div>
         </div>
 
-        <!-- Populated by js/render.js from data.js ABOUT_TAGS -->
+        <!-- Skill tags — populated by renderAbout() from ABOUT.tags -->
         <div class="about-tags" id="aboutTags" aria-label="Key skills"></div>
       </div>
     </div>
@@ -178,6 +181,8 @@
 
 <!-- ═══════════════════════════════════════════════
      EXPERIENCE
+     Tab layout populated by renderExperience()
+     from EXPERIENCE array in js/data.js.
 ══════════════════════════════════════════════════ -->
 <section id="experience">
   <div class="container">
@@ -186,18 +191,13 @@
       <h2 class="section-title">Professional <span>Experience</span></h2>
       <div class="section-line"></div>
     </div>
-
-    <!--
-      Populated by js/render.js from data.js EXPERIENCE.
-      Tab-based layout: company tabs on left, role details on right.
-      On mobile: horizontal scrollable tabs at top.
-    -->
     <div id="experienceContainer" class="reveal"></div>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════
      SKILLS
+     Populated by renderSkills() from SKILLS in js/data.js.
 ══════════════════════════════════════════════════ -->
 <section id="skills">
   <div class="container">
@@ -206,14 +206,13 @@
       <h2 class="section-title">Technical <span>Skills</span></h2>
       <div class="section-line"></div>
     </div>
-
-    <!-- Populated by js/render.js from data.js SKILLS -->
     <div class="skills-grid" id="skillsGrid" aria-label="Technical skill categories"></div>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════
      TOOLS
+     Populated by renderTools() from TOOLS in js/data.js.
 ══════════════════════════════════════════════════ -->
 <section id="tools">
   <div class="container">
@@ -222,14 +221,13 @@
       <h2 class="section-title">Tools &amp; <span>Technologies</span></h2>
       <div class="section-line"></div>
     </div>
-
-    <!-- Populated by js/render.js from data.js TOOLS -->
     <div class="tools-grid" id="toolsGrid" aria-label="Tools and technologies"></div>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════
      EDUCATION
+     Populated by renderEducation() from EDUCATION in js/data.js.
 ══════════════════════════════════════════════════ -->
 <section id="education">
   <div class="container">
@@ -238,14 +236,13 @@
       <h2 class="section-title">Academic <span>Background</span></h2>
       <div class="section-line"></div>
     </div>
-
-    <!-- Populated by js/render.js from data.js EDUCATION -->
     <div class="edu-grid" id="eduGrid" aria-label="Academic qualifications"></div>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════
      TRAINING
+     Populated by renderTraining() from TRAINING in js/data.js.
 ══════════════════════════════════════════════════ -->
 <section id="training">
   <div class="container">
@@ -254,14 +251,14 @@
       <h2 class="section-title">Training &amp; <span>Courses</span></h2>
       <div class="section-line"></div>
     </div>
-
-    <!-- Populated by js/render.js from data.js TRAINING -->
     <div class="cert-grid" id="trainingGrid" aria-label="Training and courses completed"></div>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════
      CONTACT
+     Links populated by renderContactInfo() from SITE_CONFIG.
+     Form subjects populated by renderContactForm().
 ══════════════════════════════════════════════════ -->
 <section id="contact">
   <div class="container">
@@ -282,48 +279,20 @@
           I'm always open to a good conversation.
         </p>
 
-        <div class="contact-links">
-          <a href="mailto:khanalrahul79@gmail.com" class="contact-link-item">
-            <span class="icon" aria-hidden="true">✉️</span>
-            <span>khanalrahul79@gmail.com</span>
-            <span class="contact-arrow" aria-hidden="true">→</span>
-          </a>
-          <a href="tel:+9779863786408" class="contact-link-item">
-            <span class="icon" aria-hidden="true">📞</span>
-            <span>+977-9863786408</span>
-            <span class="contact-arrow" aria-hidden="true">→</span>
-          </a>
-          <a href="https://linkedin.com/in/khanalrahul79" target="_blank"
-             rel="noopener noreferrer" class="contact-link-item">
-            <span class="icon" aria-hidden="true">💼</span>
-            <span>linkedin.com/in/khanalrahul79</span>
-            <span class="contact-arrow" aria-hidden="true">→</span>
-          </a>
-          <a href="https://github.com/khanalrahul7912" target="_blank"
-             rel="noopener noreferrer" class="contact-link-item">
-            <span class="icon" aria-hidden="true">⬡</span>
-            <span>github.com/khanalrahul7912</span>
-            <span class="contact-arrow" aria-hidden="true">→</span>
-          </a>
-          <a href="https://raahul.com.np" class="contact-link-item">
-            <span class="icon" aria-hidden="true">🌐</span>
-            <span>raahul.com.np</span>
-            <span class="contact-arrow" aria-hidden="true">→</span>
-          </a>
-        </div>
+        <!-- Contact links — populated by renderContactInfo() -->
+        <div class="contact-links" id="contactLinks" aria-label="Contact links"></div>
 
-        <div class="contact-pgp-box">
-          <div><span class="pgp-label">📍 Location:</span> Kalanki, Kathmandu, Nepal</div>
-          <div><span class="response-label">🕐 Response time:</span> Usually within 24 hours</div>
-        </div>
+        <!-- Location & response time — populated by renderContactInfo() -->
+        <div class="contact-pgp-box" id="contactMeta" aria-label="Contact details"></div>
       </div>
 
       <!-- ── Right: Contact Form ── -->
       <div class="contact-form reveal">
         <!--
           Form sends real emails via FormSubmit.co.
-          First submission sends a one-time activation email to
-          khanalrahul79@gmail.com — click "Activate Form" to enable.
+          Set SITE_CONFIG.formEmail in js/config.js.
+          The FIRST submission triggers a one-time activation email
+          to that address — click "Activate Form" to enable.
         -->
         <div id="formStatus" class="form-status" role="alert" aria-live="polite"></div>
         <form id="contactForm" novalidate autocomplete="on">
@@ -341,12 +310,9 @@
           </div>
           <div class="form-group">
             <label for="subject">Subject</label>
+            <!-- Options populated by renderContactForm() from SITE_CONFIG.contactSubjects -->
             <select id="subject" name="subject" autocomplete="off">
               <option value="">Select a topic…</option>
-              <option value="Job Opportunity">Job Opportunity</option>
-              <option value="Security Consultation">Security Consultation</option>
-              <option value="Collaboration">Collaboration</option>
-              <option value="General Inquiry">General Inquiry</option>
             </select>
           </div>
           <div class="form-group">
@@ -367,6 +333,7 @@
 
 <!-- ═══════════════════════════════════════════════
      FOOTER
+     Populated by renderFooter() from SITE_CONFIG.
 ══════════════════════════════════════════════════ -->
 <footer>
   <div class="footer-content">
@@ -376,16 +343,12 @@
       <a href="#experience">Experience</a>
       <a href="#skills">Skills</a>
       <a href="#contact">Contact</a>
-      <a href="https://linkedin.com/in/khanalrahul79"
-         target="_blank" rel="noopener noreferrer">LinkedIn</a>
     </nav>
-    <p>
-      Designed &amp; Built by <span>Rahul Khanal</span> &bull;
-      &copy; <span id="year"></span> raahul.com.np
-    </p>
+    <!-- Built-by line — populated by renderFooter() -->
+    <p id="footerBuiltBy"></p>
     <p class="footer-note">
-      Kathmandu, Nepal 🇳🇵 &nbsp;&nbsp;
-      <span class="footer-hack-tag">&lt;/secure_the_world&gt;</span>
+      <!-- Tagline — populated by renderFooter() from SITE_CONFIG.footerTagline -->
+      <span class="footer-hack-tag" id="footerTagline"></span>
     </p>
   </div>
 </footer>
@@ -394,13 +357,13 @@
 <button id="scrollTop" class="scroll-top" aria-label="Back to top">↑</button>
 
 <!--
-  ═══════════════════════════════════════════════
-  SCRIPTS — load order:
-    1. js/data.js   — all site content (edit this to update anything)
-    2. js/render.js — reads data and populates section containers
-    3. js/app.js    — nav, animations, form submission
-  ═══════════════════════════════════════════════
+  SCRIPTS — load order matters:
+    1. js/config.js  — SITE_CONFIG (personal info, contact, branding)
+    2. js/data.js    — section content (experience, skills, tools, …)
+    3. js/render.js  — reads config + data and populates the DOM
+    4. js/app.js     — nav, animations, contact form, particles
 -->
+<script src="js/config.js"></script>
 <script src="js/data.js"></script>
 <script src="js/render.js"></script>
 <script src="js/app.js"></script>
