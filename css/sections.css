@@ -187,6 +187,15 @@
   box-shadow: 0 2px 8px rgba(0,0,0,.3);
 }
 
+/* SVG / image logo — same size as the text badge */
+.edu-logo-img {
+  width: 52px; min-width: 52px; height: 52px;
+  border-radius: var(--radius);
+  object-fit: contain;
+  display: block;
+  flex-shrink: 0;
+}
+
 .edu-content    { flex: 1; min-width: 0; overflow: hidden; }
 .edu-degree     { font-size: .975rem; font-weight: 600; color: var(--text); margin-bottom: .3rem; overflow-wrap: break-word; }
 .edu-school     { font-size: .82rem; color: var(--cyan); font-family: var(--font-mono); margin-bottom: .2rem; overflow-wrap: break-word; }

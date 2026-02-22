@@ -1,0 +1,13 @@
+<svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Woodapple Hotel and Spa logo">
+  <rect width="56" height="56" rx="12" fill="#d97706"/>
+  <!-- Hotel building -->
+  <rect x="14" y="24" width="28" height="16" rx="2" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.75)" stroke-width="1.4"/>
+  <!-- Roof -->
+  <polygon points="28,13 42,24 14,24" fill="rgba(255,255,255,0.6)"/>
+  <!-- Door -->
+  <rect x="23" y="30" width="10" height="10" rx="1" fill="rgba(215,119,6,0.8)"/>
+  <!-- Windows -->
+  <rect x="16" y="27" width="5" height="4" rx="0.5" fill="rgba(255,255,255,0.5)"/>
+  <rect x="35" y="27" width="5" height="4" rx="0.5" fill="rgba(255,255,255,0.5)"/>
+  <text x="28" y="47" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" font-weight="700" fill="rgba(255,255,255,0.9)" letter-spacing="0.5">WA</text>
+</svg>

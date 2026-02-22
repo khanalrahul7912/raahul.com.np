@@ -1,0 +1,10 @@
+<svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="WorldLink Communications logo">
+  <rect width="56" height="56" rx="12" fill="#0060AF"/>
+  <!-- Globe -->
+  <circle cx="28" cy="25" r="12" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.6"/>
+  <ellipse cx="28" cy="25" rx="6" ry="12" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.2"/>
+  <line x1="16" y1="25" x2="40" y2="25" stroke="rgba(255,255,255,0.5)" stroke-width="1.2"/>
+  <path d="M16.5 20 Q28 23 39.5 20" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+  <path d="M16.5 30 Q28 27 39.5 30" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+  <text x="28" y="47" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" font-weight="700" fill="rgba(255,255,255,0.9)" letter-spacing="0.5">WL</text>
+</svg>

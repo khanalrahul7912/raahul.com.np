@@ -209,6 +209,10 @@ section:not(#home) {
   position: absolute; left: 0; top: 0;
   width: 100%; overflow: hidden;
   background: var(--bg);
+  /* Hidden by default — animation reveals slices during the glitch flash.
+     Without this, the opaque pseudo-elements cover the gradient name text
+     during the animation delay and at the 0%/100% keyframe. */
+  clip-path: inset(50% 0 50% 0);
 }
 .glitch::before {
   left: 2px; text-shadow: -1px 0 var(--red);
@@ -254,7 +258,7 @@ section:not(#home) {
   to   { filter: hue-rotate(360deg); }
 }
 @keyframes glitch {
-  0%,100% { clip-path: inset(0 0 0 0); transform: none; }
+  0%,100% { clip-path: inset(50% 0 50% 0); transform: none; }
   20%     { clip-path: inset(20% 0 30% 0); transform: translate(-3px); }
   40%     { clip-path: inset(50% 0 20% 0); transform: translate(3px); }
   60%     { clip-path: inset(10% 0 60% 0); transform: translate(-2px); }

@@ -25,57 +25,15 @@
 }
 
 /* ══════════════════════════════════════════════════════
-   ≤ 900px — Tablet portrait (experience tabs switch to
-              horizontal scroll at top)
+   ≤ 900px — Tablet portrait (experience flashcards)
 ══════════════════════════════════════════════════════ */
 @media (max-width: 900px) {
-  .exp-layout {
-    grid-template-columns: 1fr;
-    min-height: unset;
+  .exp-roles {
+    margin-left: .75rem;
+    padding-left: .75rem;
   }
-
-  .exp-tabs-nav {
-    flex-direction: row;
-    overflow-x: auto;
-    overflow-y: hidden;
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-    background: rgba(0,0,0,.1);
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
-  }
-  .exp-tabs-nav::-webkit-scrollbar { display: none; }
-
-  .exp-tab {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    border-left: none;
-    border-bottom: 3px solid transparent;
-    padding: .875rem 1rem;
-    min-width: 100px;
-    gap: .5rem;
-  }
-  .exp-tab:hover {
-    border-left-color: transparent;
-    border-bottom-color: rgba(0,255,136,.3);
-    background: rgba(0,255,136,.04);
-  }
-  .exp-tab.active {
-    border-left-color: transparent;
-    border-bottom-color: var(--green);
-  }
-  .exp-tab-info { align-items: center; }
-  .exp-tab-name { font-size: .76rem; }
-  .exp-tab-dur  { display: none; }
-
-  .exp-panel {
-    max-height: none;
-    padding: 1.5rem 1.25rem 1.75rem;
-  }
-  .exp-panels-wrap { overflow: visible; }
+  .exp-fc-meta { font-size: .68rem; }
 }
-
 /* ══════════════════════════════════════════════════════
    ≤ 768px — Mobile landscape / small tablet
 ══════════════════════════════════════════════════════ */
@@ -164,15 +122,13 @@
   /* Section tag overflow */
   .section-tag { font-size: .65rem; letter-spacing: 1.5px; word-break: break-word; }
 
-  /* Experience */
-  .exp-tab { min-width: 90px; padding: .75rem; }
-  .exp-tab-logo { width: 28px; height: 28px; font-size: .6rem; }
-  .exp-panel { padding: 1.25rem 1rem 1.5rem; }
-  .exp-panel-logo { width: 44px; min-width: 44px; height: 44px; font-size: .65rem; }
-  .exp-role-card { padding: 1rem 0 1.25rem 1.25rem; }
-  .exp-role-title { font-size: .88rem; }
-  .exp-role-meta  { flex-wrap: wrap; gap: .25rem; }
-  .exp-date-chip  { display: none; } /* hide date chip — info is in role-meta */
+  /* Experience flashcards */
+  .exp-co-bar { padding: .75rem 1rem; gap: .75rem; }
+  .exp-co-logo-img, .exp-co-logo-badge { width: 40px; height: 40px; border-radius: 8px; }
+  .exp-roles { margin-left: .5rem; padding-left: .65rem; }
+  .exp-fc-head { padding: .875rem 1rem; }
+  .exp-fc-title { font-size: .88rem; }
+  .exp-fc-meta  { flex-wrap: wrap; gap: .25rem; }
 
   /* Tools */
   .tools-grid { grid-template-columns: repeat(auto-fill, minmax(min(100%, 90px), 1fr)); }
@@ -213,11 +169,9 @@
   /* About avatar: slightly smaller */
   .avatar-box { width: 160px; height: 160px; font-size: 3.8rem; }
 
-  /* Experience tabs: minimal footprint */
-  .exp-tab { min-width: 76px; padding: .6rem .5rem; }
-  .exp-tab-logo { width: 24px; height: 24px; font-size: .55rem; }
-  .exp-tab-name { font-size: .68rem; }
-  .exp-panel { padding: 1rem .875rem 1.25rem; }
+  /* Experience flashcards */
+  .exp-co-logo-img, .exp-co-logo-badge { width: 36px; height: 36px; }
+  .exp-fc-title { font-size: .84rem; }
 
   /* Skills grid: ensure single column */
   .skills-grid { grid-template-columns: 1fr; }
@@ -265,10 +219,12 @@
   .section-tag { font-size: .6rem; letter-spacing: 1px; }
   .section-title { font-size: clamp(1.2rem, 8vw, 1.6rem); }
 
-  /* Experience */
-  .exp-tab { min-width: 68px; padding: .5rem .4rem; }
-  .exp-tab-logo { width: 22px; height: 22px; font-size: .5rem; }
-  .exp-tab-name { font-size: .62rem; }
+  /* Experience flashcards */
+  .exp-co-bar { padding: .65rem .875rem; gap: .6rem; }
+  .exp-co-logo-img, .exp-co-logo-badge { width: 32px; height: 32px; border-radius: 7px; }
+  .exp-co-name { font-size: .88rem; }
+  .exp-fc-title { font-size: .82rem; }
+  .exp-fc-meta { font-size: .65rem; }
 
   /* Tools grid: 3-column compact */
   .tools-grid { grid-template-columns: repeat(3, 1fr); gap: .4rem; }

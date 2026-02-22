@@ -256,6 +256,12 @@ function renderAbout() {
     introEl.innerHTML = ab.intro.map(p => `<p>${safeHtml(p)}</p>`).join('');
   }
 
+  /* Terminal card title — update from config so it stays in sync */
+  const termTitle = document.querySelector('.terminal-title');
+  if (termTitle && cfg && cfg.terminalUser) {
+    termTitle.textContent = cfg.terminalUser + ': ~';
+  }
+
   /* Terminal card lines */
   const termBody = document.getElementById('aboutTerminalBody');
   if (termBody && ab.terminalLines) {
@@ -273,124 +279,111 @@ function renderAbout() {
 }
 
 /* ══════════════════════════════════════════════════════
-   6. EXPERIENCE — Tab-based layout
-   Left: company tab list  |  Right: selected panel
+   6. EXPERIENCE — Flashcard layout
+   Company bar (logo + name + type + duration)
+   followed by a stack of expandable role flashcards.
 ══════════════════════════════════════════════════════ */
 function renderExperience() {
   const container = document.getElementById('experienceContainer');
   if (!container || !EXPERIENCE) return;
 
-  /* ── Build company tabs ── */
-  const tabsHtml = EXPERIENCE.map((co, ci) => `
-    <button class="exp-tab ${ci === 0 ? 'active' : ''}"
-            id="exp-tab-${ci}"
-            data-ci="${ci}"
-            role="tab"
-            aria-selected="${ci === 0 ? 'true' : 'false'}"
-            aria-controls="exp-panel-${ci}">
-      <span class="exp-tab-logo" style="background:${safeColor(co.color)}">${esc(co.logo)}</span>
-      <div class="exp-tab-info">
-        <span class="exp-tab-name">${esc(co.company)}</span>
-        <span class="exp-tab-dur">${esc(co.duration)}</span>
-      </div>
-    </button>
-  `).join('');
+  const feedHtml = EXPERIENCE.map((co, ci) => {
 
-  /* ── Build company panels ── */
-  const panelsHtml = EXPERIENCE.map((co, ci) => {
-    const companyLink = (co.url && co.url !== '#')
+    /* ── Company logo: SVG img if logoUrl set, else coloured badge ── */
+    const logoHtml = co.logoUrl
+      ? `<img src="${esc(co.logoUrl)}" alt="${esc(co.company)}" class="exp-co-logo-img" width="48" height="48" loading="lazy">`
+      : `<div class="exp-co-logo-badge" style="background:${safeColor(co.color)}" aria-hidden="true">${esc(co.logo)}</div>`;
+
+    /* ── Company name (linked if url is set) ── */
+    const coNameHtml = (co.url && co.url !== '#')
       ? `<a href="${esc(co.url)}" target="_blank" rel="noopener noreferrer">${esc(co.company)}</a>`
       : esc(co.company);
 
-    const rolesHtml = co.roles.map((role) => {
-      const currentBadge = role.current
-        ? '<span class="exp-current-badge">● Live</span>'
+    /* ── Role flashcards ── */
+    const rolesHtml = co.roles.map((role, ri) => {
+      const fcId   = `exp-fc-${ci}-${ri}`;
+      const bodyId = `${fcId}-body`;
+
+      const liveBadge = role.current
+        ? '<span class="exp-live" aria-label="Current role">● Live</span>'
         : '';
 
-      const dateChip = role.period.split('–')[0].trim();
+      const respHtml = role.responsibilities
+        .map(r => `<li>${esc(r)}</li>`)
+        .join('');
 
-      const respHtml = role.responsibilities.map(r => `<li>${esc(r)}</li>`).join('');
-      const tagsHtml = role.tags.map(t => `<span class="exp-tag">${esc(t)}</span>`).join('');
+      const tagsHtml = role.tags
+        .map(t => `<span class="exp-fc-tag">${esc(t)}</span>`)
+        .join('');
 
       return `
-        <div class="exp-role-card ${role.current ? 'exp-role-current' : ''}">
-          <div class="exp-role-header">
-            <div class="exp-role-title-group">
-              <div class="exp-role-title">
-                ${esc(role.title)} ${currentBadge}
+        <div class="exp-fc ${role.current ? 'exp-fc-current' : ''}" id="${esc(fcId)}">
+
+          <!-- Always-visible card header (trigger) -->
+          <button class="exp-fc-head"
+                  aria-expanded="false"
+                  aria-controls="${esc(bodyId)}">
+            <div class="exp-fc-info">
+              <div class="exp-fc-title-row">
+                <span class="exp-fc-title">${esc(role.title)}</span>
+                ${liveBadge}
               </div>
-              <div class="exp-role-meta">
-                <span class="exp-role-period">${esc(role.period)}</span>
-                <span class="exp-role-sep" aria-hidden="true">·</span>
-                <span class="exp-role-dur">${esc(role.duration)}</span>
+              <div class="exp-fc-meta">
+                <span>${esc(role.period)}</span>
+                <span class="exp-fc-bullet" aria-hidden="true">·</span>
+                <span>${esc(role.duration)}</span>
+                <span class="exp-fc-bullet" aria-hidden="true">·</span>
+                <span class="exp-fc-loc">📍 ${esc(role.location)}</span>
               </div>
-              <div class="exp-role-location">${esc(role.location)}</div>
             </div>
-            <span class="exp-date-chip" aria-label="Start date">${esc(dateChip)}</span>
+            <span class="exp-fc-arrow" aria-hidden="true">›</span>
+          </button>
+
+          <!-- Expandable body (grid-rows trick for smooth animation) -->
+          <div class="exp-fc-body" id="${esc(bodyId)}"
+               role="region" aria-label="${esc(role.title)} details">
+            <div class="exp-fc-body-inner">
+              <div class="exp-fc-body-content">
+                <p class="exp-fc-desc">${esc(role.description)}</p>
+                <ul class="exp-fc-list" aria-label="Responsibilities">
+                  ${respHtml}
+                </ul>
+                <div class="exp-fc-body-tags" aria-label="Skills">${tagsHtml}</div>
+              </div>
+            </div>
           </div>
-          <p class="exp-role-desc">${esc(role.description)}</p>
-          <ul class="exp-resp-list" aria-label="Responsibilities">${respHtml}</ul>
-          <div class="exp-role-tags" aria-label="Skills">${tagsHtml}</div>
+
         </div>
       `;
     }).join('');
 
     return `
-      <div class="exp-panel ${ci === 0 ? 'active' : ''}"
-           id="exp-panel-${ci}"
-           role="tabpanel"
-           aria-labelledby="exp-tab-${ci}"
-           ${ci !== 0 ? 'hidden' : ''}>
-        <div class="exp-panel-company-bar">
-          <div class="exp-panel-logo" style="background:${safeColor(co.color)}">${esc(co.logo)}</div>
-          <div>
-            <div class="exp-panel-company-name">${companyLink}</div>
-            <div class="exp-panel-meta">
+      <div class="exp-co-block">
+        <div class="exp-co-bar" style="--co-accent: ${safeColor(co.color)}">
+          <div class="exp-co-logo-wrap">${logoHtml}</div>
+          <div class="exp-co-info">
+            <div class="exp-co-name">${coNameHtml}</div>
+            <div class="exp-co-sub">
               <span>${esc(co.type)}</span>
-              <span class="exp-panel-meta-dot" aria-hidden="true">·</span>
+              <span class="exp-co-dot" aria-hidden="true">·</span>
               <span>${esc(co.duration)}</span>
             </div>
           </div>
         </div>
-        <div class="exp-roles-list">${rolesHtml}</div>
+        <div class="exp-roles">${rolesHtml}</div>
       </div>
     `;
   }).join('');
 
-  container.innerHTML = `
-    <div class="exp-layout" role="tablist" aria-label="Work experience by company">
-      <nav class="exp-tabs-nav" aria-label="Select company">${tabsHtml}</nav>
-      <div class="exp-panels-wrap">${panelsHtml}</div>
-    </div>
-  `;
+  container.innerHTML = `<div class="exp-feed">${feedHtml}</div>`;
 
-  /* ── Tab switching logic ── */
-  const tabs   = container.querySelectorAll('.exp-tab');
-  const panels = container.querySelectorAll('.exp-panel');
-
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      const ci = tab.dataset.ci;
-      tabs.forEach(t => {
-        t.classList.toggle('active', t === tab);
-        t.setAttribute('aria-selected', t === tab ? 'true' : 'false');
-      });
-      panels.forEach(p => {
-        const isActive = p.id === `exp-panel-${ci}`;
-        p.classList.toggle('active', isActive);
-        if (isActive) p.removeAttribute('hidden');
-        else          p.setAttribute('hidden', '');
-      });
-    });
-
-    /* Arrow-key navigation between tabs */
-    tab.addEventListener('keydown', (e) => {
-      const tabArr = [...tabs];
-      const idx    = tabArr.indexOf(tab);
-      let next     = -1;
-      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') next = (idx + 1) % tabArr.length;
-      if (e.key === 'ArrowUp'   || e.key === 'ArrowLeft')  next = (idx - 1 + tabArr.length) % tabArr.length;
-      if (next !== -1) { e.preventDefault(); tabArr[next].focus(); tabArr[next].click(); }
+  /* ── Expand / Collapse click handlers ── */
+  container.querySelectorAll('.exp-fc-head').forEach(head => {
+    head.addEventListener('click', () => {
+      const card = head.closest('.exp-fc');
+      if (!card) return;
+      const isOpen = card.classList.toggle('open');
+      head.setAttribute('aria-expanded', String(isOpen));
     });
   });
 }
@@ -443,21 +436,27 @@ function renderTools() {
    9. EDUCATION
 ══════════════════════════════════════════════════════ */
 function renderEducation() {
-  fill('eduGrid', EDUCATION.map(ed => `
-    <div class="edu-card reveal">
-      <div class="edu-logo-badge" style="background:${safeColor(ed.logoColor)}"
-           aria-hidden="true">${esc(ed.logoAbbr)}</div>
-      <div class="edu-content">
-        <div class="edu-degree">${esc(ed.degree)}</div>
-        <div class="edu-school">${esc(ed.school)}</div>
-        <div class="edu-detail">${esc(ed.detail)}</div>
-        <div class="edu-period">${esc(ed.period)}</div>
-        <span class="cert-badge ${ed.status === 'completed' ? 'cert-active' : 'cert-progress'}">
-          ${esc(ed.statusLabel)}
-        </span>
+  fill('eduGrid', EDUCATION.map(ed => {
+    /* Use SVG/img logo when available; fall back to coloured text badge */
+    const logoBadgeHtml = ed.logoUrl
+      ? `<img src="${esc(ed.logoUrl)}" alt="${esc(ed.school)}" class="edu-logo-img" width="52" height="52" loading="lazy">`
+      : `<div class="edu-logo-badge" style="background:${safeColor(ed.logoColor)}" aria-hidden="true">${esc(ed.logoAbbr)}</div>`;
+
+    return `
+      <div class="edu-card reveal">
+        ${logoBadgeHtml}
+        <div class="edu-content">
+          <div class="edu-degree">${esc(ed.degree)}</div>
+          <div class="edu-school">${esc(ed.school)}</div>
+          <div class="edu-detail">${esc(ed.detail)}</div>
+          <div class="edu-period">${esc(ed.period)}</div>
+          <span class="cert-badge ${ed.status === 'completed' ? 'cert-active' : 'cert-progress'}">
+            ${esc(ed.statusLabel)}
+          </span>
+        </div>
       </div>
-    </div>
-  `).join(''));
+    `;
+  }).join(''));
 }
 
 /* ══════════════════════════════════════════════════════
