@@ -488,16 +488,25 @@ function renderTools() {
 function renderEducation() {
   fill('eduGrid', EDUCATION.map(ed => {
     /* Use SVG/img logo when available; fall back to coloured text badge */
-    const logoBadgeHtml = ed.logoUrl
+    const logoInner = ed.logoUrl
       ? `<img src="${esc(ed.logoUrl)}" alt="${esc(ed.school)}" class="edu-logo-img" width="52" height="52" loading="lazy">`
       : `<div class="edu-logo-badge" style="background:${safeColor(ed.logoColor)}" aria-hidden="true">${esc(ed.logoAbbr)}</div>`;
+
+    /* Wrap logo + school name in a link when url is provided */
+    const logoBadgeHtml = ed.url
+      ? `<a href="${esc(ed.url)}" target="_blank" rel="noopener noreferrer" class="edu-logo-link" aria-label="Visit ${esc(ed.school)} website">${logoInner}</a>`
+      : logoInner;
+
+    const schoolHtml = ed.url
+      ? `<a href="${esc(ed.url)}" target="_blank" rel="noopener noreferrer" class="edu-school-link">${esc(ed.school)}</a>`
+      : esc(ed.school);
 
     return `
       <div class="edu-card reveal">
         ${logoBadgeHtml}
         <div class="edu-content">
           <div class="edu-degree">${esc(ed.degree)}</div>
-          <div class="edu-school">${esc(ed.school)}</div>
+          <div class="edu-school">${schoolHtml}</div>
           <div class="edu-detail">${esc(ed.detail)}</div>
           <div class="edu-period">${esc(ed.period)}</div>
           <span class="cert-badge ${ed.status === 'completed' ? 'cert-active' : 'cert-progress'}">
@@ -529,9 +538,16 @@ function renderTraining() {
     : '';
 
   const cardsHtml = TRAINING.map(tr => {
-    const fileId = tr.certDriveId || '';
+    const localFile = tr.certFile || '';
+    const fileId    = tr.certDriveId || '';
     let viewBtnHtml = '';
-    if (fileId) {
+    if (localFile) {
+      viewBtnHtml = `<a href="${esc(localFile)}"
+                        target="_blank" rel="noopener noreferrer"
+                        class="cert-view-btn" aria-label="View ${esc(tr.name)} certificate">
+                        📜 View Certificate
+                      </a>`;
+    } else if (fileId) {
       viewBtnHtml = `<a href="https://drive.google.com/file/d/${esc(fileId)}/view"
                         target="_blank" rel="noopener noreferrer"
                         class="cert-view-btn" aria-label="View ${esc(tr.name)} certificate">

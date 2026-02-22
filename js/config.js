@@ -29,7 +29,7 @@ const SITE_CONFIG = {
   /* ─────────────────────────────────────────────────────
      CONTACT
      ─────────────────────────────────────────────────── */
-  email:        'khanalrahul79@gmail.com',
+  email:        'me@raahul.com.np',
   phone:        '+977-9863786408',
   location:     'Kalanki, Kathmandu, Nepal',
 
@@ -75,11 +75,19 @@ const SITE_CONFIG = {
   cvPageUrl: 'cv.html',
 
   /**
-   * Google Drive folder URL containing your certificates.
+   * Local folder where certificate PDFs are stored.
+   * Each TRAINING entry in js/data.js has a `certFile` field that points
+   * to a file inside this folder (or any path relative to the site root).
+   * Certificates are served directly from your site — no Google Drive needed.
+   * See assets/certificates/README.md for how to add your real certificates.
+   */
+  certLocalDir: 'assets/certificates/',
+
+  /**
+   * Google Drive folder URL containing your certificates (optional backup).
    * Shown as a "View All Certificates on Google Drive" button in the
-   * Certificates section.  Set to '' to hide the button.
-   * Replace individual driveFileId values in CERTIFICATES (js/data.js)
-   * for per-certificate "View" links.
+   * Certificates section only when individual certFile paths are empty.
+   * Set to '' to hide the fallback Drive button entirely.
    */
   certFolderUrl: 'https://drive.google.com/drive/folders/1bjxDEM58E4F5f_LnwyMKEfm-9x50mqsR?usp=drive_link',
 

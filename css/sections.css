@@ -196,6 +196,24 @@
   flex-shrink: 0;
 }
 
+/* Hyperlink wrapper around education logo */
+.edu-logo-link {
+  display: block;
+  flex-shrink: 0;
+  border-radius: var(--radius);
+  transition: opacity .2s;
+}
+.edu-logo-link:hover { opacity: .8; }
+
+/* Hyperlink on education school name */
+.edu-school-link {
+  color: var(--cyan);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color .2s;
+}
+.edu-school-link:hover { border-bottom-color: var(--cyan); }
+
 .edu-content    { flex: 1; min-width: 0; overflow: hidden; }
 .edu-degree     { font-size: .975rem; font-weight: 600; color: var(--text); margin-bottom: .3rem; overflow-wrap: break-word; }
 .edu-school     { font-size: .82rem; color: var(--cyan); font-family: var(--font-mono); margin-bottom: .2rem; overflow-wrap: break-word; }

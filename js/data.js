@@ -234,7 +234,7 @@ const EXPERIENCE = [
     type: 'Full-time',
     duration: '1 yr 2 mos',
     location: 'Kathmandu, Nepal',
-    url: '#',
+    url: 'https://www.hotelwoodapple.com',
     roles: [
       {
         title: 'Customer Service Representative',
@@ -442,24 +442,26 @@ const EDUCATION = [
     degree: 'Bachelor of Computer Applications (BCA)',
     school: 'Pokhara University',
     detail: 'Nepal College of Information Technology (NCIT), Lalitpur',
-    period: 'Graduated — Convocated ✓',
+    period: 'Completed — Convocated ✓',
     status: 'completed',
     statusLabel: '✓ Completed & Convocated',
     logoAbbr: 'PU',
     logoColor: '#8B0000',
     logoUrl: 'assets/logos/pokhara-university.svg',
+    url: 'https://pu.edu.np',
   },
   {
     emoji: '📚',
     degree: '+2 Science (Higher Secondary)',
     school: 'Gyanodaya Secondary School, Bafal, Kathmandu',
     detail: 'Computer Science as a major subject',
-    period: 'Graduated January 2020',
+    period: 'Completed January 2020',
     status: 'completed',
     statusLabel: '✓ Completed',
     logoAbbr: 'GS',
     logoColor: '#0891b2',
     logoUrl: 'assets/logos/gyanodaya.svg',
+    url: 'https://www.gyanodayanepal.edu.np',
   },
 ];
 
@@ -474,7 +476,14 @@ const TRAINING = [
     duration: '100 hours',
     year: '2023',
     /**
-     * ✏️ Google Drive file ID for this certificate.
+     * ✏️ Local certificate file path (takes priority over certDriveId).
+     * Place the PDF in assets/certificates/ and set the filename here.
+     * Example: certFile: 'assets/certificates/certificate-cybersecurity.pdf'
+     * See assets/certificates/README.md for details.
+     */
+    certFile: 'assets/certificates/certificate-cybersecurity.pdf',
+    /**
+     * ✏️ Google Drive file ID for this certificate (used if certFile is empty).
      * Find the ID in the file's share URL:
      *   https://drive.google.com/file/d/FILE_ID_HERE/view
      * Leave as '' to show a "View in Drive" folder link instead.
@@ -487,6 +496,7 @@ const TRAINING = [
     issuer: 'Omdena Academy — Organized by National Innovation Center',
     duration: '6 Months',
     year: '2023',
+    certFile: 'assets/certificates/certificate-ai-ml.pdf',
     certDriveId: '',
   },
   {
@@ -495,6 +505,7 @@ const TRAINING = [
     issuer: 'Laravel Framework Training',
     duration: '1 Month',
     year: '2023',
+    certFile: 'assets/certificates/certificate-laravel.pdf',
     certDriveId: '',
   },
   {
@@ -503,6 +514,7 @@ const TRAINING = [
     issuer: 'Python-Django Full Stack Web Applications',
     duration: '15 Days',
     year: '2023',
+    certFile: 'assets/certificates/certificate-django.pdf',
     certDriveId: '',
   },
   {
@@ -511,6 +523,7 @@ const TRAINING = [
     issuer: 'Touch Typing, Office Packages, Software & Hardware',
     duration: '3 Months',
     year: '2022',
+    certFile: 'assets/certificates/certificate-computer-training.pdf',
     certDriveId: '',
   },
   {
@@ -519,6 +532,7 @@ const TRAINING = [
     issuer: 'Electrical Components & House Wiring',
     duration: '15 Days',
     year: '2022',
+    certFile: 'assets/certificates/certificate-electrical.pdf',
     certDriveId: '',
   },
   {
@@ -527,6 +541,7 @@ const TRAINING = [
     issuer: 'Business Startup Strategies & Core Business Operations',
     duration: '40 hours',
     year: '2022',
+    certFile: 'assets/certificates/certificate-technopreneurship.pdf',
     certDriveId: '',
   },
 ];

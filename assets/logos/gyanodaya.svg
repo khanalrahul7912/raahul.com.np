@@ -1,15 +1,25 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
-  <rect width="48" height="48" rx="10" fill="#0e7490"/>
-  <!-- Open book icon -->
-  <path d="M24 14 C18 14 12 15.5 12 15.5 L12 33 C12 33 18 31.5 24 32 C30 31.5 36 33 36 33 L36 15.5 C36 15.5 30 14 24 14 Z" fill="none" stroke="#fff" stroke-width="1.8" opacity="0.95"/>
-  <line x1="24" y1="14" x2="24" y2="32" stroke="#fff" stroke-width="1.8" opacity="0.9"/>
-  <!-- Page lines left -->
-  <line x1="14" y1="19" x2="22" y2="18.5" stroke="#fff" stroke-width="1" opacity="0.6"/>
-  <line x1="14" y1="22" x2="22" y2="21.5" stroke="#fff" stroke-width="1" opacity="0.6"/>
-  <line x1="14" y1="25" x2="22" y2="24.5" stroke="#fff" stroke-width="1" opacity="0.6"/>
-  <!-- Page lines right -->
-  <line x1="26" y1="18.5" x2="34" y2="19" stroke="#fff" stroke-width="1" opacity="0.6"/>
-  <line x1="26" y1="21.5" x2="34" y2="22" stroke="#fff" stroke-width="1" opacity="0.6"/>
-  <line x1="26" y1="24.5" x2="34" y2="25" stroke="#fff" stroke-width="1" opacity="0.6"/>
-  <text x="24" y="43" text-anchor="middle" font-family="Arial,sans-serif" font-size="6.5" font-weight="700" fill="#fff" letter-spacing="0.3">Gyanodaya</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" width="60" height="60">
+  <!-- Gyanodaya Secondary School — teal/red school emblem -->
+  <rect width="60" height="60" rx="12" fill="#0A6B5B"/>
+  <!-- Open book (left page) -->
+  <path d="M12 20 Q12 18 14 18 L28 19 L28 41 L14 42 Q12 42 12 40 Z"
+        fill="#fff" opacity="0.9"/>
+  <!-- Open book (right page) -->
+  <path d="M48 20 Q48 18 46 18 L32 19 L32 41 L46 42 Q48 42 48 40 Z"
+        fill="#fff" opacity="0.9"/>
+  <!-- Book spine -->
+  <rect x="28" y="18" width="4" height="23" rx="1" fill="#C5E8E0"/>
+  <!-- Lines on left page -->
+  <line x1="16" y1="24" x2="26" y2="24" stroke="#0A6B5B" stroke-width="1.2" opacity="0.5"/>
+  <line x1="16" y1="28" x2="26" y2="28" stroke="#0A6B5B" stroke-width="1.2" opacity="0.5"/>
+  <line x1="16" y1="32" x2="26" y2="32" stroke="#0A6B5B" stroke-width="1.2" opacity="0.5"/>
+  <line x1="16" y1="36" x2="26" y2="36" stroke="#0A6B5B" stroke-width="1.2" opacity="0.5"/>
+  <!-- Lines on right page -->
+  <line x1="34" y1="24" x2="44" y2="24" stroke="#0A6B5B" stroke-width="1.2" opacity="0.5"/>
+  <line x1="34" y1="28" x2="44" y2="28" stroke="#0A6B5B" stroke-width="1.2" opacity="0.5"/>
+  <line x1="34" y1="32" x2="44" y2="32" stroke="#0A6B5B" stroke-width="1.2" opacity="0.5"/>
+  <line x1="34" y1="36" x2="44" y2="36" stroke="#0A6B5B" stroke-width="1.2" opacity="0.5"/>
+  <!-- GS label -->
+  <text x="30" y="55" text-anchor="middle" font-family="Arial,sans-serif" font-size="6.5"
+        font-weight="700" fill="#fff" letter-spacing="0.5">GYANODAYA</text>
 </svg>
