@@ -248,6 +248,15 @@
   margin-bottom: .2rem; overflow-wrap: break-word; word-break: break-word;
 }
 .cert-date    { font-size: .71rem; color: var(--muted); }
+.cert-year    { font-size: .71rem; color: var(--cyan); margin-top: .15rem; }
+
+/* Inner grid (.cert-grid-inner) wrapping the cards;
+   sits below the .certs-folder-wrap folder button */
+.cert-grid-inner {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+  gap: 1.2rem;
+}
 
 /* ══════════════════════════════════════════════════════
    CONTACT

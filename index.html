@@ -68,8 +68,7 @@
     <li><a href="#skills">Skills</a></li>
     <li><a href="#tools">Tools</a></li>
     <li><a href="#education">Education</a></li>
-    <li><a href="#training">Training</a></li>
-    <li><a href="#certificates">Certificates</a></li>
+    <li><a href="#training">Training &amp; Certs</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 
@@ -251,43 +250,27 @@
 </section>
 
 <!-- ═══════════════════════════════════════════════
-     TRAINING
+     TRAINING & CERTIFICATES (combined)
      Populated by renderTraining() from TRAINING in js/data.js.
+     Each entry includes course info + certificate link.
+     Add certDriveId values to enable per-certificate links.
+     Set SITE_CONFIG.certFolderUrl for the "View All" button.
 ══════════════════════════════════════════════════ -->
 <section id="training">
   <div class="container">
     <div class="section-header reveal">
-      <span class="section-tag">// trainings_attended</span>
-      <h2 class="section-title">Training &amp; <span>Courses</span></h2>
-      <div class="section-line"></div>
-    </div>
-    <div class="cert-grid" id="trainingGrid" aria-label="Training and courses completed"></div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════
-     CERTIFICATES
-     Gallery populated by renderCertificates() from
-     CERTIFICATES array in js/data.js.
-     Add driveFileId values to enable per-certificate links.
-     Set SITE_CONFIG.certFolderUrl for the "View All" button.
-══════════════════════════════════════════════════ -->
-<section id="certificates">
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="section-tag">// certificates</span>
-      <h2 class="section-title">My <span>Certificates</span></h2>
+      <span class="section-tag">// training_and_certificates</span>
+      <h2 class="section-title">Training &amp; <span>Certificates</span></h2>
       <div class="section-line"></div>
     </div>
     <!--
-      ✏️ CERTIFICATES — add Google Drive file IDs in js/data.js
-      Each CERTIFICATES entry has a driveFileId field.
-      Find it in the file's share URL:
-        https://drive.google.com/file/d/FILE_ID_HERE/view
-      While driveFileId is empty, each card links to the folder
-      set in SITE_CONFIG.certFolderUrl (js/config.js).
+      ✏️ TRAINING & CERTIFICATES — edit TRAINING array in js/data.js
+      Each entry has:
+        certDriveId: ''  ← paste Google Drive file ID to enable per-certificate link
+        year: '2023'     ← year the certificate was received
+      Set SITE_CONFIG.certFolderUrl in js/config.js for the "View All" folder button.
     -->
-    <div id="certificatesContainer" class="reveal"></div>
+    <div id="trainingGrid" aria-label="Training and certificates"></div>
   </div>
 </section>
 
@@ -378,7 +361,7 @@
       <a href="#about">About</a>
       <a href="#experience">Experience</a>
       <a href="#skills">Skills</a>
-      <a href="#certificates">Certificates</a>
+      <a href="#training">Training &amp; Certs</a>
       <a href="#contact">Contact</a>
     </nav>
     <!-- Built-by line — populated by renderFooter() -->

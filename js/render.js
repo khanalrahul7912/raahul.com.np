@@ -15,9 +15,8 @@
  *   7. renderSkills        — skill cards grid
  *   8. renderTools         — tools & technologies grid
  *   9. renderEducation     — education cards
- *  10. renderTraining      — training/course cards
- *  11. renderCertificates  — certificates gallery (Google Drive links)
- *  12. renderContactInfo   — contact links + location/response info
+ *  10. renderTraining      — training & certificates (combined section)
+ *  11. renderContactInfo   — contact links + location/response info
  *  13. renderContactForm   — subject dropdown options
  *  14. renderFooter        — footer links + copyright
  */
@@ -511,11 +510,25 @@ function renderEducation() {
 }
 
 /* ══════════════════════════════════════════════════════
-   10. TRAINING
+   10. TRAINING & CERTIFICATES (combined)
+   Renders each training entry with its certificate link.
+   The optional "View All Certificates" folder button is
+   shown at the top when SITE_CONFIG.certFolderUrl is set.
 ══════════════════════════════════════════════════════ */
 function renderTraining() {
   const folderUrl = SITE_CONFIG && SITE_CONFIG.certFolderUrl;
-  fill('trainingGrid', TRAINING.map(tr => {
+
+  // "View All Certificates" folder button
+  const folderBtnHtml = folderUrl
+    ? `<div class="certs-folder-wrap">
+         <a href="${esc(folderUrl)}" target="_blank" rel="noopener noreferrer"
+            class="certs-folder-btn">
+           <span aria-hidden="true">📁</span> View All Certificates on Google Drive
+         </a>
+       </div>`
+    : '';
+
+  const cardsHtml = TRAINING.map(tr => {
     const fileId = tr.certDriveId || '';
     let viewBtnHtml = '';
     if (fileId) {
@@ -531,6 +544,9 @@ function renderTraining() {
                         📁 View in Drive
                       </a>`;
     }
+    const yearHtml = tr.year
+      ? `<div class="cert-year">${esc(tr.year)}</div>`
+      : '';
     return `
       <div class="cert-card reveal">
         <div class="cert-icon" aria-hidden="true">${esc(tr.icon)}</div>
@@ -538,6 +554,7 @@ function renderTraining() {
           <div class="cert-name">${esc(tr.name)}</div>
           <div class="cert-issuer">${esc(tr.issuer)}</div>
           <div class="cert-date">Duration: ${esc(tr.duration)}</div>
+          ${yearHtml}
           <div class="cert-actions">
             <span class="cert-badge cert-active">✓ Completed</span>
             ${viewBtnHtml}
@@ -545,7 +562,13 @@ function renderTraining() {
         </div>
       </div>
     `;
-  }).join(''));
+  }).join('');
+
+  const container = document.getElementById('trainingGrid');
+  if (container) {
+    container.innerHTML = folderBtnHtml +
+      `<div class="cert-grid-inner">${cardsHtml}</div>`;
+  }
 }
 
 /* ══════════════════════════════════════════════════════
@@ -699,7 +722,6 @@ function renderFooter() {
   renderTools();
   renderEducation();
   renderTraining();
-  renderCertificates();
   renderContactInfo();
   renderContactForm();
   renderFooter();

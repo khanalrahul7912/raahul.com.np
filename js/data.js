@@ -13,7 +13,7 @@
  *   SKILLS       → Technical skill cards
  *   TOOLS        → Tools & Technologies grid
  *   EDUCATION    → Academic background cards
- *   TRAINING     → Trainings & courses attended
+ *   TRAINING     → Training & certificates attended (combined — each entry has year + certDriveId)
  *
  * NOTE: Fields marked "supports basic HTML" may contain
  *       <strong>, <em>, and <a href="..."> tags.
@@ -472,6 +472,7 @@ const TRAINING = [
     name: 'Cyber Security',
     issuer: 'Islington College — Organized by Kathmandu Metro',
     duration: '100 hours',
+    year: '2023',
     /**
      * ✏️ Google Drive file ID for this certificate.
      * Find the ID in the file's share URL:
@@ -485,6 +486,7 @@ const TRAINING = [
     name: 'Artificial Intelligence & Machine Learning',
     issuer: 'Omdena Academy — Organized by National Innovation Center',
     duration: '6 Months',
+    year: '2023',
     certDriveId: '',
   },
   {
@@ -492,6 +494,7 @@ const TRAINING = [
     name: 'Full Stack Web Development (Laravel)',
     issuer: 'Laravel Framework Training',
     duration: '1 Month',
+    year: '2023',
     certDriveId: '',
   },
   {
@@ -499,6 +502,7 @@ const TRAINING = [
     name: 'Django Framework',
     issuer: 'Python-Django Full Stack Web Applications',
     duration: '15 Days',
+    year: '2023',
     certDriveId: '',
   },
   {
@@ -506,6 +510,7 @@ const TRAINING = [
     name: 'Advanced Computer Training',
     issuer: 'Touch Typing, Office Packages, Software & Hardware',
     duration: '3 Months',
+    year: '2022',
     certDriveId: '',
   },
   {
@@ -513,6 +518,7 @@ const TRAINING = [
     name: 'Basic Electrical Training',
     issuer: 'Electrical Components & House Wiring',
     duration: '15 Days',
+    year: '2022',
     certDriveId: '',
   },
   {
@@ -520,74 +526,15 @@ const TRAINING = [
     name: 'Advanced Technopreneurship Course',
     issuer: 'Business Startup Strategies & Core Business Operations',
     duration: '40 hours',
+    year: '2022',
     certDriveId: '',
   },
 ];
 
-/* ─────────────────────────────────────────────────────
-   CERTIFICATES
-   Each entry represents a received certificate / credential.
-   Fields:
-     icon        – emoji icon for the card
-     name        – certificate / course name
-     issuer      – issuing organisation
-     date        – year or date received (plain text)
-     driveFileId – Google Drive file ID for direct preview/download link
-                   Find the ID in the share URL:
-                     https://drive.google.com/file/d/FILE_ID_HERE/view
-                   Leave as '' to show a folder-level "View in Drive" link
-                   (uses SITE_CONFIG.certFolderUrl from js/config.js).
-   To add a new certificate: copy a block and fill in the fields.
-   To remove: delete the block.
-───────────────────────────────────────────────────── */
-const CERTIFICATES = [
-  {
-    icon: '🔒',
-    name: 'Cyber Security',
-    issuer: 'Islington College — Organized by Kathmandu Metro',
-    date: '2023',
-    driveFileId: '', // ✏️ paste Google Drive file ID here
-  },
-  {
-    icon: '🤖',
-    name: 'Artificial Intelligence & Machine Learning',
-    issuer: 'Omdena Academy — Organized by National Innovation Center',
-    date: '2023',
-    driveFileId: '',
-  },
-  {
-    icon: '🌿',
-    name: 'Full Stack Web Development (Laravel)',
-    issuer: 'Laravel Framework Training',
-    date: '2023',
-    driveFileId: '',
-  },
-  {
-    icon: '🐍',
-    name: 'Django Framework',
-    issuer: 'Python-Django Full Stack Web Applications',
-    date: '2023',
-    driveFileId: '',
-  },
-  {
-    icon: '🖥️',
-    name: 'Advanced Computer Training',
-    issuer: 'Touch Typing, Office Packages, Software & Hardware',
-    date: '2022',
-    driveFileId: '',
-  },
-  {
-    icon: '⚡',
-    name: 'Basic Electrical Training',
-    issuer: 'Electrical Components & House Wiring',
-    date: '2022',
-    driveFileId: '',
-  },
-  {
-    icon: '🚀',
-    name: 'Advanced Technopreneurship Course',
-    issuer: 'Business Startup Strategies & Core Business Operations',
-    date: '2022',
-    driveFileId: '',
-  },
-];
+/*
+ * CERTIFICATES — merged into TRAINING above.
+ * Each TRAINING entry now has a `year` field (year received) and a
+ * `certDriveId` field (Google Drive file ID for the certificate).
+ * This array is kept empty for backward compatibility with render.js.
+ */
+const CERTIFICATES = [];
