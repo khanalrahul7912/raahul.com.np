@@ -46,11 +46,24 @@ const SITE_CONFIG = {
   twitter:  '',   // e.g. 'https://twitter.com/yourhandle'
 
   /**
+   * Path to your profile photo inside the assets/ folder.
+   * If set, an <img> is shown in the About section instead of the default emoji.
+   * Set to '' to keep the emoji placeholder.
+   * Replace assets/photo.png with your own square photo (400×400 px recommended).
+   * See assets/README.md for details.
+   */
+  photoUrl: 'assets/photo.png',
+
+  /** Alt text for your profile photo — use your full name. */
+  photoAlt: 'Rahul Khanal',
+
+  /**
    * Path to your résumé / CV file inside the assets/ folder.
    * Set to '' to hide the "Download CV" button in the hero.
-   * Example: 'assets/resume.pdf'
+   * Replace assets/resume.pdf with your actual CV.
+   * See assets/README.md for details.
    */
-  resumeUrl: '',
+  resumeUrl: 'assets/resume.pdf',
 
   /* ─────────────────────────────────────────────────────
      NAVBAR
@@ -107,8 +120,18 @@ const SITE_CONFIG = {
     keywords:
       'Rahul Khanal, information security analyst, cybersecurity, Nepal, ' +
       'WorldLink Communications, system administration, network security, SIEM, ELK stack, Docker',
-    /** Absolute URL to a preview image used when sharing on social media. */
-    ogImage: '',
+    /**
+     * Absolute URL to a preview image for social sharing (LinkedIn, Twitter/X, etc.).
+     * MUST be an absolute URL — relative paths don't work for OG tags.
+     *
+     * ✏️ REPLACE the domain below with YOUR OWN domain before deploying.
+     *    Example: 'https://YOUR-NAME.github.io/assets/og-image.png'
+     *             'https://YOUR-DOMAIN.com/assets/og-image.png'
+     *
+     * Replace assets/og-image.png with a 1200×630 preview image first.
+     * See assets/README.md for details.
+     */
+    ogImage: 'https://raahul.com.np/assets/og-image.png', // ✏️ Change domain to yours
   },
 
 };

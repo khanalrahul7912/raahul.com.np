@@ -46,8 +46,8 @@
   <link rel="stylesheet" href="css/sections.css" />
   <link rel="stylesheet" href="css/responsive.css" />
 
-  <!-- ✏️ FAVICON — swap emoji for a real .ico or .png in assets/ -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔐</text></svg>" />
+  <!-- ✏️ FAVICON — replace assets/favicon.png with your own 32×32 icon (see assets/README.md) -->
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
 </head>
 <body>
 
@@ -149,11 +149,11 @@
     <div class="about-grid">
       <div class="about-avatar-wrap reveal">
         <!--
-          ✏️ PHOTO — replace the emoji div with an <img> tag:
-          <img src="assets/photo.jpg" alt="Your Name" class="avatar-photo" />
-          Recommended: square image, at least 400×400 px, placed in assets/.
+          ✏️ PHOTO — Set SITE_CONFIG.photoUrl in js/config.js.
+          render.js will automatically replace the emoji with your photo.
+          See assets/README.md for photo requirements.
         -->
-        <div class="avatar-box" aria-label="Profile photo">🧑‍💻</div>
+        <div class="avatar-box" id="aboutAvatar" aria-label="Profile photo">🧑‍💻</div>
       </div>
 
       <div class="about-text reveal">

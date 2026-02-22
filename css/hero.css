@@ -71,6 +71,7 @@
   word-break: break-all;
 }
 .hero-terminal .prompt { color: var(--green); }
+.hero-terminal .prompt-at { color: var(--cyan); }
 .hero-terminal .cursor {
   display: inline-block; width: 8px; height: 1.1em;
   background: var(--green); vertical-align: text-bottom;

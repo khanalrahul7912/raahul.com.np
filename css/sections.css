@@ -17,6 +17,8 @@
 .about-avatar-wrap {
   position: relative;
   display: flex; justify-content: center;
+  /* overflow: visible so the animated gradient border isn't clipped;
+     the parent section { overflow: hidden } handles the section boundary. */
 }
 .about-avatar-wrap::before {
   content: '';

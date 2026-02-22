@@ -233,8 +233,22 @@ function renderHeroStats() {
    5. ABOUT
 ══════════════════════════════════════════════════════ */
 function renderAbout() {
-  const ab = ABOUT;
+  const ab  = ABOUT;
+  const cfg = SITE_CONFIG;
   if (!ab) return;
+
+  /* ── Avatar: photo or emoji placeholder ── */
+  const avatarEl = document.getElementById('aboutAvatar');
+  if (avatarEl && cfg && cfg.photoUrl) {
+    /* Build <img> with DOM methods — no innerHTML injection */
+    const img = document.createElement('img');
+    img.src     = cfg.photoUrl;
+    img.alt     = cfg.photoAlt || cfg.name || 'Profile photo';
+    img.className = 'avatar-photo';
+    img.loading   = 'lazy';
+    avatarEl.textContent = '';   /* remove emoji fallback */
+    avatarEl.appendChild(img);
+  }
 
   /* Intro paragraphs */
   const introEl = document.getElementById('aboutIntro');

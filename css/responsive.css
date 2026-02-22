@@ -4,10 +4,16 @@
 ══════════════════════════════════════════════════════ */
 
 /* ══════════════════════════════════════════════════════
-   ≤ 1024px — Tablet
+   ≤ 1280px — Large tablet / small laptop
+══════════════════════════════════════════════════════ */
+@media (max-width: 1280px) {
+  .container { max-width: 100%; }
+}
+
+/* ══════════════════════════════════════════════════════
+   ≤ 1024px — Tablet landscape
 ══════════════════════════════════════════════════════ */
 @media (max-width: 1024px) {
-  /* Reduce section padding */
   section { padding: 5rem 0; }
 
   /* About */
@@ -19,10 +25,10 @@
 }
 
 /* ══════════════════════════════════════════════════════
-   ≤ 900px — Tablet portrait (experience tabs)
+   ≤ 900px — Tablet portrait (experience tabs switch to
+              horizontal scroll at top)
 ══════════════════════════════════════════════════════ */
 @media (max-width: 900px) {
-  /* Experience: switch to horizontal scrolling tabs at top */
   .exp-layout {
     grid-template-columns: 1fr;
     min-height: unset;
@@ -63,7 +69,6 @@
   .exp-tab-name { font-size: .76rem; }
   .exp-tab-dur  { display: none; }
 
-  /* Panel loses scroll since layout is single column */
   .exp-panel {
     max-height: none;
     padding: 1.5rem 1.25rem 1.75rem;
@@ -72,10 +77,14 @@
 }
 
 /* ══════════════════════════════════════════════════════
-   ≤ 768px — Mobile
+   ≤ 768px — Mobile landscape / small tablet
 ══════════════════════════════════════════════════════ */
 @media (max-width: 768px) {
-  /* Hamburger nav */
+  /* Section */
+  section    { padding: 4rem 0; }
+  .container { padding: 0 1.25rem; }
+
+  /* Navbar — hamburger mode */
   .hamburger { display: flex; }
   .nav-links {
     position: fixed; top: 0; right: 0; bottom: 0;
@@ -98,9 +107,9 @@
   /* Hero */
   .hero         { padding: 7rem 1.5rem 3rem; }
   .hero-stats   { gap: 1.5rem; }
-  .hero-actions { flex-direction: column; }
+  .hero-actions { flex-direction: column; align-items: flex-start; }
   .hero-actions .btn-primary,
-  .hero-actions .btn-outline { text-align: center; justify-content: center; }
+  .hero-actions .btn-outline { text-align: center; justify-content: center; width: 100%; max-width: 280px; }
 
   /* About */
   .about-grid { grid-template-columns: 1fr; gap: 2rem; }
@@ -118,26 +127,27 @@
   .tool-chip { padding: .75rem .5rem .7rem; font-size: .63rem; }
 
   /* Education */
-  .edu-grid   { grid-template-columns: 1fr; }
+  .edu-grid { grid-template-columns: 1fr; }
 
   /* Training */
-  .cert-grid  { grid-template-columns: 1fr; }
+  .cert-grid { grid-template-columns: 1fr; }
 
   /* Contact */
   .contact-wrap { grid-template-columns: 1fr; gap: 2rem; }
   .form-row     { grid-template-columns: 1fr; }
   .contact-form { padding: 1.5rem; }
+  .contact-link-item > span:nth-child(2) {
+    white-space: normal;
+    word-break: break-all;
+  }
 
   /* Footer */
   .footer-links { gap: 1rem; }
-
-  /* Section padding */
-  section { padding: 4rem 0; }
-  .container { padding: 0 1.25rem; }
+  .footer-content { padding: 0 1rem; }
 }
 
 /* ══════════════════════════════════════════════════════
-   ≤ 480px — Small mobile
+   ≤ 480px — Small mobile (most Android phones)
 ══════════════════════════════════════════════════════ */
 @media (max-width: 480px) {
   /* Navbar */
@@ -145,24 +155,127 @@
 
   /* Hero */
   .hero { padding: 6.5rem 1.25rem 3rem; }
-  .hero-stats { flex-direction: row; flex-wrap: wrap; gap: 1.25rem; }
+  .hero-stats { flex-direction: row; flex-wrap: wrap; gap: 1.25rem; justify-content: flex-start; }
   .stat-number { font-size: 1.45rem; }
+  .hero-actions { align-items: stretch; }
+  .hero-actions .btn-primary,
+  .hero-actions .btn-outline { max-width: 100%; }
+
+  /* Section tag overflow */
+  .section-tag { font-size: .65rem; letter-spacing: 1.5px; word-break: break-word; }
 
   /* Experience */
-  .exp-tab { min-width: 90px; padding: .75rem .75rem; }
-  .exp-tab-logo { width: 28px; height: 28px; }
+  .exp-tab { min-width: 90px; padding: .75rem; }
+  .exp-tab-logo { width: 28px; height: 28px; font-size: .6rem; }
   .exp-panel { padding: 1.25rem 1rem 1.5rem; }
-  .exp-panel-logo { width: 44px; min-width: 44px; height: 44px; }
+  .exp-panel-logo { width: 44px; min-width: 44px; height: 44px; font-size: .65rem; }
   .exp-role-card { padding: 1rem 0 1.25rem 1.25rem; }
+  .exp-role-title { font-size: .88rem; }
+  .exp-role-meta  { flex-wrap: wrap; gap: .25rem; }
+  .exp-date-chip  { display: none; } /* hide date chip — info is in role-meta */
 
   /* Tools */
   .tools-grid { grid-template-columns: repeat(auto-fill, minmax(min(100%, 90px), 1fr)); }
 
-  /* Contact */
-  .contact-link-item > span:nth-child(2) { font-size: .8rem; }
-  .contact-form { padding: 1.25rem; }
-
   /* Training cards */
   .cert-card { flex-direction: column; gap: .75rem; }
   .cert-icon { width: 38px; height: 38px; font-size: 1.15rem; }
+
+  /* Education cards */
+  .edu-card { flex-direction: column; gap: 1rem; }
+  .edu-logo-badge { width: 44px; min-width: 44px; height: 44px; font-size: .65rem; }
+
+  /* Contact */
+  .contact-form { padding: 1.25rem; }
+
+  /* Footer */
+  .footer-links { flex-wrap: wrap; justify-content: center; gap: .75rem; }
+}
+
+/* ══════════════════════════════════════════════════════
+   ≤ 375px — iPhone SE / small Android (Galaxy A series)
+══════════════════════════════════════════════════════ */
+@media (max-width: 375px) {
+  .container { padding: 0 1rem; }
+
+  /* Hero: reduce padding and font scale */
+  .hero { padding: 6rem 1rem 2.5rem; }
+  .section-title { font-size: clamp(1.3rem, 7vw, 1.8rem); }
+
+  /* Stats: 2-column grid on very small screens */
+  .hero-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .stat-number { font-size: 1.35rem; }
+
+  /* About avatar: slightly smaller */
+  .avatar-box { width: 160px; height: 160px; font-size: 3.8rem; }
+
+  /* Experience tabs: minimal footprint */
+  .exp-tab { min-width: 76px; padding: .6rem .5rem; }
+  .exp-tab-logo { width: 24px; height: 24px; font-size: .55rem; }
+  .exp-tab-name { font-size: .68rem; }
+  .exp-panel { padding: 1rem .875rem 1.25rem; }
+
+  /* Skills grid: ensure single column */
+  .skills-grid { grid-template-columns: 1fr; }
+
+  /* Tools grid: 3-column on very small */
+  .tools-grid { grid-template-columns: repeat(3, 1fr); gap: .5rem; }
+  .tool-chip { padding: .6rem .35rem; font-size: .58rem; }
+  .tool-icon-wrap { width: 28px; height: 28px; }
+  .tool-si-img { width: 24px; height: 24px; }
+
+  /* Training / cert cards */
+  .cert-card { padding: 1rem; }
+  .cert-name  { font-size: .84rem; }
+
+  /* Contact form */
+  .form-group input,
+  .form-group textarea,
+  .form-group select { font-size: .85rem; padding: .6rem .875rem; }
+
+  /* Footer: tighten */
+  footer { padding: 1.5rem 1rem; }
+  .footer-links a { font-size: .75rem; }
+}
+
+/* ══════════════════════════════════════════════════════
+   ≤ 320px — Very small phones (older iPhones, budget Android)
+══════════════════════════════════════════════════════ */
+@media (max-width: 320px) {
+  .container { padding: 0 .875rem; }
+  .navbar { padding: .75rem 1rem; }
+  .hero { padding: 5.75rem .875rem 2.5rem; }
+
+  /* Hero name: scale down */
+  .hero-title .name { font-size: clamp(1.6rem, 10vw, 2.2rem); }
+
+  /* Terminal prompt: allow wrapping */
+  .hero-terminal { word-break: break-all; font-size: .8rem; }
+
+  /* Stats: tighter */
+  .hero-stats { gap: .875rem; }
+  .stat-number { font-size: 1.25rem; }
+  .stat-label  { font-size: .65rem; }
+
+  /* Section header */
+  .section-tag { font-size: .6rem; letter-spacing: 1px; }
+  .section-title { font-size: clamp(1.2rem, 8vw, 1.6rem); }
+
+  /* Experience */
+  .exp-tab { min-width: 68px; padding: .5rem .4rem; }
+  .exp-tab-logo { width: 22px; height: 22px; font-size: .5rem; }
+  .exp-tab-name { font-size: .62rem; }
+
+  /* Tools grid: 3-column compact */
+  .tools-grid { grid-template-columns: repeat(3, 1fr); gap: .4rem; }
+  .tool-chip { padding: .5rem .3rem; }
+  .tool-name { font-size: .55rem; }
+
+  /* Contact links: prevent overflow */
+  .contact-link-item { padding: .6rem .75rem; gap: .6rem; }
+  .contact-link-item > span:nth-child(2) { font-size: .75rem; }
 }
