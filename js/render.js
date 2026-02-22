@@ -211,6 +211,17 @@ function renderHero() {
       cvBtn.style.display = 'none';
     }
   }
+
+  /* View CV page button — show only when cvPageUrl is set */
+  const cvViewBtn = document.getElementById('heroCvViewBtn');
+  if (cvViewBtn) {
+    if (cfg.cvPageUrl) {
+      cvViewBtn.href = cfg.cvPageUrl;
+      cvViewBtn.style.display = 'inline-flex';
+    } else {
+      cvViewBtn.style.display = 'none';
+    }
+  }
 }
 
 /* ══════════════════════════════════════════════════════

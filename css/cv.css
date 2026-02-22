@@ -1,0 +1,235 @@
+/* ═══════════════════════════════════════════════════════
+   css/cv.css — CV / Résumé Page Styles
+   ═══════════════════════════════════════════════════════
+   Screen : centered A4 white card, professional layout
+   Print  : @media print removes toolbar, sets A4 margins,
+            forces black text on white paper
+*/
+
+/* ── Variables ────────────────────────────────────────── */
+:root {
+  --cv-text:    #1a1a2e;
+  --cv-muted:   #52525b;
+  --cv-light:   #71717a;
+  --cv-accent:  #0060AF;
+  --cv-border:  #d4d4d8;
+  --cv-bg:      #f4f4f5;
+  --cv-page:    #ffffff;
+  --font-sans:  'Inter', system-ui, sans-serif;
+  --font-mono:  'JetBrains Mono', 'Courier New', monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-sans);
+  background: var(--cv-bg);
+  color: var(--cv-text);
+  min-height: 100vh;
+}
+
+a { color: var(--cv-accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Toolbar ──────────────────────────────────────────── */
+.cv-toolbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: #0f1117;
+  padding: .65rem 1.5rem;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 2px solid var(--cv-accent);
+  box-shadow: 0 2px 12px rgba(0,0,0,.35);
+}
+.cv-toolbar-label {
+  font-size: .78rem; color: rgba(255,255,255,.55);
+  font-family: var(--font-mono); white-space: nowrap;
+}
+.cv-btn {
+  padding: .45rem .9rem; border-radius: 5px;
+  font-size: .78rem; font-family: var(--font-sans); font-weight: 500;
+  cursor: pointer; border: none; transition: opacity .18s;
+  text-decoration: none; white-space: nowrap;
+}
+.cv-btn:hover { opacity: .82; text-decoration: none; }
+.cv-btn-back  { background: rgba(255,255,255,.1); color: #fff; }
+.cv-btn-print { background: var(--cv-accent); color: #fff; }
+
+/* ── A4 page card ─────────────────────────────────────── */
+.cv-page {
+  max-width: 860px;
+  margin: 80px auto 60px;          /* 80px clears the fixed toolbar */
+  background: var(--cv-page);
+  border: 1px solid var(--cv-border);
+  border-radius: 4px;
+  padding: 48px 56px;
+  box-shadow: 0 4px 32px rgba(0,0,0,.1);
+}
+
+/* ── Header ───────────────────────────────────────────── */
+.cv-header { margin-bottom: .25rem; }
+.cv-name {
+  font-size: 2rem; font-weight: 700; color: var(--cv-text);
+  line-height: 1.1; margin-bottom: .25rem;
+}
+.cv-role-tag {
+  font-size: .95rem; font-weight: 500; color: var(--cv-accent);
+  margin-bottom: .8rem;
+}
+.cv-contact-row {
+  display: flex; flex-wrap: wrap;
+  gap: .3rem .6rem;
+  font-size: .73rem; color: var(--cv-muted);
+  align-items: center;
+}
+.cv-contact-row a { color: var(--cv-accent); }
+.cv-sep { color: #bbb; user-select: none; }
+
+/* ── Section ──────────────────────────────────────────── */
+.cv-sect { margin-top: 1.4rem; }
+.cv-sect-title {
+  font-size: .68rem; font-weight: 700;
+  letter-spacing: 1.3px; text-transform: uppercase;
+  color: var(--cv-accent); font-family: var(--font-mono);
+  border-bottom: 1.5px solid var(--cv-accent);
+  padding-bottom: .2rem; margin-bottom: .9rem;
+}
+
+/* ── Summary ──────────────────────────────────────────── */
+.cv-summary-text {
+  font-size: .855rem; color: var(--cv-muted); line-height: 1.75;
+}
+
+/* ── Experience ───────────────────────────────────────── */
+.cv-exp-co { margin-bottom: 1.2rem; }
+.cv-exp-co + .cv-exp-co {
+  padding-top: .85rem;
+  border-top: 1px dashed var(--cv-border);
+}
+.cv-exp-co-header {
+  display: flex; justify-content: space-between; align-items: baseline;
+  flex-wrap: wrap; gap: .2rem; margin-bottom: .3rem;
+}
+.cv-exp-co-name   { font-size: .93rem; font-weight: 700; color: var(--cv-text); }
+.cv-exp-co-meta   { font-size: .7rem; color: var(--cv-light); font-family: var(--font-mono); }
+
+.cv-role {
+  margin-bottom: .8rem; margin-left: .1rem;
+  padding-left: .8rem;
+  border-left: 2px solid #e4e4e7;
+}
+.cv-role:last-child { margin-bottom: 0; }
+
+.cv-role-header {
+  display: flex; justify-content: space-between; align-items: baseline;
+  flex-wrap: wrap; gap: .15rem; margin-bottom: .15rem;
+}
+.cv-role-title  { font-size: .85rem; font-weight: 600; color: var(--cv-text); }
+.cv-role-period { font-size: .68rem; color: var(--cv-light); font-family: var(--font-mono); }
+.cv-role-live   {
+  font-size: .62rem; color: #fff; background: var(--cv-accent);
+  padding: .1rem .35rem; border-radius: 3px; font-family: var(--font-mono);
+  vertical-align: middle; margin-left: .4rem;
+}
+.cv-role-loc {
+  font-size: .69rem; color: var(--cv-light);
+  margin-bottom: .3rem;
+}
+.cv-role-desc {
+  font-size: .78rem; color: var(--cv-muted); line-height: 1.65;
+  margin-bottom: .35rem;
+}
+.cv-resp-list { list-style: none; padding: 0; margin-bottom: .35rem; }
+.cv-resp-list li {
+  font-size: .74rem; color: var(--cv-muted); line-height: 1.55;
+  padding-left: .95rem; position: relative; margin-bottom: .1rem;
+}
+.cv-resp-list li::before {
+  content: '▸'; position: absolute; left: 0; color: var(--cv-accent);
+}
+.cv-tag-row { display: flex; flex-wrap: wrap; gap: .2rem; }
+.cv-tag {
+  font-size: .6rem; font-family: var(--font-mono);
+  padding: .1rem .38rem; border-radius: 3px;
+  background: #f1f5f9; color: var(--cv-muted);
+  border: 1px solid var(--cv-border);
+}
+
+/* ── Skills ───────────────────────────────────────────── */
+.cv-skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr));
+  gap: .45rem .75rem;
+}
+.cv-skill-row { font-size: .78rem; display: flex; gap: .3rem; flex-wrap: wrap; }
+.cv-skill-label { font-weight: 600; color: var(--cv-text); flex-shrink: 0; }
+.cv-skill-items { color: var(--cv-muted); }
+
+/* ── Education ────────────────────────────────────────── */
+.cv-edu-item   { margin-bottom: .8rem; }
+.cv-edu-degree { font-size: .88rem; font-weight: 600; color: var(--cv-text); margin-bottom: .1rem; }
+.cv-edu-school { font-size: .79rem; color: var(--cv-accent); margin-bottom: .1rem; }
+.cv-edu-detail { font-size: .73rem; color: var(--cv-muted); }
+.cv-edu-period {
+  font-size: .68rem; color: var(--cv-light);
+  font-family: var(--font-mono); margin-top: .15rem;
+}
+
+/* ── Training ─────────────────────────────────────────── */
+.cv-tr-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+  gap: .45rem .75rem;
+}
+.cv-tr-item { font-size: .78rem; }
+.cv-tr-name { font-weight: 600; color: var(--cv-text); }
+.cv-tr-meta { font-size: .7rem; color: var(--cv-muted); margin-top: .05rem; }
+
+/* ═══════════════════════════════════════════════════════
+   RESPONSIVE — small screens
+═══════════════════════════════════════════════════════ */
+@media (max-width: 700px) {
+  .cv-page { padding: 28px 20px; margin-top: 72px; }
+  .cv-name { font-size: 1.5rem; }
+  .cv-skills-grid,
+  .cv-tr-grid { grid-template-columns: 1fr; }
+  .cv-toolbar-label { display: none; }
+}
+@media (max-width: 420px) {
+  .cv-toolbar { padding: .55rem 1rem; }
+  .cv-btn     { padding: .4rem .7rem; font-size: .72rem; }
+}
+
+/* ═══════════════════════════════════════════════════════
+   PRINT STYLES
+   @page sets A4 with 18mm margins.
+   .no-print hides toolbar and all screen-only chrome.
+═══════════════════════════════════════════════════════ */
+@media print {
+
+  @page { size: A4; margin: 16mm 18mm 16mm 18mm; }
+
+  .no-print { display: none !important; }
+
+  body { background: #fff; }
+
+  .cv-page {
+    margin: 0; padding: 0;
+    border: none; box-shadow: none; border-radius: 0;
+    max-width: 100%;
+  }
+
+  /* Avoid page breaks inside a single role or section */
+  .cv-sect    { break-inside: avoid; }
+  .cv-exp-co  { break-inside: avoid; }
+  .cv-role    { break-inside: avoid; }
+
+  a { color: var(--cv-accent) !important; text-decoration: none !important; }
+
+  /* Make sure all text is black on white */
+  .cv-name        { color: #000 !important; }
+  .cv-role-title  { color: #000 !important; }
+  .cv-exp-co-name { color: #000 !important; }
+  .cv-edu-degree  { color: #000 !important; }
+  .cv-tr-name     { color: #000 !important; }
+}

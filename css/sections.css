@@ -371,3 +371,5 @@ footer span { color: var(--green); font-family: var(--font-mono); }
   overflow-wrap: break-word; word-break: break-word;
 }
 .footer-hack-tag { color: var(--green); font-family: var(--font-mono); }
+.footer-edit-link { color: var(--muted); font-size: .68rem; }
+.footer-edit-link:hover { color: var(--green); }

@@ -65,6 +65,14 @@ const SITE_CONFIG = {
    */
   resumeUrl: 'assets/resume.pdf',
 
+  /**
+   * URL of the printable CV page.
+   * Set to '' to hide the "View CV" button in the hero.
+   * Keep as 'cv.html' to use the built-in CV page that
+   * auto-generates from your js/config.js and js/data.js.
+   */
+  cvPageUrl: 'cv.html',
+
   /* ─────────────────────────────────────────────────────
      NAVBAR
      ─────────────────────────────────────────────────── */

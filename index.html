@@ -127,6 +127,15 @@
          style="display:none" aria-label="Download CV">
         <span aria-hidden="true">📄</span> Download CV
       </a>
+      <!--
+        ✏️ VIEW CV BUTTON
+        Set SITE_CONFIG.cvPageUrl = 'cv.html' in js/config.js to show this.
+        Opens the printable CV page that auto-generates from your data files.
+      -->
+      <a href="cv.html" class="btn-outline" id="heroCvViewBtn"
+         style="display:none" aria-label="View CV page" target="_blank" rel="noopener">
+        <span aria-hidden="true">📋</span> View CV
+      </a>
     </div>
 
     <!-- Stats counters — populated by renderHeroStats() from HERO.stats -->
@@ -349,6 +358,10 @@
     <p class="footer-note">
       <!-- Tagline — populated by renderFooter() from SITE_CONFIG.footerTagline -->
       <span class="footer-hack-tag" id="footerTagline"></span>
+      &nbsp;·&nbsp;
+      <a href="edit.html" class="footer-edit-link" title="Edit site content">Edit Content</a>
+      &nbsp;·&nbsp;
+      <a href="cv.html" class="footer-edit-link" title="View printable CV" target="_blank" rel="noopener">View CV</a>
     </p>
   </div>
 </footer>

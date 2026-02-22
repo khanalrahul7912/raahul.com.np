@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edit Content — Portfolio</title>
+
+  <!-- Fonts — same as main site -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/edit.css" />
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════
+       TOP BAR
+  ══════════════════════════════════════════════════ -->
+  <header class="ed-topbar" role="banner">
+    <a href="index.html" class="ed-back">← Portfolio</a>
+    <div class="ed-topbar-center">
+      <span class="ed-topbar-icon" aria-hidden="true">📝</span>
+      <span class="ed-topbar-title">Content Editor</span>
+      <span class="ed-topbar-sub">Edit your data files and download the updated versions</span>
+    </div>
+    <a href="cv.html" class="ed-btn ed-btn-outline" target="_blank" rel="noopener">
+      View CV
+    </a>
+  </header>
+
+  <!-- ══════════════════════════════════════════════
+       LAYOUT — sidebar + main panel
+  ══════════════════════════════════════════════════ -->
+  <div class="ed-layout">
+
+    <!-- ─── Sidebar ─────────────────────────────── -->
+    <nav class="ed-sidebar" role="navigation" aria-label="Section navigation">
+      <div class="ed-sidebar-section">
+        <div class="ed-sidebar-label">config.js</div>
+        <button class="ed-nav-btn active" data-panel="config-personal">
+          <span aria-hidden="true">👤</span> Personal Info
+        </button>
+        <button class="ed-nav-btn" data-panel="config-hero">
+          <span aria-hidden="true">⚡</span> Hero &amp; SEO
+        </button>
+        <button class="ed-nav-btn" data-panel="config-contact-cfg">
+          <span aria-hidden="true">📬</span> Contact Settings
+        </button>
+      </div>
+      <div class="ed-sidebar-section">
+        <div class="ed-sidebar-label">data.js</div>
+        <button class="ed-nav-btn" data-panel="data-hero">
+          <span aria-hidden="true">🏠</span> Hero Stats
+        </button>
+        <button class="ed-nav-btn" data-panel="data-typewriter">
+          <span aria-hidden="true">⌨️</span> Typewriter Phrases
+        </button>
+        <button class="ed-nav-btn" data-panel="data-about">
+          <span aria-hidden="true">🧑‍💻</span> About
+        </button>
+        <button class="ed-nav-btn" data-panel="data-experience">
+          <span aria-hidden="true">💼</span> Experience
+        </button>
+        <button class="ed-nav-btn" data-panel="data-skills">
+          <span aria-hidden="true">🛡️</span> Skills
+        </button>
+        <button class="ed-nav-btn" data-panel="data-tools">
+          <span aria-hidden="true">🔧</span> Tools
+        </button>
+        <button class="ed-nav-btn" data-panel="data-education">
+          <span aria-hidden="true">🎓</span> Education
+        </button>
+        <button class="ed-nav-btn" data-panel="data-training">
+          <span aria-hidden="true">📚</span> Training
+        </button>
+      </div>
+      <!-- Download buttons -->
+      <div class="ed-sidebar-downloads">
+        <div class="ed-sidebar-label">Download</div>
+        <button class="ed-btn ed-btn-primary" id="dlConfig">
+          ⬇ config.js
+        </button>
+        <button class="ed-btn ed-btn-primary" id="dlData">
+          ⬇ data.js
+        </button>
+        <p class="ed-dl-hint">
+          Replace the files in your project folder, then refresh your site.
+        </p>
+      </div>
+    </nav>
+
+    <!-- ─── Main content area ────────────────────── -->
+    <main class="ed-main" id="edMain" role="main">
+
+      <!-- ═══ PANEL: Personal Info (config.js) ═══ -->
+      <section class="ed-panel active" id="panel-config-personal">
+        <div class="ed-panel-header">
+          <h2>Personal Information</h2>
+          <p>Saved in <code>js/config.js</code>. These values appear in the navbar, hero, about section, and footer.</p>
+        </div>
+        <div class="ed-form-grid">
+          <div class="ed-field">
+            <label for="cfg-name">Full Name</label>
+            <input type="text" id="cfg-name" placeholder="e.g. Rahul Khanal" />
+            <span class="ed-hint">Used in hero, about, footer, and CV.</span>
+          </div>
+          <div class="ed-field">
+            <label for="cfg-initials">Initials (2 chars)</label>
+            <input type="text" id="cfg-initials" maxlength="3" placeholder="e.g. RK" />
+            <span class="ed-hint">Shown as the navbar logo icon.</span>
+          </div>
+          <div class="ed-field ed-field-wide">
+            <label for="cfg-tagline">Tagline / Current Role</label>
+            <input type="text" id="cfg-tagline" placeholder="e.g. Ass. Information Security Analyst @ WorldLink" />
+            <span class="ed-hint">Shown as the badge above your name in the hero.</span>
+          </div>
+          <div class="ed-field">
+            <label for="cfg-email">Email Address</label>
+            <input type="email" id="cfg-email" placeholder="your@email.com" />
+          </div>
+          <div class="ed-field">
+            <label for="cfg-phone">Phone Number</label>
+            <input type="text" id="cfg-phone" placeholder="+977-..." />
+          </div>
+          <div class="ed-field ed-field-wide">
+            <label for="cfg-location">Location</label>
+            <input type="text" id="cfg-location" placeholder="e.g. Kalanki, Kathmandu, Nepal" />
+          </div>
+          <div class="ed-field ed-field-wide">
+            <label for="cfg-website">Website URL</label>
+            <input type="url" id="cfg-website" placeholder="https://raahul.com.np" />
+          </div>
+          <div class="ed-field ed-field-wide">
+            <label for="cfg-linkedin">LinkedIn URL</label>
+            <input type="url" id="cfg-linkedin" placeholder="https://linkedin.com/in/..." />
+          </div>
+          <div class="ed-field ed-field-wide">
+            <label for="cfg-github">GitHub URL</label>
+            <input type="url" id="cfg-github" placeholder="https://github.com/..." />
+          </div>
+          <div class="ed-field ed-field-wide">
+            <label for="cfg-twitter">Twitter / X URL <span class="ed-optional">(optional)</span></label>
+            <input type="url" id="cfg-twitter" placeholder="https://twitter.com/..." />
+          </div>
+          <div class="ed-field ed-field-wide">
+            <label for="cfg-photoUrl">Profile Photo Path</label>
+            <input type="text" id="cfg-photoUrl" placeholder="assets/photo.png" />
+            <span class="ed-hint">Relative path from the site root. Replace assets/photo.png with your actual photo.</span>
+          </div>
+          <div class="ed-field ed-field-wide">
+            <label for="cfg-resumeUrl">CV / Résumé File Path</label>
+            <input type="text" id="cfg-resumeUrl" placeholder="assets/resume.pdf" />
+            <span class="ed-hint">Set to empty string to hide the Download CV button.</span>
+          </div>
+          <div class="ed-field ed-field-wide">
+            <label for="cfg-cvPageUrl">CV Page URL</label>
+            <input type="text" id="cfg-cvPageUrl" placeholder="cv.html" />
+            <span class="ed-hint">Set to empty string to hide the View CV button.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ PANEL: Hero & SEO (config.js) ═══ -->
+      <section class="ed-panel" id="panel-config-hero">
+        <div class="ed-panel-header">
+          <h2>Hero &amp; SEO Settings</h2>
+          <p>Saved in <code>js/config.js</code>.</p>
+        </div>
+        <div class="ed-form-grid">
+          <div class="ed-field ed-field-wide">
+            <label for="cfg-terminalUser">Terminal Prompt User</label>
+            <input type="text" id="cfg-terminalUser" placeholder="rahul@RAAHUL" />
+            <span class="ed-hint">Shown as <code>┌──(user㉿HOST)-[~]</code> in the hero. Format: user@HOST</span>
+          </div>
+          <div class="ed-field ed-field-wide">
+            <label for="cfg-hireMeLabel">Hire Me Button Label</label>
+            <input type="text" id="cfg-hireMeLabel" placeholder="hire me" />
+          </div>
+          <div class="ed-field ed-field-wide">
+            <label for="cfg-footerTagline">Footer Tagline</label>
+            <input type="text" id="cfg-footerTagline" placeholder="&lt;/secure_the_world&gt;" />
+          </div>
+          <div class="ed-field ed-field-wide">
+            <label for="cfg-responseTime">Response Time (contact section)</label>
+            <input type="text" id="cfg-responseTime" placeholder="Usually within 24 hours" />
+          </div>
+          <div class="ed-field ed-field-wide">
+            <label for="cfg-seo-title">SEO Page Title</label>
+            <input type="text" id="cfg-seo-title" placeholder="Rahul Khanal | Information Security Analyst" />
+          </div>
+          <div class="ed-field ed-field-wide">
+            <label for="cfg-seo-description">SEO Meta Description</label>
+            <textarea id="cfg-seo-description" rows="3" placeholder="Short description for search engines and social sharing…"></textarea>
+          </div>
+          <div class="ed-field ed-field-wide">
+            <label for="cfg-seo-keywords">SEO Keywords</label>
+            <textarea id="cfg-seo-keywords" rows="2" placeholder="keyword1, keyword2, …"></textarea>
+          </div>
+          <div class="ed-field ed-field-wide">
+            <label for="cfg-seo-ogImage">OG Image URL (absolute)</label>
+            <input type="url" id="cfg-seo-ogImage" placeholder="https://yourdomain.com/assets/og-image.png" />
+            <span class="ed-hint">Must be an absolute URL. Used for social media previews.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ PANEL: Contact Settings (config.js) ═══ -->
+      <section class="ed-panel" id="panel-config-contact-cfg">
+        <div class="ed-panel-header">
+          <h2>Contact Form Settings</h2>
+          <p>Saved in <code>js/config.js</code>.</p>
+        </div>
+        <div class="ed-form-grid">
+          <div class="ed-field ed-field-wide">
+            <label for="cfg-formEmail">Form Submission Email</label>
+            <input type="email" id="cfg-formEmail" placeholder="your@email.com" />
+            <span class="ed-hint">
+              Emails from the contact form are sent here via
+              <a href="https://formsubmit.co" target="_blank" rel="noopener noreferrer">FormSubmit.co</a>.
+              The first submission triggers a one-time activation email.
+            </span>
+          </div>
+          <div class="ed-field ed-field-wide">
+            <label for="cfg-contactSubjects">Contact Form Subjects</label>
+            <textarea id="cfg-contactSubjects" rows="5" placeholder="Job Opportunity&#10;Security Consultation&#10;Collaboration&#10;General Inquiry"></textarea>
+            <span class="ed-hint">One subject per line. Shown as options in the contact form dropdown.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ PANEL: Hero Stats (data.js) ═══ -->
+      <section class="ed-panel" id="panel-data-hero">
+        <div class="ed-panel-header">
+          <h2>Hero Stats &amp; Description</h2>
+          <p>Saved in <code>js/data.js</code> as <code>HERO</code>. Edit the JSON below.</p>
+        </div>
+        <div class="ed-form-grid">
+          <div class="ed-field ed-field-full">
+            <label for="data-hero-json">HERO (JSON)</label>
+            <textarea id="data-hero-json" class="ed-code" rows="18"
+                      spellcheck="false" aria-label="HERO data as JSON"></textarea>
+            <span class="ed-hint">Valid JSON only. <code>stats</code> is an array of <code>{target, suffix, label}</code> objects.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ PANEL: Typewriter (data.js) ═══ -->
+      <section class="ed-panel" id="panel-data-typewriter">
+        <div class="ed-panel-header">
+          <h2>Typewriter Phrases</h2>
+          <p>Saved in <code>js/data.js</code> as <code>TYPEWRITER_PHRASES</code>.</p>
+        </div>
+        <div class="ed-form-grid">
+          <div class="ed-field ed-field-full">
+            <label for="data-typewriter-text">Phrases (one per line)</label>
+            <textarea id="data-typewriter-text" rows="8"
+                      placeholder="Information Security Analyst&#10;System Administrator&#10;…"></textarea>
+            <span class="ed-hint">Each line becomes one rotating phrase in the hero terminal.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ PANEL: About (data.js) ═══ -->
+      <section class="ed-panel" id="panel-data-about">
+        <div class="ed-panel-header">
+          <h2>About Section</h2>
+          <p>Saved in <code>js/data.js</code> as <code>ABOUT</code>. Edit the JSON below.</p>
+        </div>
+        <div class="ed-form-grid">
+          <div class="ed-field ed-field-full">
+            <label for="data-about-json">ABOUT (JSON)</label>
+            <textarea id="data-about-json" class="ed-code" rows="22"
+                      spellcheck="false" aria-label="ABOUT data as JSON"></textarea>
+            <span class="ed-hint">
+              <code>intro</code>: array of paragraph strings (supports
+              <code>&lt;strong&gt;</code>, <code>&lt;em&gt;</code>,
+              <code>&lt;a href="https://…"&gt;</code>).
+              <code>terminalLines</code>: array of <code>{cmd, output, className}</code>.
+              <code>tags</code>: array of strings.
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ PANEL: Experience (data.js) ═══ -->
+      <section class="ed-panel" id="panel-data-experience">
+        <div class="ed-panel-header">
+          <h2>Work Experience</h2>
+          <p>Saved in <code>js/data.js</code> as <code>EXPERIENCE</code>. Edit the JSON below.</p>
+        </div>
+        <div class="ed-form-grid">
+          <div class="ed-field ed-field-full">
+            <label for="data-experience-json">EXPERIENCE (JSON array)</label>
+            <textarea id="data-experience-json" class="ed-code" rows="36"
+                      spellcheck="false" aria-label="EXPERIENCE data as JSON"></textarea>
+            <span class="ed-hint">
+              Array of company objects. Each company has <code>roles[]</code>.
+              Set <code>current: true</code> for your active role.
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ PANEL: Skills (data.js) ═══ -->
+      <section class="ed-panel" id="panel-data-skills">
+        <div class="ed-panel-header">
+          <h2>Technical Skills</h2>
+          <p>Saved in <code>js/data.js</code> as <code>SKILLS</code>. Edit the JSON below.</p>
+        </div>
+        <div class="ed-form-grid">
+          <div class="ed-field ed-field-full">
+            <label for="data-skills-json">SKILLS (JSON array)</label>
+            <textarea id="data-skills-json" class="ed-code" rows="24"
+                      spellcheck="false" aria-label="SKILLS data as JSON"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ PANEL: Tools (data.js) ═══ -->
+      <section class="ed-panel" id="panel-data-tools">
+        <div class="ed-panel-header">
+          <h2>Tools &amp; Technologies</h2>
+          <p>Saved in <code>js/data.js</code> as <code>TOOLS</code>. Edit the JSON below.</p>
+        </div>
+        <div class="ed-form-grid">
+          <div class="ed-field ed-field-full">
+            <label for="data-tools-json">TOOLS (JSON array)</label>
+            <textarea id="data-tools-json" class="ed-code" rows="28"
+                      spellcheck="false" aria-label="TOOLS data as JSON"></textarea>
+            <span class="ed-hint">
+              Each tool: <code>{name, si, color, abbr, emoji}</code>.
+              <code>si</code> = <a href="https://simpleicons.org" target="_blank" rel="noopener noreferrer">Simple Icons</a> slug (leave empty for emoji fallback).
+              <code>color</code> = 6-char hex without #.
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ PANEL: Education (data.js) ═══ -->
+      <section class="ed-panel" id="panel-data-education">
+        <div class="ed-panel-header">
+          <h2>Education</h2>
+          <p>Saved in <code>js/data.js</code> as <code>EDUCATION</code>. Edit the JSON below.</p>
+        </div>
+        <div class="ed-form-grid">
+          <div class="ed-field ed-field-full">
+            <label for="data-education-json">EDUCATION (JSON array)</label>
+            <textarea id="data-education-json" class="ed-code" rows="20"
+                      spellcheck="false" aria-label="EDUCATION data as JSON"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ PANEL: Training (data.js) ═══ -->
+      <section class="ed-panel" id="panel-data-training">
+        <div class="ed-panel-header">
+          <h2>Training &amp; Courses</h2>
+          <p>Saved in <code>js/data.js</code> as <code>TRAINING</code>. Edit the JSON below.</p>
+        </div>
+        <div class="ed-form-grid">
+          <div class="ed-field ed-field-full">
+            <label for="data-training-json">TRAINING (JSON array)</label>
+            <textarea id="data-training-json" class="ed-code" rows="20"
+                      spellcheck="false" aria-label="TRAINING data as JSON"></textarea>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Toast notification -->
+  <div class="ed-toast" id="edToast" role="status" aria-live="polite"></div>
+
+  <!--
+    Load same data files as the portfolio so the editor
+    is always pre-filled with the current content.
+  -->
+  <script src="js/config.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/edit.js"></script>
+
+</body>
+</html>
