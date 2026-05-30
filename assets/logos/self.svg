@@ -1,0 +1,10 @@
+<svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Self-employed tutor logo">
+  <rect width="56" height="56" rx="12" fill="#10b981"/>
+  <!-- Person silhouette (tutor) -->
+  <circle cx="28" cy="19" r="6" fill="rgba(255,255,255,0.8)"/>
+  <path d="M16 38 Q16 29 28 29 Q40 29 40 38" fill="rgba(255,255,255,0.65)"/>
+  <!-- Small star/award accent -->
+  <path d="M28 11 L29 13 L31 13 L30 15 L31 17 L28 15.5 L25 17 L26 15 L25 13 L27 13 Z"
+        fill="rgba(255,255,255,0.5)" transform="translate(14, 4) scale(0.7)"/>
+  <text x="28" y="49" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" font-weight="700" fill="rgba(255,255,255,0.9)" letter-spacing="0.2">SELF</text>
+</svg>

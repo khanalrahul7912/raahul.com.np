@@ -1,0 +1,72 @@
+/* ═══════════════════════════════════════════════════════
+   NAVBAR — Navigation, Hamburger, Mobile Menu
+   css/navbar.css
+══════════════════════════════════════════════════════ */
+
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: .9rem 2rem;
+  background: rgba(10,14,23,.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0,255,136,.1);
+  transition: background var(--transition), border-color var(--transition);
+}
+.navbar.scrolled {
+  background: rgba(10,14,23,.97);
+  border-bottom-color: rgba(0,255,136,.15);
+}
+
+/* ── Logo ───────────────────────────────────────────── */
+.logo {
+  font-family: var(--font-mono);
+  font-size: 1.1rem; font-weight: 700;
+  color: var(--green); letter-spacing: -.5px;
+  flex-shrink: 0;
+}
+.logo span { color: var(--text); }
+
+/* ── Nav Links ──────────────────────────────────────── */
+.nav-links {
+  display: flex; gap: 1.75rem; list-style: none;
+}
+.nav-links a {
+  font-size: .85rem; font-weight: 500;
+  color: var(--muted); letter-spacing: .3px;
+  transition: color var(--transition);
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute; bottom: -3px; left: 0; right: 0;
+  height: 1px; background: var(--green);
+  transform: scaleX(0); transform-origin: right;
+  transition: transform var(--transition);
+}
+.nav-links a:hover      { color: var(--green); }
+.nav-links a:hover::after,
+.nav-links a.active::after { transform: scaleX(1); transform-origin: left; }
+.nav-links a.active      { color: var(--green); }
+
+/* ── Nav CTA Button ─────────────────────────────────── */
+.nav-cta {
+  font-size: .78rem; font-family: var(--font-mono);
+  padding: .42rem 1.1rem;
+  border: 1px solid var(--green);
+  border-radius: 4px; color: var(--green);
+  transition: all var(--transition);
+  flex-shrink: 0;
+}
+.nav-cta:hover { background: rgba(0,255,136,.1); color: var(--green); }
+
+/* ── Hamburger ──────────────────────────────────────── */
+.hamburger {
+  display: none; flex-direction: column; gap: 5px;
+  padding: 4px; background: none; border: none;
+}
+.hamburger span {
+  display: block; width: 24px; height: 2px;
+  background: var(--text); border-radius: 2px;
+  transition: transform var(--transition), opacity var(--transition);
+}

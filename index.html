@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!--
+    ✏️  SEO META TAGS
+    Update these to match your name / title.
+    Also update SITE_CONFIG.seo in js/config.js — render.js will
+    sync them at runtime for JavaScript-enabled browsers.
+  -->
+  <meta name="description"
+        content="Rahul Khanal — Information Security Analyst at WorldLink Communications. Skilled in system administration, SIEM, network security, vulnerability assessment — Kathmandu, Nepal." />
+  <meta name="keywords"
+        content="Rahul Khanal, information security analyst, cybersecurity, Nepal, WorldLink Communications, system administration, network security, SIEM, ELK stack, Docker" />
+  <meta name="author" content="Rahul Khanal" />
+  <meta property="og:title"       content="Rahul Khanal | Information Security Analyst" />
+  <meta property="og:description" content="Information Security Analyst at WorldLink Communications. Network security, SIEM, vulnerability assessment — Kathmandu, Nepal." />
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://raahul.com.np" />
+  <!-- ✏️ og:image: add an absolute URL to a preview image for social sharing -->
+
+  <!-- ✏️ PAGE TITLE — also update SITE_CONFIG.seo.title in js/config.js -->
+  <title>Rahul Khanal | Information Security Analyst</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+        rel="stylesheet" />
+
+  <!--
+    STYLESHEETS — modular css/ folder
+      css/base.css        variables, reset, animations, utilities
+      css/navbar.css      navigation & hamburger
+      css/hero.css        hero section
+      css/experience.css  tab-based experience section
+      css/sections.css    about, skills, tools, edu, training, contact, footer
+      css/responsive.css  all media queries
+  -->
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/navbar.css" />
+  <link rel="stylesheet" href="css/hero.css" />
+  <link rel="stylesheet" href="css/experience.css" />
+  <link rel="stylesheet" href="css/sections.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+
+  <!-- ✏️ FAVICON — replace assets/favicon.png with your own 32×32 icon (see assets/README.md) -->
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════
+     NAVBAR
+     Logo initials and hire-me link are populated
+     from SITE_CONFIG (js/config.js) by render.js.
+══════════════════════════════════════════════════ -->
+<nav class="navbar" role="navigation" aria-label="Main navigation">
+
+  <!-- Initials logo — populated by renderNavbar() -->
+  <a href="#home" class="logo" id="navLogo" aria-label="Home"></a>
+
+  <ul class="nav-links" id="navMenu" role="list" aria-label="Site sections">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#tools">Tools</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#training">Training &amp; Certs</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+
+  <!-- Hire-me CTA — populated by renderNavbar() -->
+  <a href="#contact" class="nav-cta" id="navHireCta">hire me</a>
+
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ═══════════════════════════════════════════════
+     HERO
+     All text populated from js/config.js + js/data.js
+     by renderHero() and renderHeroStats().
+══════════════════════════════════════════════════ -->
+<section id="home" class="hero">
+  <canvas id="particleCanvas" class="particle-canvas" aria-hidden="true"></canvas>
+  <div class="hero-grid" aria-hidden="true"></div>
+
+  <div class="hero-content">
+
+    <!-- Badge — populated by renderHero() from SITE_CONFIG.tagline -->
+    <div class="hero-badge">
+      <span id="heroBadge"></span>
+    </div>
+
+    <h1 class="hero-title">
+      <span class="line role">Hi, I'm</span>
+      <!-- Name + glitch effect — populated by renderHero() from SITE_CONFIG.name -->
+      <span class="line name glitch" id="heroName"></span>
+    </h1>
+
+    <!-- Terminal prompt — populated by renderHero() from SITE_CONFIG.terminalUser -->
+    <p class="hero-terminal">
+      <span class="prompt" id="heroPrompt"></span><span
+        id="typed-text"></span><span class="cursor" aria-hidden="true"></span>
+    </p>
+
+    <!-- Description — populated by renderHero() from HERO.description -->
+    <p class="hero-desc" id="heroDesc"></p>
+
+    <div class="hero-actions">
+      <a href="#experience" class="btn-primary">
+        <span aria-hidden="true">⚡</span> View Experience
+      </a>
+      <a href="#contact" class="btn-outline">
+        <span aria-hidden="true">✉</span> Get In Touch
+      </a>
+      <!--
+        ✏️ DOWNLOAD CV BUTTON
+        Set SITE_CONFIG.resumeUrl = 'assets/resume.pdf' in js/config.js to show this.
+        Place your résumé as assets/resume.pdf.
+      -->
+      <a href="#" class="btn-outline" id="heroCvBtn" download
+         style="display:none" aria-label="Download CV">
+        <span aria-hidden="true">📄</span> Download CV
+      </a>
+      <!--
+        ✏️ VIEW CV BUTTON
+        Set SITE_CONFIG.cvPageUrl = 'cv.html' in js/config.js to show this.
+        Opens the printable CV page that auto-generates from your data files.
+      -->
+      <a href="cv.html" class="btn-outline" id="heroCvViewBtn"
+         style="display:none" aria-label="View CV page" target="_blank" rel="noopener">
+        <span aria-hidden="true">📋</span> View CV
+      </a>
+    </div>
+
+    <!-- Stats counters — populated by renderHeroStats() from HERO.stats -->
+    <div class="hero-stats" id="heroStats" aria-label="Career stats"></div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     ABOUT
+══════════════════════════════════════════════════ -->
+<section id="about">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">// who_am_i</span>
+      <h2 class="section-title">About <span>Me</span></h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-avatar-wrap reveal">
+        <!--
+          ✏️ PHOTO — Set SITE_CONFIG.photoUrl in js/config.js.
+          render.js will automatically replace the emoji with your photo.
+          See assets/README.md for photo requirements.
+        -->
+        <div class="avatar-box" id="aboutAvatar" aria-label="Profile photo">🧑‍💻</div>
+      </div>
+
+      <div class="about-text reveal">
+        <!-- Intro paragraphs — populated by renderAbout() from ABOUT.intro -->
+        <div id="aboutIntro"></div>
+
+        <!-- Terminal card -->
+        <div class="terminal-card" aria-label="Terminal summary">
+          <div class="terminal-header">
+            <div class="t-dot t-red"    aria-hidden="true"></div>
+            <div class="t-dot t-yellow" aria-hidden="true"></div>
+            <div class="t-dot t-green"  aria-hidden="true"></div>
+            <span class="terminal-title">rahul@RAAHUL: ~</span>
+          </div>
+          <!-- Terminal body — populated by renderAbout() from ABOUT.terminalLines -->
+          <div class="terminal-body" id="aboutTerminalBody"></div>
+        </div>
+
+        <!-- Skill tags — populated by renderAbout() from ABOUT.tags -->
+        <div class="about-tags" id="aboutTags" aria-label="Key skills"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     EXPERIENCE
+     Tab layout populated by renderExperience()
+     from EXPERIENCE array in js/data.js.
+══════════════════════════════════════════════════ -->
+<section id="experience">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">// work_history</span>
+      <h2 class="section-title">Professional <span>Experience</span></h2>
+      <div class="section-line"></div>
+    </div>
+    <div id="experienceContainer" class="reveal"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SKILLS
+     Populated by renderSkills() from SKILLS in js/data.js.
+══════════════════════════════════════════════════ -->
+<section id="skills">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">// skill_set</span>
+      <h2 class="section-title">Technical <span>Skills</span></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="skills-grid" id="skillsGrid" aria-label="Technical skill categories"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     TOOLS
+     Populated by renderTools() from TOOLS in js/data.js.
+══════════════════════════════════════════════════ -->
+<section id="tools">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">// toolkit</span>
+      <h2 class="section-title">Tools &amp; <span>Technologies</span></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="tools-grid" id="toolsGrid" aria-label="Tools and technologies"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     EDUCATION
+     Populated by renderEducation() from EDUCATION in js/data.js.
+══════════════════════════════════════════════════ -->
+<section id="education">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">// education</span>
+      <h2 class="section-title">Academic <span>Background</span></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="edu-grid" id="eduGrid" aria-label="Academic qualifications"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     TRAINING & CERTIFICATES (combined)
+     Populated by renderTraining() from TRAINING in js/data.js.
+     Each entry includes course info + certificate link.
+     Add certDriveId values to enable per-certificate links.
+     Set SITE_CONFIG.certFolderUrl for the "View All" button.
+══════════════════════════════════════════════════ -->
+<section id="training">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">// training_and_certificates</span>
+      <h2 class="section-title">Training &amp; <span>Certificates</span></h2>
+      <div class="section-line"></div>
+    </div>
+    <!--
+      ✏️ TRAINING & CERTIFICATES — edit TRAINING array in js/data.js
+      Each entry has:
+        certDriveId: ''  ← paste Google Drive file ID to enable per-certificate link
+        year: '2023'     ← year the certificate was received
+      Set SITE_CONFIG.certFolderUrl in js/config.js for the "View All" folder button.
+    -->
+    <div id="trainingGrid" aria-label="Training and certificates"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     CONTACT
+     Links populated by renderContactInfo() from SITE_CONFIG.
+     Form subjects populated by renderContactForm().
+══════════════════════════════════════════════════ -->
+<section id="contact">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">// get_in_touch</span>
+      <h2 class="section-title">Contact <span>Me</span></h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="contact-wrap">
+
+      <!-- ── Left: Contact Info ── -->
+      <div class="contact-info reveal">
+        <h3>Let's Connect</h3>
+        <p>
+          Whether you're looking for an information security analyst, a system
+          administrator, or want to collaborate on cybersecurity projects —
+          I'm always open to a good conversation.
+        </p>
+
+        <!-- Contact links — populated by renderContactInfo() -->
+        <div class="contact-links" id="contactLinks" aria-label="Contact links"></div>
+
+        <!-- Location & response time — populated by renderContactInfo() -->
+        <div class="contact-pgp-box" id="contactMeta" aria-label="Contact details"></div>
+      </div>
+
+      <!-- ── Right: Contact Form ── -->
+      <div class="contact-form reveal">
+        <!--
+          Form sends real emails via FormSubmit.co.
+          Set SITE_CONFIG.formEmail in js/config.js.
+          The FIRST submission triggers a one-time activation email
+          to that address — click "Activate Form" to enable.
+        -->
+        <div id="formStatus" class="form-status" role="alert" aria-live="polite"></div>
+        <form id="contactForm" novalidate autocomplete="on">
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"
+                 style="position:absolute;left:-10000px;opacity:0" aria-hidden="true" />
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Name <span class="required" aria-hidden="true">*</span></label>
+              <input type="text" id="name" name="name"
+                     placeholder="Your full name" required autocomplete="name" />
+            </div>
+            <div class="form-group">
+              <label for="email">Email <span class="required" aria-hidden="true">*</span></label>
+              <input type="email" id="email" name="email"
+                     placeholder="your@email.com" required autocomplete="email" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <!-- Options populated by renderContactForm() from SITE_CONFIG.contactSubjects -->
+            <select id="subject" name="subject" autocomplete="off">
+              <option value="">Select a topic…</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Message <span class="required" aria-hidden="true">*</span></label>
+            <textarea id="message" name="message"
+                      placeholder="Describe your project or inquiry…"
+                      required rows="5"></textarea>
+          </div>
+          <button type="submit" class="btn-primary btn-full">
+            <span aria-hidden="true">⚡</span> Send Message
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     FOOTER
+     Populated by renderFooter() from SITE_CONFIG.
+══════════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-content">
+    <nav class="footer-links" aria-label="Footer navigation">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#training">Training &amp; Certs</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <!-- Built-by line — populated by renderFooter() -->
+    <p id="footerBuiltBy"></p>
+    <p class="footer-note">
+      <!-- Tagline — populated by renderFooter() from SITE_CONFIG.footerTagline -->
+      <span class="footer-hack-tag" id="footerTagline"></span>
+      &nbsp;·&nbsp;
+      <a href="edit.html" class="footer-edit-link" title="Edit site content">Edit Content</a>
+      &nbsp;·&nbsp;
+      <a href="cv.html" class="footer-edit-link" title="View printable CV" target="_blank" rel="noopener">View CV</a>
+    </p>
+  </div>
+</footer>
+
+<!-- Scroll to top -->
+<button id="scrollTop" class="scroll-top" aria-label="Back to top">↑</button>
+
+<!--
+  SCRIPTS — load order matters:
+    1. js/config.js  — SITE_CONFIG (personal info, contact, branding)
+    2. js/data.js    — section content (experience, skills, tools, …)
+    3. js/render.js  — reads config + data and populates the DOM
+    4. js/app.js     — nav, animations, contact form, particles
+-->
+<script src="js/config.js"></script>
+<script src="js/data.js"></script>
+<script src="js/render.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>

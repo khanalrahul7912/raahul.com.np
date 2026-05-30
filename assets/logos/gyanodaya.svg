@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" width="60" height="60">
+  <!-- Gyanodaya Secondary School — teal/red school emblem -->
+  <rect width="60" height="60" rx="12" fill="#0A6B5B"/>
+  <!-- Open book (left page) -->
+  <path d="M12 20 Q12 18 14 18 L28 19 L28 41 L14 42 Q12 42 12 40 Z"
+        fill="#fff" opacity="0.9"/>
+  <!-- Open book (right page) -->
+  <path d="M48 20 Q48 18 46 18 L32 19 L32 41 L46 42 Q48 42 48 40 Z"
+        fill="#fff" opacity="0.9"/>
+  <!-- Book spine -->
+  <rect x="28" y="18" width="4" height="23" rx="1" fill="#C5E8E0"/>
+  <!-- Lines on left page -->
+  <line x1="16" y1="24" x2="26" y2="24" stroke="#0A6B5B" stroke-width="1.2" opacity="0.5"/>
+  <line x1="16" y1="28" x2="26" y2="28" stroke="#0A6B5B" stroke-width="1.2" opacity="0.5"/>
+  <line x1="16" y1="32" x2="26" y2="32" stroke="#0A6B5B" stroke-width="1.2" opacity="0.5"/>
+  <line x1="16" y1="36" x2="26" y2="36" stroke="#0A6B5B" stroke-width="1.2" opacity="0.5"/>
+  <!-- Lines on right page -->
+  <line x1="34" y1="24" x2="44" y2="24" stroke="#0A6B5B" stroke-width="1.2" opacity="0.5"/>
+  <line x1="34" y1="28" x2="44" y2="28" stroke="#0A6B5B" stroke-width="1.2" opacity="0.5"/>
+  <line x1="34" y1="32" x2="44" y2="32" stroke="#0A6B5B" stroke-width="1.2" opacity="0.5"/>
+  <line x1="34" y1="36" x2="44" y2="36" stroke="#0A6B5B" stroke-width="1.2" opacity="0.5"/>
+  <!-- GS label -->
+  <text x="30" y="55" text-anchor="middle" font-family="Arial,sans-serif" font-size="6.5"
+        font-weight="700" fill="#fff" letter-spacing="0.5">GYANODAYA</text>
+</svg>

@@ -1,0 +1,507 @@
+/* ═══════════════════════════════════════════════════════
+   SECTIONS — About, Skills, Tools, Education,
+              Training, Contact, Footer
+   css/sections.css
+══════════════════════════════════════════════════════ */
+
+/* ══════════════════════════════════════════════════════
+   ABOUT
+══════════════════════════════════════════════════════ */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.about-avatar-wrap {
+  position: relative;
+  display: flex; justify-content: center;
+  /* overflow: visible so the animated gradient border isn't clipped;
+     the parent section { overflow: hidden } handles the section boundary. */
+}
+.about-avatar-wrap::before {
+  content: '';
+  position: absolute; inset: -3px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, var(--green), var(--cyan), var(--purple));
+  z-index: 0;
+  animation: rotateBorder 8s linear infinite;
+}
+.avatar-box {
+  position: relative; z-index: 1;
+  width: 280px; height: 280px;
+  background: var(--card); border-radius: 16px; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 6.5rem;
+}
+.avatar-photo { width: 100%; height: 100%; object-fit: cover; }
+
+.about-text { overflow-wrap: break-word; word-break: break-word; }
+.about-text p {
+  color: var(--muted); line-height: 1.8; margin-bottom: 1rem;
+  overflow-wrap: break-word;
+}
+.about-text p:first-of-type { color: var(--text); font-size: 1.04rem; }
+
+.about-tags { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.5rem; }
+
+/* ══════════════════════════════════════════════════════
+   SKILLS
+══════════════════════════════════════════════════════ */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  gap: 1.5rem;
+}
+
+.skill-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+  overflow: hidden;
+}
+.skill-card:hover {
+  border-color: rgba(0,255,136,.4);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(0,255,136,.08);
+}
+
+.skill-card-header {
+  display: flex; align-items: center; gap: .75rem;
+  margin-bottom: 1.25rem;
+}
+.skill-icon {
+  width: 40px; height: 40px; flex-shrink: 0;
+  border-radius: 8px;
+  background: rgba(0,255,136,.1);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem;
+}
+.skill-card-title { font-size: .975rem; color: var(--text); font-weight: 600; }
+.skill-card-sub   { font-size: .73rem; color: var(--muted); font-family: var(--font-mono); }
+
+.skill-items { display: flex; flex-wrap: wrap; gap: .4rem; }
+.skill-badge {
+  font-size: .71rem; font-family: var(--font-mono);
+  padding: .25rem .6rem; border-radius: 4px;
+  background: rgba(255,255,255,.05);
+  border: 1px solid var(--border);
+  color: var(--text);
+  transition: all var(--transition);
+  overflow-wrap: break-word;
+}
+.skill-badge:hover {
+  background: rgba(0,255,136,.1);
+  border-color: rgba(0,255,136,.3);
+  color: var(--green);
+}
+
+/* ══════════════════════════════════════════════════════
+   TOOLS
+══════════════════════════════════════════════════════ */
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 118px), 1fr));
+  gap: .85rem;
+}
+
+.tool-chip {
+  display: flex; flex-direction: column;
+  align-items: center; gap: .5rem;
+  padding: 1rem .75rem .85rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-family: var(--font-mono); font-size: .68rem;
+  color: var(--muted); text-align: center;
+  cursor: default;
+  transition: all var(--transition);
+  overflow: hidden;
+}
+.tool-chip:hover {
+  border-color: rgba(0,212,255,.4); color: var(--cyan);
+  background: rgba(0,212,255,.04);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0,212,255,.08);
+}
+
+.tool-icon-wrap {
+  width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.tool-si-img {
+  width: 32px; height: 32px; object-fit: contain;
+  transition: filter var(--transition);
+}
+.tool-chip:hover .tool-si-img { filter: brightness(1.15); }
+
+.tool-abbr-badge {
+  width: 32px; height: 32px; border-radius: 6px;
+  color: #fff; font-family: var(--font-mono);
+  font-size: .6rem; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  letter-spacing: -.5px;
+}
+.tool-emoji-icon { font-size: 1.55rem; line-height: 1; }
+
+.tool-name {
+  display: block; line-height: 1.3;
+  word-break: break-word; font-size: .67rem;
+}
+
+/* ══════════════════════════════════════════════════════
+   EDUCATION
+══════════════════════════════════════════════════════ */
+.edu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: 1.5rem;
+}
+
+.edu-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  display: flex; gap: 1.25rem; align-items: flex-start;
+  transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+  overflow: hidden;
+}
+.edu-card:hover {
+  border-color: rgba(0,255,136,.4);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(0,255,136,.08);
+}
+
+.edu-logo-badge {
+  width: 52px; min-width: 52px; height: 52px;
+  border-radius: var(--radius); flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-mono);
+  font-size: .7rem; font-weight: 700; color: #fff;
+  letter-spacing: -.5px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.3);
+}
+
+/* SVG / image logo — same size as the text badge */
+.edu-logo-img {
+  width: 52px; min-width: 52px; height: 52px;
+  border-radius: var(--radius);
+  object-fit: contain;
+  display: block;
+  flex-shrink: 0;
+}
+
+/* Hyperlink wrapper around education logo */
+.edu-logo-link {
+  display: block;
+  flex-shrink: 0;
+  border-radius: var(--radius);
+  transition: opacity .2s;
+}
+.edu-logo-link:hover { opacity: .8; }
+
+/* Hyperlink on education school name */
+.edu-school-link {
+  color: var(--cyan);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color .2s;
+}
+.edu-school-link:hover { border-bottom-color: var(--cyan); }
+
+.edu-content    { flex: 1; min-width: 0; overflow: hidden; }
+.edu-degree     { font-size: .975rem; font-weight: 600; color: var(--text); margin-bottom: .3rem; overflow-wrap: break-word; }
+.edu-school     { font-size: .82rem; color: var(--cyan); font-family: var(--font-mono); margin-bottom: .2rem; overflow-wrap: break-word; }
+.edu-detail     { font-size: .77rem; color: var(--muted); margin-bottom: .25rem; overflow-wrap: break-word; }
+.edu-period     { font-size: .72rem; color: var(--muted); margin-bottom: .55rem; }
+
+/* Status badge (shared with cert) */
+.cert-badge {
+  display: inline-flex;
+  font-size: .65rem;
+  padding: .15rem .5rem;
+  border-radius: 3px;
+  margin-top: .4rem;
+  white-space: nowrap;
+}
+.cert-active   { background: rgba(0,255,136,.15); color: var(--green); border: 1px solid rgba(0,255,136,.3); }
+.cert-progress { background: rgba(0,212,255,.15); color: var(--cyan);  border: 1px solid rgba(0,212,255,.3); }
+
+/* ══════════════════════════════════════════════════════
+   TRAINING / CERTIFICATIONS
+══════════════════════════════════════════════════════ */
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+  gap: 1.2rem;
+}
+
+.cert-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.2rem;
+  display: flex; gap: 1rem; align-items: flex-start;
+  transition: border-color var(--transition), transform var(--transition);
+  overflow: hidden;
+}
+.cert-card:hover { border-color: rgba(0,255,136,.4); transform: translateX(4px); }
+
+.cert-icon {
+  width: 44px; height: 44px; flex-shrink: 0;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.35rem;
+  background: rgba(0,255,136,.1);
+}
+
+.cert-content { flex: 1; min-width: 0; overflow: hidden; }
+.cert-name    { font-size: .92rem; font-weight: 600; color: var(--text); margin-bottom: .2rem; overflow-wrap: break-word; }
+.cert-issuer  {
+  font-size: .76rem; color: var(--green); font-family: var(--font-mono);
+  margin-bottom: .2rem; overflow-wrap: break-word; word-break: break-word;
+}
+.cert-date    { font-size: .71rem; color: var(--muted); }
+.cert-year    { font-size: .71rem; color: var(--cyan); margin-top: .15rem; }
+
+/* Inner grid (.cert-grid-inner) wrapping the cards;
+   sits below the .certs-folder-wrap folder button */
+.cert-grid-inner {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+  gap: 1.2rem;
+}
+
+/* ══════════════════════════════════════════════════════
+   CONTACT
+══════════════════════════════════════════════════════ */
+.contact-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 3.5rem;
+  align-items: start;
+}
+
+/* ── Info side ───────────────────────────────────────── */
+.contact-info h3 { font-size: 1.45rem; color: var(--text); margin-bottom: .75rem; }
+.contact-info > p { color: var(--muted); line-height: 1.8; margin-bottom: 1.5rem; overflow-wrap: break-word; }
+
+.contact-links { display: flex; flex-direction: column; gap: .7rem; }
+
+.contact-link-item {
+  display: flex; align-items: center; gap: .875rem;
+  padding: .825rem 1rem;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--muted); font-size: .86rem;
+  transition: all var(--transition);
+  overflow: hidden;
+}
+.contact-link-item:hover {
+  border-color: rgba(0,255,136,.4);
+  color: var(--green);
+  transform: translateX(4px);
+}
+.contact-link-item .icon       { font-size: 1.1rem; flex-shrink: 0; }
+.contact-link-item > span:nth-child(2) {
+  flex: 1; overflow: hidden;
+  text-overflow: ellipsis; white-space: nowrap;
+}
+.contact-arrow { font-size: .75rem; color: var(--green); flex-shrink: 0; }
+
+.contact-pgp-box {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: var(--font-mono); font-size: .77rem; color: var(--muted);
+  display: flex; flex-direction: column; gap: .4rem;
+  overflow-wrap: break-word;
+}
+.pgp-label, .response-label { color: var(--green); }
+
+/* ── Form side ───────────────────────────────────────── */
+.contact-form {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  overflow: hidden;
+}
+
+.form-group { margin-bottom: 1.2rem; }
+.form-group label {
+  display: block; font-size: .76rem; color: var(--muted);
+  font-family: var(--font-mono);
+  margin-bottom: .4rem; text-transform: uppercase; letter-spacing: .5px;
+}
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%; background: var(--bg);
+  border: 1px solid var(--border); border-radius: 6px;
+  padding: .7rem 1rem;
+  color: var(--text); font-family: var(--font-sans); font-size: .9rem;
+  outline: none; transition: border-color var(--transition);
+  resize: vertical;
+}
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus { border-color: var(--green); }
+.form-group textarea { min-height: 120px; }
+.form-group select option { background: var(--bg2); }
+
+.form-row {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+}
+
+.form-status {
+  display: none;
+  padding: .75rem 1rem; border-radius: 6px;
+  font-size: .84rem; margin-bottom: 1rem;
+  font-family: var(--font-mono);
+  overflow-wrap: break-word;
+}
+.form-status.success { background: rgba(0,255,136,.1); border: 1px solid rgba(0,255,136,.3); color: var(--green); display: block; }
+.form-status.error   { background: rgba(239,68,68,.1);  border: 1px solid rgba(239,68,68,.3);  color: #ef4444; display: block; }
+
+/* ══════════════════════════════════════════════════════
+   FOOTER
+══════════════════════════════════════════════════════ */
+footer {
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  padding: 2rem;
+  color: var(--muted); font-size: .8rem;
+  overflow: hidden;
+}
+.footer-content {
+  max-width: 1100px; margin: 0 auto;
+  text-align: center;
+}
+.footer-links {
+  display: flex; justify-content: center; flex-wrap: wrap;
+  gap: 1.25rem; margin-bottom: .75rem;
+}
+.footer-links a { color: var(--muted); font-size: .8rem; }
+.footer-links a:hover { color: var(--green); }
+footer .footer-content > p {
+  overflow-wrap: break-word; word-break: break-word;
+}
+footer span { color: var(--green); font-family: var(--font-mono); }
+
+.footer-note {
+  margin-top: .4rem; font-size: .7rem; color: var(--muted);
+  overflow-wrap: break-word; word-break: break-word;
+}
+.footer-hack-tag { color: var(--green); font-family: var(--font-mono); }
+.footer-edit-link { color: var(--muted); font-size: .68rem; }
+.footer-edit-link:hover { color: var(--green); }
+
+/* ══════════════════════════════════════════════════════
+   CERTIFICATES GALLERY
+   Used by renderCertificates() — see js/render.js.
+   Certificate entries are in CERTIFICATES array in js/data.js.
+   Update driveFileId fields in js/data.js with Google Drive file IDs.
+══════════════════════════════════════════════════════ */
+.certs-folder-wrap { text-align: center; margin-bottom: 2rem; }
+
+.certs-folder-btn {
+  display: inline-flex; align-items: center; gap: .55rem;
+  padding: .7rem 1.5rem;
+  border: 1px solid rgba(0,255,136,.3);
+  border-radius: 8px;
+  background: rgba(0,255,136,.07);
+  color: var(--green); font-family: var(--font-mono); font-size: .84rem;
+  transition: all var(--transition);
+}
+.certs-folder-btn:hover {
+  background: rgba(0,255,136,.15);
+  border-color: var(--green);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0,255,136,.1);
+}
+
+.certs-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+  gap: 1.2rem;
+}
+
+.cert-gallery-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  display: flex; gap: 1rem; align-items: flex-start;
+  transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+  overflow: hidden;
+}
+.cert-gallery-card:hover {
+  border-color: rgba(0,212,255,.4);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,212,255,.07);
+}
+
+.cert-gallery-icon {
+  width: 44px; height: 44px; flex-shrink: 0;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.35rem;
+  background: rgba(0,212,255,.1);
+}
+
+.cert-gallery-info  { flex: 1; min-width: 0; }
+.cert-gallery-name  {
+  font-size: .9rem; font-weight: 600; color: var(--text);
+  margin-bottom: .2rem; overflow-wrap: break-word;
+}
+.cert-gallery-issuer {
+  font-size: .75rem; color: var(--cyan); font-family: var(--font-mono);
+  margin-bottom: .15rem; overflow-wrap: break-word;
+}
+.cert-gallery-date  { font-size: .7rem; color: var(--muted); margin-bottom: .5rem; }
+
+/* Shared view-button style used in both Training cards and Certificates gallery */
+.cert-view-btn {
+  display: inline-flex; align-items: center; gap: .3rem;
+  font-family: var(--font-mono); font-size: .68rem;
+  padding: .2rem .6rem; border-radius: 4px;
+  border: 1px solid rgba(0,255,136,.25);
+  background: rgba(0,255,136,.07);
+  color: var(--green);
+  transition: all var(--transition);
+}
+.cert-view-btn:hover {
+  background: rgba(0,255,136,.16);
+  border-color: var(--green);
+}
+.cert-view-btn.cert-view-folder {
+  border-color: rgba(0,212,255,.25);
+  background: rgba(0,212,255,.07);
+  color: var(--cyan);
+}
+.cert-view-btn.cert-view-folder:hover {
+  background: rgba(0,212,255,.16);
+  border-color: var(--cyan);
+}
+
+/* Row that holds the "✓ Completed" badge + "View Certificate" button */
+.cert-actions {
+  display: flex; align-items: center; flex-wrap: wrap; gap: .4rem;
+  margin-top: .4rem;
+}
+
+.certs-empty {
+  color: var(--muted); font-family: var(--font-mono); font-size: .82rem;
+  padding: 2.5rem; text-align: center;
+  border: 1px dashed var(--border); border-radius: var(--radius);
+  overflow-wrap: break-word;
+}
+.certs-empty code {
+  color: var(--green); background: rgba(0,255,136,.1);
+  padding: .1rem .3rem; border-radius: 3px;
+  font-family: var(--font-mono);
+}

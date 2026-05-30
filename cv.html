@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Title updated by js/cv-render.js from SITE_CONFIG.name -->
+  <title>Curriculum Vitae</title>
+
+  <!-- Fonts — same as main site -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/cv.css" />
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════
+       TOOLBAR — hidden when printing (no-print)
+  ══════════════════════════════════════════════════ -->
+  <div class="cv-toolbar no-print" role="toolbar" aria-label="CV actions">
+    <a href="index.html" class="cv-btn cv-btn-back">← Portfolio</a>
+    <span class="cv-toolbar-label">CV / Résumé Preview</span>
+    <button class="cv-btn cv-btn-print" onclick="window.print()"
+            aria-label="Print or save as PDF">
+      🖨️ Print / Save as PDF
+    </button>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       A4 CV PAGE
+       All sections populated by js/cv-render.js,
+       which reads the same js/config.js + js/data.js
+       as the main portfolio.  Editing those files and
+       refreshing this page gives you an updated CV.
+  ══════════════════════════════════════════════════ -->
+  <main class="cv-page" id="cvPage" role="main" aria-label="Curriculum Vitae">
+
+    <!-- 1. Header — name, title, contact bar -->
+    <header class="cv-header" id="cvHeader"></header>
+
+    <!-- 2. Professional Summary -->
+    <section class="cv-sect" id="cvSummary"></section>
+
+    <!-- 3. Professional Experience -->
+    <section class="cv-sect" id="cvExperience"></section>
+
+    <!-- 4. Technical Skills -->
+    <section class="cv-sect" id="cvSkills"></section>
+
+    <!-- 5. Education -->
+    <section class="cv-sect" id="cvEducation"></section>
+
+    <!-- 6. Training & Courses -->
+    <section class="cv-sect" id="cvTraining"></section>
+
+  </main>
+
+  <!--
+    Scripts — same load order as index.html.
+    Editing js/config.js or js/data.js updates the CV automatically.
+  -->
+  <script src="js/config.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/cv-render.js"></script>
+
+</body>
+</html>

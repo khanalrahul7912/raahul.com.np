@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" width="60" height="60">
+  <!-- Pokhara University — Official maroon #7B0C0C / gold #C89B3C -->
+  <rect width="60" height="60" rx="12" fill="#7B0C0C"/>
+  <!-- Outer shield / crest frame -->
+  <path d="M30 6 L46 13 L46 34 Q46 46 30 54 Q14 46 14 34 L14 13 Z"
+        fill="none" stroke="#C89B3C" stroke-width="1.8" opacity="0.9"/>
+  <!-- Inner circle (seal) -->
+  <circle cx="30" cy="31" r="12" fill="none" stroke="#C89B3C" stroke-width="1.2" opacity="0.8"/>
+  <!-- Stylised torch / flame -->
+  <path d="M30 16 Q27 20 28.5 24 Q30 20.5 31.5 24 Q33 20 30 16Z"
+        fill="#C89B3C" opacity="0.9"/>
+  <!-- PU initials -->
+  <text x="30" y="36" text-anchor="middle" font-family="Georgia,serif" font-size="11"
+        font-weight="700" fill="#C89B3C" letter-spacing="1">PU</text>
+  <!-- Wordmark -->
+  <text x="30" y="52" text-anchor="middle" font-family="Arial,sans-serif" font-size="5.5"
+        font-weight="600" fill="#C89B3C" letter-spacing="0.3" opacity="0.9">Pokhara Univ.</text>
+</svg>

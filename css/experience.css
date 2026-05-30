@@ -1,0 +1,246 @@
+/* ═══════════════════════════════════════════════════════
+   EXPERIENCE — Flashcard-style layout
+   css/experience.css
+══════════════════════════════════════════════════════ */
+
+/* ── Experience Feed (vertical stack of company blocks) ── */
+.exp-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* ══════════════════════════════════════════════════════
+   COMPANY BLOCK
+══════════════════════════════════════════════════════ */
+.exp-co-block { position: relative; }
+
+/* ── Company Bar ─────────────────────────────────────── */
+.exp-co-bar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: .9rem 1.25rem;
+  background: var(--card2);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--co-accent, var(--border));
+  border-radius: var(--radius);
+  margin-bottom: .65rem;
+}
+
+/* Logo — either SVG img or coloured text badge */
+.exp-co-logo-wrap { flex-shrink: 0; }
+
+.exp-co-logo-img {
+  width: 48px; height: 48px;
+  border-radius: 10px;
+  object-fit: contain;
+  display: block;
+}
+
+.exp-co-logo-badge {
+  width: 48px; height: 48px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-mono);
+  font-size: .88rem; font-weight: 700;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,.3);
+}
+
+/* Company text info */
+.exp-co-info { flex: 1; min-width: 0; }
+
+.exp-co-name {
+  font-size: 1rem; font-weight: 700; color: var(--text);
+  overflow-wrap: break-word;
+}
+.exp-co-name a { color: inherit; }
+.exp-co-name a:hover { color: var(--green); }
+
+.exp-co-sub {
+  display: flex; align-items: center; flex-wrap: wrap; gap: .35rem;
+  font-family: var(--font-mono); font-size: .73rem;
+  color: var(--muted); margin-top: .15rem;
+}
+.exp-co-dot { color: var(--border); }
+.exp-co-loc { color: var(--muted); overflow-wrap: break-word; }
+
+/* ══════════════════════════════════════════════════════
+   ROLES STACK
+══════════════════════════════════════════════════════ */
+.exp-roles {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  /* Subtle indent + vertical connector line */
+  margin-left: 1.75rem;
+  padding-left: 1rem;
+  border-left: 2px solid var(--border);
+}
+
+/* ══════════════════════════════════════════════════════
+   FLASHCARD — individual role card
+══════════════════════════════════════════════════════ */
+.exp-fc {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+.exp-fc:hover {
+  border-color: rgba(0,255,136,.25);
+}
+.exp-fc.open {
+  border-color: rgba(0,255,136,.4);
+  box-shadow: 0 4px 24px rgba(0,255,136,.07);
+}
+/* Current-role card gets green left accent */
+.exp-fc.exp-fc-current {
+  border-left-color: var(--green);
+}
+
+/* ── Card Head (always-visible trigger button) ─────── */
+.exp-fc-head {
+  display: flex;
+  align-items: flex-start;
+  gap: .75rem;
+  padding: 1rem 1.1rem;
+  width: 100%;
+  background: none; border: none;
+  cursor: pointer;
+  color: inherit; font-family: inherit;
+  text-align: left;
+}
+.exp-fc-head:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: -2px;
+  border-radius: var(--radius);
+}
+
+/* Info column */
+.exp-fc-info { flex: 1; min-width: 0; }
+
+.exp-fc-title-row {
+  display: flex; align-items: center; flex-wrap: wrap; gap: .45rem;
+  margin-bottom: .3rem;
+}
+.exp-fc-title {
+  font-size: .94rem; font-weight: 600; color: var(--text);
+  overflow-wrap: break-word;
+}
+
+/* "● Live" current-role badge */
+.exp-live {
+  font-family: var(--font-mono); font-size: .6rem;
+  padding: .1rem .45rem;
+  border-radius: 999px;
+  background: rgba(0,255,136,.15);
+  color: var(--green);
+  border: 1px solid rgba(0,255,136,.35);
+  white-space: nowrap;
+  animation: pulse 3s infinite;
+}
+
+/* Period · duration · location row */
+.exp-fc-meta {
+  display: flex; align-items: center; flex-wrap: wrap; gap: .3rem;
+  font-family: var(--font-mono); font-size: .72rem;
+  color: var(--muted); margin-bottom: .35rem;
+  overflow-wrap: break-word;
+}
+.exp-fc-bullet { color: var(--border); }
+.exp-fc-loc { overflow-wrap: break-word; }
+
+/* ── Expand/Collapse Arrow ───────────────────────────── */
+.exp-fc-arrow {
+  width: 28px; height: 28px; flex-shrink: 0; margin-top: .05rem;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(255,255,255,.04);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: .9rem; color: var(--muted); font-style: normal;
+  transition: all var(--transition);
+}
+.exp-fc-head:hover .exp-fc-arrow,
+.exp-fc.open .exp-fc-arrow {
+  background: rgba(0,255,136,.1);
+  border-color: rgba(0,255,136,.3);
+  color: var(--green);
+}
+/* Rotate arrow 90° when card is open */
+.exp-fc.open .exp-fc-arrow {
+  transform: rotate(90deg);
+}
+
+/* ══════════════════════════════════════════════════════
+   EXPANDABLE BODY — CSS grid rows trick for smooth animation
+   (avoids max-height quirk; transitions correctly to natural height)
+══════════════════════════════════════════════════════ */
+.exp-fc-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows .38s cubic-bezier(.4,0,.2,1);
+}
+.exp-fc-body-inner {
+  overflow: hidden;   /* required for grid rows trick */
+}
+.exp-fc.open .exp-fc-body {
+  grid-template-rows: 1fr;
+}
+
+/* Body content layout */
+.exp-fc-body-content {
+  padding: .2rem 1.1rem 1.1rem;
+  border-top: 1px solid rgba(255,255,255,.05);
+}
+
+/* Description paragraph */
+.exp-fc-desc {
+  font-size: .855rem; color: var(--muted);
+  line-height: 1.75; margin-bottom: .8rem;
+  overflow-wrap: break-word;
+}
+
+/* Responsibilities list */
+.exp-fc-list {
+  display: flex; flex-direction: column; gap: .4rem;
+  margin-bottom: .8rem;
+}
+.exp-fc-list li {
+  position: relative;
+  padding-left: 1.2rem;
+  font-size: .835rem; color: var(--muted); line-height: 1.65;
+  overflow-wrap: break-word;
+}
+.exp-fc-list li::before {
+  content: '▹';
+  position: absolute; left: 0; top: .05em;
+  color: var(--green); font-size: .75rem;
+}
+
+/* Skill tags (inside expanded body) */
+.exp-fc-body-tags {
+  display: flex; flex-wrap: wrap; gap: .3rem; margin-top: .2rem;
+}
+.exp-fc-tag {
+  font-family: var(--font-mono); font-size: .63rem;
+  padding: .15rem .5rem;
+  background: rgba(255,255,255,.04);
+  border: 1px solid var(--border);
+  border-radius: 3px; color: var(--muted);
+  white-space: nowrap;
+  transition: all var(--transition);
+}
+.exp-fc.open .exp-fc-tag {
+  background: rgba(0,255,136,.05);
+  border-color: rgba(0,255,136,.2);
+  color: var(--green);
+}
+
+/* ── Legacy aliases (retained for safety) ──────────── */
+.project-tag { font-family: var(--font-mono); font-size: .68rem;
+  color: var(--muted); padding: .15rem .5rem;
+  background: rgba(255,255,255,.04); border-radius: 3px; }
+.timeline-tags { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .5rem; }

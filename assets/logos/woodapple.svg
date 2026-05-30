@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" width="60" height="60">
+  <!-- Woodapple Hotel and Spa — warm amber hotel branding -->
+  <rect width="60" height="60" rx="12" fill="#92400E"/>
+  <!-- Hotel building silhouette -->
+  <!-- Roof -->
+  <polygon points="10,26 30,12 50,26" fill="#F59E0B" opacity="0.95"/>
+  <!-- Main facade -->
+  <rect x="13" y="26" width="34" height="22" rx="1" fill="#FCD34D" opacity="0.9"/>
+  <!-- Door -->
+  <rect x="25" y="36" width="10" height="12" rx="1" fill="#92400E"/>
+  <!-- Windows row 1 -->
+  <rect x="17" y="29" width="7" height="5" rx="1" fill="#92400E" opacity="0.8"/>
+  <rect x="36" y="29" width="7" height="5" rx="1" fill="#92400E" opacity="0.8"/>
+  <!-- Chimney -->
+  <rect x="34" y="13" width="4" height="7" fill="#F59E0B" opacity="0.8"/>
+  <!-- Wordmark -->
+  <text x="30" y="55" text-anchor="middle" font-family="Arial,sans-serif" font-size="5.8"
+        font-weight="700" fill="#FCD34D" letter-spacing="0.3">WOODAPPLE</text>
+</svg>
