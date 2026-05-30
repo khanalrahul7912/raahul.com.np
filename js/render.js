@@ -265,7 +265,10 @@ function renderHeroStats() {
   const container = document.getElementById('heroStats');
   if (!container || !HERO) return;
   const stats = arr(HERO.stats);
-  if (!stats.length) return;
+  if (!stats.length) {
+    container.textContent = '';
+    return;
+  }
   container.innerHTML = stats.map(s =>
     `<div class="stat-item">
        <span class="stat-number"

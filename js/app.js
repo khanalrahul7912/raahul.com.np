@@ -11,7 +11,15 @@
 const COUNTER_STEPS = 50;
 const PARTICLE_RADIUS_MAX = 1.5;
 const PARTICLE_RADIUS_MIN = 0.5;
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+function isValidEmail(email) {
+  if (!EMAIL_REGEX.test(email)) return false;
+  const probe = document.createElement('input');
+  probe.type = 'email';
+  probe.value = email;
+  return probe.checkValidity();
+}
 
 /* ═══════════════════════════════════════════════════
    NAVBAR — scroll shadow + active section highlight
@@ -229,7 +237,7 @@ if (contactForm) {
       statusEl.textContent = '✗ Please fill in all required fields.';
       return;
     }
-    if (!EMAIL_RE.test(email)) {
+    if (!isValidEmail(email)) {
       statusEl.className = 'form-status error';
       statusEl.textContent = '✗ Please enter a valid email address.';
       return;
