@@ -81,7 +81,7 @@ const typedEl = document.getElementById('typed-text');
 let pi = 0, ci = 0, deleting = false;
 
 function type() {
-  if (!typedEl || !Array.isArray(TYPEWRITER_PHRASES) || TYPEWRITER_PHRASES.length === 0) return;
+  if (!typedEl || !Array.isArray(TYPEWRITER_PHRASES)) return;
   const current = TYPEWRITER_PHRASES[pi];
   typedEl.textContent = deleting ? current.slice(0, --ci) : current.slice(0, ++ci);
   if (!deleting && ci === current.length) {
@@ -92,7 +92,9 @@ function type() {
   }
   setTimeout(type, deleting ? 38 : 80);
 }
-setTimeout(type, 900);
+if (typedEl && Array.isArray(TYPEWRITER_PHRASES) && TYPEWRITER_PHRASES.length > 0) {
+  setTimeout(type, 900);
+}
 
 /* ═══════════════════════════════════════════════════
    SCROLL REVEAL

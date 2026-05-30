@@ -392,7 +392,7 @@ const EDUCATION = ${JSON.stringify(education, null, 2)};
 ───────────────────────────────────────────────────── */
 const TRAINING = ${JSON.stringify(training, null, 2)};
 
-/* Kept for compatibility with render.js and older templates */
+/* Kept for compatibility: older site templates may still call renderCertificates() in render.js. */
 const CERTIFICATES = [];
 `;
 }

@@ -536,6 +536,7 @@ function renderEducation() {
    shown at the top when SITE_CONFIG.certFolderUrl is set.
 ══════════════════════════════════════════════════════ */
 function renderTraining() {
+  if (!Array.isArray(TRAINING)) return;
   const folderUrl = SITE_CONFIG && SITE_CONFIG.certFolderUrl;
 
   // "View All Certificates" folder button
@@ -548,7 +549,6 @@ function renderTraining() {
        </div>`
     : '';
 
-  if (!Array.isArray(TRAINING)) return;
   const cardsHtml = TRAINING.map(tr => {
     const localFile = tr.certFile || '';
     const fileId    = tr.certDriveId || '';
