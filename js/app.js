@@ -11,6 +11,7 @@
 const COUNTER_STEPS = 50;
 const PARTICLE_RADIUS_MAX = 1.5;
 const PARTICLE_RADIUS_MIN = 0.5;
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 /* ═══════════════════════════════════════════════════
    NAVBAR — scroll shadow + active section highlight
@@ -20,6 +21,7 @@ const navLinkEls = document.querySelectorAll('.nav-links a');
 const scrollTopBtn = document.getElementById('scrollTop');
 
 function updateActiveNav() {
+  if (!navLinkEls.length) return;
   const sections = document.querySelectorAll('section[id]');
   let current = '';
   sections.forEach(sec => {
@@ -30,43 +32,47 @@ function updateActiveNav() {
   });
 }
 
-window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 50);
-  if (scrollTopBtn) scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
-  updateActiveNav();
-}, { passive: true });
+if (navbar || scrollTopBtn || navLinkEls.length) {
+  window.addEventListener('scroll', () => {
+    if (navbar) navbar.classList.toggle('scrolled', window.scrollY > 50);
+    if (scrollTopBtn) scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
+    updateActiveNav();
+  }, { passive: true });
+}
 
 /* ═══════════════════════════════════════════════════
    HAMBURGER MENU
 ═══════════════════════════════════════════════════ */
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-links');
-const overlay = document.createElement('div');
-overlay.className = 'nav-overlay';
-document.body.appendChild(overlay);
+if (hamburger && navMenu) {
+  const overlay = document.createElement('div');
+  overlay.className = 'nav-overlay';
+  document.body.appendChild(overlay);
 
-function closeMenu() {
-  navMenu.classList.remove('open');
-  overlay.classList.remove('visible');
-  hamburger.setAttribute('aria-expanded', 'false');
-  const spans = hamburger.querySelectorAll('span');
-  spans[0].style.transform = '';
-  spans[1].style.opacity = '1';
-  spans[2].style.transform = '';
+  function closeMenu() {
+    navMenu.classList.remove('open');
+    overlay.classList.remove('visible');
+    hamburger.setAttribute('aria-expanded', 'false');
+    const spans = hamburger.querySelectorAll('span');
+    spans[0].style.transform = '';
+    spans[1].style.opacity = '1';
+    spans[2].style.transform = '';
+  }
+
+  hamburger.addEventListener('click', () => {
+    const open = navMenu.classList.toggle('open');
+    overlay.classList.toggle('visible', open);
+    hamburger.setAttribute('aria-expanded', String(open));
+    const spans = hamburger.querySelectorAll('span');
+    spans[0].style.transform = open ? 'rotate(45deg) translate(5px,5px)' : '';
+    spans[1].style.opacity = open ? '0' : '1';
+    spans[2].style.transform = open ? 'rotate(-45deg) translate(5px,-5px)' : '';
+  });
+
+  overlay.addEventListener('click', closeMenu);
+  navMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
 }
-
-hamburger.addEventListener('click', () => {
-  const open = navMenu.classList.toggle('open');
-  overlay.classList.toggle('visible', open);
-  hamburger.setAttribute('aria-expanded', String(open));
-  const spans = hamburger.querySelectorAll('span');
-  spans[0].style.transform = open ? 'rotate(45deg) translate(5px,5px)' : '';
-  spans[1].style.opacity = open ? '0' : '1';
-  spans[2].style.transform = open ? 'rotate(-45deg) translate(5px,-5px)' : '';
-});
-
-overlay.addEventListener('click', closeMenu);
-navMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
 
 /* ═══════════════════════════════════════════════════
    TYPEWRITER
@@ -75,7 +81,7 @@ const typedEl = document.getElementById('typed-text');
 let pi = 0, ci = 0, deleting = false;
 
 function type() {
-  if (!typedEl || !TYPEWRITER_PHRASES) return;
+  if (!typedEl || !Array.isArray(TYPEWRITER_PHRASES) || TYPEWRITER_PHRASES.length === 0) return;
   const current = TYPEWRITER_PHRASES[pi];
   typedEl.textContent = deleting ? current.slice(0, --ci) : current.slice(0, ++ci);
   if (!deleting && ci === current.length) {
@@ -204,16 +210,26 @@ if (contactForm) {
     e.preventDefault();
     const btn = contactForm.querySelector('.btn-primary');
     const statusEl = document.getElementById('formStatus');
+    if (!btn || !statusEl) return;
     const originalHtml = btn.innerHTML;
 
     /* ── Validate ── */
-    const name    = contactForm.querySelector('[name="name"]').value.trim();
-    const email   = contactForm.querySelector('[name="email"]').value.trim();
-    const message = contactForm.querySelector('[name="message"]').value.trim();
+    const nameEl    = contactForm.querySelector('[name="name"]');
+    const emailEl   = contactForm.querySelector('[name="email"]');
+    const messageEl = contactForm.querySelector('[name="message"]');
+    if (!nameEl || !emailEl || !messageEl) return;
+    const name    = nameEl.value.trim();
+    const email   = emailEl.value.trim();
+    const message = messageEl.value.trim();
 
     if (!name || !email || !message) {
       statusEl.className = 'form-status error';
       statusEl.textContent = '✗ Please fill in all required fields.';
+      return;
+    }
+    if (!EMAIL_RE.test(email)) {
+      statusEl.className = 'form-status error';
+      statusEl.textContent = '✗ Please enter a valid email address.';
       return;
     }
 
@@ -266,11 +282,15 @@ if (contactForm) {
       }
     } catch {
       statusEl.className = 'form-status error';
-      statusEl.innerHTML =
-        '✗ Could not send automatically. Please email me directly: ' +
-        (SITE_CONFIG && SITE_CONFIG.email
-          ? `<a href="mailto:${SITE_CONFIG.email}">${SITE_CONFIG.email}</a>`
-          : 'the address shown in the contact section.');
+      statusEl.textContent = '✗ Could not send automatically. Please email me directly: ';
+      if (SITE_CONFIG && SITE_CONFIG.email) {
+        const a = document.createElement('a');
+        a.href = 'mailto:' + SITE_CONFIG.email;
+        a.textContent = SITE_CONFIG.email;
+        statusEl.appendChild(a);
+      } else {
+        statusEl.appendChild(document.createTextNode('the address shown in the contact section.'));
+      }
     } finally {
       btn.innerHTML = originalHtml;
       btn.disabled = false;

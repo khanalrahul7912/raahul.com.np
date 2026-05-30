@@ -180,6 +180,7 @@ function populateForm() {
    GENERATE config.js
 ══════════════════════════════════════════════════════ */
 function generateConfigJs() {
+  const existingCfg = (typeof SITE_CONFIG !== 'undefined') ? SITE_CONFIG : {};
   const subjects = gv('cfg-contactSubjects')
     .split('\n')
     .map(s => s.trim())
@@ -204,6 +205,9 @@ function generateConfigJs() {
     hireMeLabel:  gv('cfg-hireMeLabel') || 'hire me',
     terminalUser: gv('cfg-terminalUser'),
     formEmail:    gv('cfg-formEmail'),
+    mailerUrl:    existingCfg.mailerUrl || '',
+    certLocalDir: existingCfg.certLocalDir || '',
+    certFolderUrl: existingCfg.certFolderUrl || '',
     contactSubjects: subjects,
     footerTagline: gv('cfg-footerTagline'),
     seo: {
@@ -279,6 +283,9 @@ const SITE_CONFIG = {
      CONTACT FORM  (FormSubmit.co — no backend needed)
      ─────────────────────────────────────────────────── */
   formEmail: ${JSON.stringify(cfg.formEmail)},
+  mailerUrl: ${JSON.stringify(cfg.mailerUrl)},
+  certLocalDir: ${JSON.stringify(cfg.certLocalDir)},
+  certFolderUrl: ${JSON.stringify(cfg.certFolderUrl)},
   contactSubjects: ${subjectsLiteral},
 
   /* ─────────────────────────────────────────────────────
@@ -384,6 +391,9 @@ const EDUCATION = ${JSON.stringify(education, null, 2)};
    TRAINING
 ───────────────────────────────────────────────────── */
 const TRAINING = ${JSON.stringify(training, null, 2)};
+
+/* Kept for compatibility with render.js and older templates */
+const CERTIFICATES = [];
 `;
 }
 

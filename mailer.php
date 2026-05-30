@@ -68,6 +68,14 @@ $name    = sanitiseText($_POST['name']    ?? '');
 $email   = sanitiseHeader($_POST['email'] ?? '');
 $subject = sanitiseText($_POST['subject'] ?? 'General Inquiry');
 $message = sanitiseText($_POST['message'] ?? '');
+$gotcha  = sanitiseText($_POST['_gotcha'] ?? '');
+
+// Honeypot check (bots often fill hidden fields)
+if ($gotcha !== '') {
+    http_response_code(400);
+    echo json_encode(['success' => false, 'message' => 'Spam check failed.']);
+    exit;
+}
 
 // ── Validate ──────────────────────────────────────────────────────────
 if ($name === '' || $email === '' || $message === '') {

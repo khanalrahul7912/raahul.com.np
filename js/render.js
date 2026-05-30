@@ -97,6 +97,11 @@ function safeColor(hex, fallback) {
     : (fallback || '#334155');
 }
 
+/** Ensure a value is an array before using .map/.forEach safely. */
+function arr(value) {
+  return Array.isArray(value) ? value : [];
+}
+
 /**
  * Compute a human-readable duration from a start date (YYYY-MM) to today.
  * Uses LinkedIn-style inclusive counting (start month counts as month 1).
@@ -258,8 +263,10 @@ function renderHero() {
 ══════════════════════════════════════════════════════ */
 function renderHeroStats() {
   const container = document.getElementById('heroStats');
-  if (!container || !HERO || !HERO.stats) return;
-  container.innerHTML = HERO.stats.map(s =>
+  if (!container || !HERO) return;
+  const stats = arr(HERO.stats);
+  if (!stats.length) return;
+  container.innerHTML = stats.map(s =>
     `<div class="stat-item">
        <span class="stat-number"
              data-target="${esc(String(s.target))}"
@@ -292,8 +299,8 @@ function renderAbout() {
 
   /* Intro paragraphs */
   const introEl = document.getElementById('aboutIntro');
-  if (introEl && ab.intro) {
-    introEl.innerHTML = ab.intro.map(p => `<p>${safeHtml(p)}</p>`).join('');
+  if (introEl) {
+    introEl.innerHTML = arr(ab.intro).map(p => `<p>${safeHtml(p)}</p>`).join('');
   }
 
   /* Terminal card title — update from config so it stays in sync */
@@ -304,8 +311,8 @@ function renderAbout() {
 
   /* Terminal card lines */
   const termBody = document.getElementById('aboutTerminalBody');
-  if (termBody && ab.terminalLines) {
-    termBody.innerHTML = ab.terminalLines.map(line =>
+  if (termBody) {
+    termBody.innerHTML = arr(ab.terminalLines).map(line =>
       `<div><span class="t-cmd">${esc(line.cmd)}</span></div>` +
       `<div class="t-output${line.className ? ' ' + esc(line.className) : ''}">${esc(line.output)}</div>`
     ).join('');
@@ -313,8 +320,8 @@ function renderAbout() {
 
   /* Skill tags */
   const tagsEl = document.getElementById('aboutTags');
-  if (tagsEl && ab.tags) {
-    tagsEl.innerHTML = ab.tags.map(t => `<span class="tag">${esc(t)}</span>`).join('');
+  if (tagsEl) {
+    tagsEl.innerHTML = arr(ab.tags).map(t => `<span class="tag">${esc(t)}</span>`).join('');
   }
 }
 
@@ -325,9 +332,10 @@ function renderAbout() {
 ══════════════════════════════════════════════════════ */
 function renderExperience() {
   const container = document.getElementById('experienceContainer');
-  if (!container || !EXPERIENCE) return;
+  if (!container || !Array.isArray(EXPERIENCE)) return;
 
   const feedHtml = EXPERIENCE.map((co, ci) => {
+    const coRoles = arr(co.roles);
 
     /* ── Company logo: SVG img if logoUrl set, else coloured badge ── */
     const logoHtml = co.logoUrl
@@ -340,13 +348,13 @@ function renderExperience() {
       : esc(co.company);
 
     /* Compute company total duration dynamically when any role is current */
-    const hasCurrent = co.roles.some(r => r.current);
+    const hasCurrent = coRoles.some(r => r.current);
     const coDuration = (hasCurrent && co.startDate)
       ? (computeDuration(co.startDate) || co.duration)
       : co.duration;
 
     /* ── Role flashcards ── */
-    const rolesHtml = co.roles.map((role, ri) => {
+    const rolesHtml = coRoles.map((role, ri) => {
       /* Compute role duration dynamically when current and startDate is set */
       const roleDuration = (role.current && role.startDate)
         ? (computeDuration(role.startDate) || role.duration)
@@ -359,11 +367,11 @@ function renderExperience() {
         ? '<span class="exp-live" aria-label="Current role">● Live</span>'
         : '';
 
-      const respHtml = role.responsibilities
+      const respHtml = arr(role.responsibilities)
         .map(r => `<li>${esc(r)}</li>`)
         .join('');
 
-      const tagsHtml = role.tags
+      const tagsHtml = arr(role.tags)
         .map(t => `<span class="exp-fc-tag">${esc(t)}</span>`)
         .join('');
 
@@ -442,6 +450,7 @@ function renderExperience() {
    7. SKILLS
 ══════════════════════════════════════════════════════ */
 function renderSkills() {
+  if (!Array.isArray(SKILLS)) return;
   fill('skillsGrid', SKILLS.map(card => `
     <div class="skill-card reveal">
       <div class="skill-card-header">
@@ -462,6 +471,7 @@ function renderSkills() {
    8. TOOLS — Simple Icons CDN + emoji/abbr fallback
 ══════════════════════════════════════════════════════ */
 function renderTools() {
+  if (!Array.isArray(TOOLS)) return;
   fill('toolsGrid', TOOLS.map(tool => {
     const iconHtml = tool.si
       ? `<img
@@ -486,6 +496,7 @@ function renderTools() {
    9. EDUCATION
 ══════════════════════════════════════════════════════ */
 function renderEducation() {
+  if (!Array.isArray(EDUCATION)) return;
   fill('eduGrid', EDUCATION.map(ed => {
     /* Use SVG/img logo when available; fall back to coloured text badge */
     const logoInner = ed.logoUrl
@@ -537,6 +548,7 @@ function renderTraining() {
        </div>`
     : '';
 
+  if (!Array.isArray(TRAINING)) return;
   const cardsHtml = TRAINING.map(tr => {
     const localFile = tr.certFile || '';
     const fileId    = tr.certDriveId || '';
@@ -691,8 +703,8 @@ function renderContactForm() {
 
   /* Populate subject <select> */
   const subjectEl = document.getElementById('subject');
-  if (subjectEl && cfg.contactSubjects) {
-    const opts = cfg.contactSubjects.map(s =>
+  if (subjectEl) {
+    const opts = arr(cfg.contactSubjects).map(s =>
       `<option value="${esc(s)}">${esc(s)}</option>`
     ).join('');
     subjectEl.innerHTML = `<option value="">Select a topic…</option>${opts}`;
